@@ -1,0 +1,5 @@
+*.sqlite3n
+*.pyc
+__pychache__/
+/.c9
+env.py
