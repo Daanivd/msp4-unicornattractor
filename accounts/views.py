@@ -1,13 +1,37 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
-from accounts.forms import LoginForm
+from accounts.forms import LoginForm, UserRegoForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Views
 
 def index(request):
     """Return the index.html file"""
     return render(request,  'index.html')
+    
+def registration(request):
+    """Render the registration page"""
+    if request.user.is_authenticated:
+        return redirect(reverse('index'))
+
+    if request.method == "POST":
+        registration_form = UserRegoForm(request.POST)
+
+        if registration_form.is_valid():
+            registration_form.save()
+
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password1'])
+            if user:
+                auth.login(user=user, request=request)
+                messages.success(request, "You have successfully registered")
+            else:
+                messages.error(request, "Unable to register your account at this time")
+    else:
+        registration_form = UserRegoForm()
+    return render(request, 'registration.html', {
+        "registration_form": registration_form})  
     
 def login(request):
     """Return a login page"""
@@ -36,6 +60,11 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
     return redirect(reverse('index'))
+
+def user_profile(request):
+    """The user's profile page"""
+    user = User.objects.get(email=request.user.email)
+    return render(request, 'profile.html', {"profile": user})
 
 
    
