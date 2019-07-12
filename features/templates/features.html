@@ -5,6 +5,7 @@
         <div class="panel-body">
             <h3>{{ product.name }}</h3>
             <p class="feature-description">{{ feature.description }}</p>
+            <p class="feature-description">requested by: {{ feature.author }}</p>
 
             <form method="post" action="{% url 'add_to_cart' feature.id %}">
                 {% csrf_token %}
