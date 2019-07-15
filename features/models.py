@@ -14,7 +14,9 @@ class Feature(models.Model):
     
     featureName = models.CharField(max_length=254, default='')
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    contribution = models.IntegerField(default=50)
+    totalContributions = models.IntegerField(default=50)
+    price = models.IntegerField(default=100)
     image = models.ImageField(upload_to='images')
     author = models.ForeignKey(User)
     created_date = models.DateTimeField(auto_now_add=True)

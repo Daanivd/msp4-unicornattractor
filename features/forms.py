@@ -6,4 +6,4 @@ class featureForm(forms.ModelForm):
 
     class Meta:
         model = Feature
-        fields = ('featureName','description', 'price', 'published_date')
+        fields = ('featureName','description', 'price', 'contribution', 'totalContributions', 'published_date')

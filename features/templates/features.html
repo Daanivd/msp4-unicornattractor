@@ -3,14 +3,16 @@
     {% for feature in features %}
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
         <div class="panel-body">
-            <h3>{{ product.name }}</h3>
-            <p class="feature-description">{{ feature.description }}</p>
-            <p class="feature-description">requested by: {{ feature.author }}</p>
+            <h3>{{ feature.name }}</h3>
+            <p class="feature-description">Description: {{ feature.description }}</p>
+            <p class="feature-description">Price: {{ feature.price }}</p>
+            <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
+            <p class="feature-description">Requested by: {{ feature.author }}</p>
 
             <form method="post" action="{% url 'add_to_cart' feature.id %}">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                    <input name="contribution" type="number" min="1" max="999" class="form-control" placeholder="Contribution">
                     <span class="input-group-btn">
                             <button class="btn btn-success" type="submit">Add</button>
                         </span>
