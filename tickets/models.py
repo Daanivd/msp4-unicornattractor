@@ -15,7 +15,7 @@ class Ticket(models.Model):
     ticketName = models.CharField(max_length=200)
     author = models.ForeignKey(User)
     content = models.TextField()
-    image = models.ImageField(upload_to="img", null=True)
+    image = models.ImageField(upload_to="img", blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     status = models.CharField(max_length=1, choices=STATUS, default=1)

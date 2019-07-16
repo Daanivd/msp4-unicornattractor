@@ -48,7 +48,11 @@ def checkout(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 request.session['cart'] = {}
-                Feature.totalContributions += total
+                
+                for id, contribution in cart.items():
+                    feature = get_object_or_404(Feature, pk=id)
+                    feature.totalContributions += contribution
+                    
                 return redirect(reverse('features'))
             else:
                 messages.error(request, "Unable to take payment")
