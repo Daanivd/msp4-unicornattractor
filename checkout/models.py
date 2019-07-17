@@ -20,7 +20,7 @@ class Order(models.Model):
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False)
     product = models.ForeignKey(Feature, null=False)
-    quantity = models.IntegerField(blank=False)
+    contribution = models.IntegerField(blank=False)
 
     def __str__(self):
         return "{0} {1} @ {2}".format(

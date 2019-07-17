@@ -46,14 +46,14 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
             
             if customer.paid:
-                messages.error(request, "You have successfully paid")
+                messages.error(request, "Thank you for your contribution")
                 request.session['cart'] = {}
                 
                 for id, contribution in cart.items():
                     feature = get_object_or_404(Feature, pk=id)
-                    feature.totalContributions += contribution
+                    feature.totalContributions = int(feature.totalContributions) + int(contribution)
                     
-                return redirect(reverse('features'))
+                return redirect(reverse('all_features'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
