@@ -24,7 +24,7 @@ class UserRegoForm(UserCreationForm):
         fields = ['email', 'username', 'password1', 'password2']    
         
     def clean_email(self):
-        """Check if new user doens't already have a user account (using email address)"""
+        """Check if new user doesn't already have a user account (using email address)"""
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if User.objects.filter(email=email).exclude(username=username):

@@ -5,11 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 # Views
-
-def index(request):
-    """Return the index.html file"""
-    return render(request,  'index.html')
-    
 def registration(request):
     """Render the registration page"""
     if request.user.is_authenticated:
