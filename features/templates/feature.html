@@ -1,27 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="row">
-        <div class="col-md-2 col-sm-3 text-center">
-            <a class="story-img" href="#">
-                <img src="/media/img/profile.jpg" class="img-circle">
-            </a>
-            <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
-        </div>
-        <div class="col-sm-10 col-md-9">
-            {% if feature.image %}
-                <img class="img-blogpost" src="/media/{{ post.image }}">
-            {% endif %}
-            <h3>{{ feature.featureName }}</h3>
-            <div class="row">
-                <div class="col-xs-9">
-                    <p>{{ feature.content }}</p>
-                    <p><span class="boldtext">Published on:</span> {{ feature.published_date }} </p>
-                    <p><span class="boldtext">Views:</span> {{ feature.views }}</p>
-                    <p><span class="boldtext">Tag:</span> {{ feature.tag }}</p>
-                    
-                    <hr>
-                </div>
+          <div class="col-xs-10">
+        <div class="ftcard card featurecard" style="width: 18rem;">
+            <div class="card-body">
+
+                <h5 class="card-title">{{ feature.featureName }}</h5>
+                <p><span class="boldtext">Published on:</span> {{ feature.published_date }}
+                <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
+                {% if feature.image %}-->
+                <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
+                <p class="card-text">{{ feature.description }}</p>
+                <p><span class="boldtext">Views:</span> {{ feature.views }}</p>
+                <p><span class="boldtext">Tag:</span> {{ feature.tag }}</p>
+                <a href="/features/" class="btn btn-default">Back to features</a>
             </div>
         </div>
+    </div>
+        <!--<div class="col-md-2 col-sm-3 text-center">-->
+        <!--    <a class="story-img" href="#">-->
+        <!--        <img src="/media/img/profile.jpg" class="img-circle">-->
+        <!--    </a>-->
+        <!--    <p><span class="boldtext">Author:</span> {{ feature.author }}</p>-->
+        <!--</div>-->
+        <!--<div class="col-sm-10 col-md-9">-->
+        <!--    {% if feature.image %}-->
+        <!--        <img class="img" src="/media/{{ post.image }}">-->
+        <!--    {% endif %}-->
+        <!--    <h3>{{ feature.featureName }}</h3>-->
+        <!--    <div class="row">-->
+        <!--        <div class="col-xs-9">-->
+        <!--            <p>{{ feature.content }}</p>-->
+        <!--            <p><span class="boldtext">Published on:</span> {{ feature.published_date }} </p>-->
+        <!--            <p><span class="boldtext">Views:</span> {{ feature.views }}</p>-->
+        <!--            <p><span class="boldtext">Tag:</span> {{ feature.tag }}</p>-->
+        <!--            <hr>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
     </div>
 {% endblock %}

@@ -6,4 +6,4 @@ class TicketForm(forms.ModelForm):
 
     class Meta:
         model = Ticket
-        fields = ('ticketName','content', 'image', 'tag', 'published_date')
+        fields = ('ticketName','description', 'image')

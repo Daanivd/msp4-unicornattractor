@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def all_features(request):
     features = Feature.objects.all()
-    return render(request, "features.html", {"features": features})
+    productFeatures = Feature.objects.filter(status=1)
+    return render(request, 'features.html', {'features': features, 'productFeatures': productFeatures})
     
 def feature_detail(request, pk):
     """
@@ -18,7 +19,7 @@ def feature_detail(request, pk):
     """
     feature = get_object_or_404(Feature, pk=pk)
     feature.save()
-    return render(request, "feature.html", {'feature': feature})  
+    return render(request, 'feature.html', {'feature': feature})  
     
 @login_required
 def request_feature(request, pk=None):
@@ -26,7 +27,7 @@ def request_feature(request, pk=None):
     Request a feature by user
     """
     feature = get_object_or_404(Feature, pk=pk) if pk else None
-    if request.method == "POST":
+    if request.method == 'POST':
         form = featureForm(request.POST, request.FILES, instance=feature)
         if form.is_valid():
             form.author = request.user

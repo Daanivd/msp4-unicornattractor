@@ -1,26 +1,28 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row row-flex">
-    {% for feature in features %}
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-        <div class="panel-body">
-            <h3><a href="{% url 'feature_detail' feature.id %}">{{ feature.featureName }}</a></h3>
-            <p class="feature-description">Description: {{ feature.description }}</p>
-            <p class="feature-description">Price: {{ feature.price }}</p>
-            <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
-            <p class="feature-description">Requested by: {{ feature.author }}</p>
+<div class="row">
+    {% for feature in productFeatures %}
+    <div class="col-sm-6 col-md-3">
+        <div class="ftcard card featurecard" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
+                <p class="card-text">{{ feature.description }}</p>
+                <p class="feature-description">Price: {{ feature.price }}</p>
+                <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
+                <p class="feature-description">Requested by: {{ feature.author }}</p>
+            </div>
 
-            <form method="post" action="{% url 'add_to_cart' feature.id %}">
+            <form class="card-footer" method="post" action="{% url 'add_to_cart' feature.id %}">
                 {% csrf_token %}
                 <div class="input-group">
                     <input name="contribution" type="number" min="1" max="999" class="form-control" placeholder="Contribution">
-                    <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Add</button>
-                        </span>
+                    <span class="input-group-btn"><button class="btn btn-success" type="submit">Add</button></span>
                 </div>
             </form>
-
         </div>
     </div>
+
     {% endfor %}
 </div>
+<button><a href="/features/new/">Request a new feature!</a></button>  
+
 {% endblock %}

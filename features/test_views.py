@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import Feature
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 class TestViews(TestCase):

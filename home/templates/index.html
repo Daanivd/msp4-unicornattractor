@@ -1,6 +1,56 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<!--TOP-->
+<!--<section id="unicornattractor"></section>-->
+{% endblock %}
+{% block home %}
+<!--FEATURES-->
+<section id="features">
+    <div class="row">
+        {% for feature in features %}
+        <div class="col-sm-6 col-md-3">
+            <div class="card ftcard" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ feature.featureName }}</h5>
+                    <p class="card-text">{{ feature.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
-<h1>TEST TEST HOME</h1>
+
+<!--Features under development-->
+<section id="blog">
+    <div class="row">
+        {% for devFeature in devFeatures %}
+        <div class="col-sm-6 col-md-3">
+            <div class="ftcard card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ devFeature.featureName }}</h5>
+                    <p class="card-text">{{ devFeature.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!--TICKETS-->
+<section id="tickets">
+    <div class="row">
+        {% for ticket in tickets %}
+        <div class="col-sm-6 col-md-3">
+            <div class="ftcard card ticketcard" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ticket.ticketName }}</h5>
+                    <p class="card-text">{{ ticket.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
 {% endblock %}
