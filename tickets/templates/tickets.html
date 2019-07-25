@@ -1,20 +1,29 @@
-{% extends 'base.html' %}
-{% load bootstrap_tags %}
-{% block content %}
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block content %}
 
 <div class="row">
-    {% for ticket in tickets %}
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-4">
         <div class="ftcard card ticketcard" style="width: 18rem;">
             <div class="card-body">
-               
+
+                <h5 Report a Bug!</a></h5>
+                <p class="card-text">Please check bugs already submitted to see if your bug has already been known, or maybe even solved!
+                                     If someone else already made a ticket for similar bug, simply press the 'upvote' button to indicate you have
+                                     experienced the same.</p>
+                <p>If you would like to report a new bug, please go <a href="/tickets/new/">here</a></p>                     
+            </div>
+        </div>
+    </div>
+
+    {% for ticket in tickets %}
+    <div class="col-sm-6 col-md-4">
+        <div class="ftcard card ticketcard" style="width: 18rem;">
+            <div class="card-body">
+
                 <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
                 <p class="card-text">{{ ticket.content }}</p>
             </div>
         </div>
-        </div>
+    </div>
     {% endfor %}
 </div>
-<button><a href="/tickets/new/">Report a bug!</a></button>  
-
 {% endblock %}

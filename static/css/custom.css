@@ -1,5 +1,11 @@
 /*BASE TEMPLATE*/
+body {
+    color: #fafafa;
+}
 
+li.nav-item a {
+   color: #fafafa;
+}
 /*FOOTER*/
 footer {
         background-image: url('/static/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
@@ -63,7 +69,8 @@ footer {
     height: auto;
     width: auto;
     text-align: center;
-    opacity: 0.9
+    opacity: 0.9;
+    color: #555;
 }
 
 #tickets {
@@ -76,3 +83,6 @@ footer {
     }
 
 
+form {
+    margin: 30px;
+}

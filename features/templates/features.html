@@ -1,7 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 <div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="ftcard card ticketcard" style="width: 18rem;">
+            <div class="card-body">
+
+                <h5>Support a feature!</h5>
+                <p class="card-text">Here you can see all the features for which we are raising funds to develop. Once the goal has been hit, we
+                will start developing it! If you have a suggestion for a feature, please fill out <a href="/features/new/">this form</a></p>
+            </div>
+        </div>
+    </div>
     {% for feature in productFeatures %}
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-4">
         <div class="ftcard card featurecard" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
@@ -10,14 +20,6 @@
                 <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
                 <p class="feature-description">Requested by: {{ feature.author }}</p>
             </div>
-
-            <form class="card-footer" method="post" action="{% url 'add_to_cart' feature.id %}">
-                {% csrf_token %}
-                <div class="input-group">
-                    <input name="contribution" type="number" min="1" max="999" class="form-control" placeholder="Contribution">
-                    <span class="input-group-btn"><button class="btn btn-success" type="submit">Add</button></span>
-                </div>
-            </form>
         </div>
     </div>
 
