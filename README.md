@@ -13,6 +13,9 @@
 ##Future implementations:
 - Strong Customer Authentication (SCA) for Stripe
 
+##Deployment
+- had to install libpq-dev ($ sudo apt-get install libpq-dev) in order to install psycopg2
+
 
 ##Images
 [Unicorn Header](http://www.jewishworldreview.com/cols/pruden030119.php3)
