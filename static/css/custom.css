@@ -2,7 +2,7 @@
 
 /*FOOTER*/
 footer {
-        background-image: url('/media/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
+        background-image: url('/static/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
         background-position: center;
         background-size: cover;
         width: 100vw;
@@ -24,7 +24,7 @@ footer {
 /*HOME TEMPLATE*/
 #unicornattractor {
     background-attachment: fixed;
-    background-image: url('/media/img/forest-trees-mist-sunlight.jpeg');
+    background-image: url('/static/img/forest-trees-mist-sunlight.jpeg');
     background-position: bottom;
     background-size: cover;
     height: 75vh;
@@ -34,7 +34,7 @@ footer {
 }
 
 #features {
-        background-image: url('/media/img/Blue-Mountains-Mist-HD-Wallpaper-15347665-1920x1080.jpg');
+        background-image: url('/static/img/Blue-Mountains-Mist-HD-Wallpaper-15347665-1920x1080.jpg');
         background-position: center;
         background-size: cover;
         width: 100vw;
@@ -44,7 +44,7 @@ footer {
     
 #blog {
     background-attachment: fixed;
-    background-image: url('/media/img/clouds.jpg');
+    background-image: url('/static/img/clouds.jpg');
     background-position: bottom;
     background-size: cover;
     height: 75vh;
@@ -67,7 +67,7 @@ footer {
 }
 
 #tickets {
-        background-image: url('/media/img/trees.jpg');
+        background-image: url('/static/img/trees.jpg');
         background-position: center;
         background-size: cover;
         width: 100vw;
