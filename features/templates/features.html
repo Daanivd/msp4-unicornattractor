@@ -19,6 +19,17 @@
                 <p class="feature-description">Price: {{ feature.price }}</p>
                 <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
                 <p class="feature-description">Requested by: {{ feature.author }}</p>
+                
+                <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name="contribution" type="number" min="1" max="999" class="form-control" placeholder="Contribution">
+                    <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Add</button>
+                        </span>
+                </div>
+            </form>
+                
             </div>
         </div>
     </div>
