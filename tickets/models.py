@@ -19,7 +19,7 @@ class Ticket(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     status = models.CharField(max_length=1, choices=STATUS, default=1)
-    views = models.IntegerField(default=0)
+    upvotes = models.IntegerField(default=0)
     tag = models.CharField(max_length=30, blank=True, null=True)
 
     def __str__(self):

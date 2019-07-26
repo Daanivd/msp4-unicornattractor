@@ -11,7 +11,7 @@ def get_tickets(request):
     of tickets that have been published up to now
     and render them to the 'tickets.html' template
     """
-    tickets = Ticket.objects.all()
+    tickets = Ticket.objects.all().order_by('-upvotes')
     return render(request, "tickets.html", {'tickets': tickets})
  
 @login_required    
@@ -24,9 +24,10 @@ def ticket_detail(request, pk):
     not found
     """
     ticket = get_object_or_404(Ticket, pk=pk)
-    ticket.views += 1
     ticket.save()
-    return render(request, "ticket.html", {'ticket': ticket})    
+    return render(request, "ticket.html", {'ticket': ticket})   
+    
+    
 
 @login_required
 def create_or_edit_ticket(request, pk=None):
@@ -48,3 +49,10 @@ def create_or_edit_ticket(request, pk=None):
     else:
         form = TicketForm(instance=ticket)
     return render(request, 'ticketform.html', {'form': form})
+    
+@login_required
+def ticket_upvote(request, pk):
+    ticket = get_object_or_404(Ticket, pk=pk)
+    ticket.upvotes += 1
+    return render(request, "ticket.html", {'ticket': ticket})
+    
