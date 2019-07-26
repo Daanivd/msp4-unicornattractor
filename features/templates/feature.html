@@ -4,15 +4,22 @@
           <div class="col-xs-10">
         <div class="ftcard card featurecard" style="width: 18rem;">
             <div class="card-body">
+                
 
                 <h5 class="card-title">{{ feature.featureName }}</h5>
                 <p><span class="boldtext">Published on:</span> {{ feature.published_date }}
                 <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
                 {% if feature.image %}-->
                 <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
+                <p class="card-text">status: {{ feature.get_status_display }}</p>
+                {% if feature.version %}
+                <p class="card-text">feature added: {{ feature.feature_added_date }} | version: {{ feature.version }}</p>
+                {% endif %}
+                {% if feature.devComments %}
+                <p class="card-text">Developer's comments: {{ feature.devComments }}</p>
+                {% endif %}
                 <p class="card-text">{{ feature.description }}</p>
                 <p><span class="boldtext">Views:</span> {{ feature.views }}</p>
-                <p><span class="boldtext">Tag:</span> {{ feature.tag }}</p>
                 <a href="/features/" class="btn btn-default">Back to features</a>
             </div>
         </div>

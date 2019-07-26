@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def all_features(request):
     features = Feature.objects.all()
-    productFeatures = Feature.objects.filter(status=1)
+    productFeatures = Feature.objects.filter(status=2)
     return render(request, 'features.html', {'features': features, 'productFeatures': productFeatures})
     
 def feature_detail(request, pk):

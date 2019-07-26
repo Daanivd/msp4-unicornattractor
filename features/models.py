@@ -23,8 +23,9 @@ class Feature(models.Model):
     set_price_date = models.DateTimeField(blank=True, null=True)
     in_development_date = models.DateTimeField(blank=True, null=True)
     feature_added_date = models.DateTimeField(blank=True, null=True)
+    version = models.CharField(max_length=20, blank=True, null=True)
     views = models.IntegerField(default=0)
-    tag = models.CharField(max_length=30, blank=True, null=True)
+    devComments = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS, default=1)
     
 
