@@ -6,10 +6,14 @@
             <div class="card-body">
 
                 <h5 Report a Bug!</a></h5>
-                <p class="card-text">Please check bugs already submitted to see if your bug has already been known, or maybe even solved!
-                                     If someone else already made a ticket for similar bug, simply press the 'upvote' button to indicate you have
-                                     experienced the same.</p>
-                <p>If you would like to report a new bug, please go <a href="/tickets/new/">here</a></p>                     
+                <p class="card-text">Please check bugs already submitted to see if your bug has already been known, or maybe even solved! If someone else already made a ticket for similar bug, simply press the 'upvote' button to indicate you have experienced the same.</p>
+                <p>If you would like to report a new bug, please go <a href="/tickets/new/">here</a></p>
+                <div class="display">
+                    <form action="{% url 'search' %}" method="get">
+                        <input type="text" name="query">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
