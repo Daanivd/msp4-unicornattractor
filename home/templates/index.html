@@ -4,8 +4,10 @@
 <!--<section id="unicornattractor"></section>-->
 {% endblock %}
 {% block home %}
+
 <!--FEATURES-->
 <section id="features">
+    <h1>Features</h1>
     <div class="row">
         {% for feature in features %}
         <div class="col-sm-6 col-md-3">
@@ -23,6 +25,7 @@
 
 <!--Features under development-->
 <section id="blog">
+    <h1>Features in Development</h1>
     <div class="row">
         {% for devFeature in devFeatures %}
         <div class="col-sm-6 col-md-3">
@@ -39,6 +42,7 @@
 
 <!--TICKETS-->
 <section id="tickets">
+    <h1>Bugs we are working on</h1>
     <div class="row">
         {% for ticket in tickets %}
         <div class="col-sm-6 col-md-3">
