@@ -34,7 +34,7 @@ footer {
 /*HOME TEMPLATE*/
 #unicornattractor {
     background-attachment: fixed;
-    background-image: url('/static/img/forest-trees-mist-sunlight.jpeg');
+    background-image: url(/static/img/Unicorn-Gif.gif);
     background-position: bottom;
     background-size: cover;
     height: 100vh;

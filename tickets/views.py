@@ -5,7 +5,7 @@ from .forms import TicketForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def get_tickets(request):
+def all_tickets(request):
     """
     Create a view that will return a list
     of tickets that have been published up to now

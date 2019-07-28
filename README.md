@@ -9,7 +9,7 @@
 [Testing for redirects](https://stackoverflow.com/questions/21215035/django-test-always-returning-301)
 [Django Test Cases](https://micropyramid.com/blog/django-unit-test-cases-with-forms-and-views/)
 [Get verbose version of choice](https://stackoverflow.com/questions/1105638/django-templates-verbose-version-of-a-choice)
-
+[parallax-effect](https://www.haleyschafer.com/)
 
 ##Future implementations:
 - Strong Customer Authentication (SCA) for Stripe
@@ -29,4 +29,5 @@
 [mountains](https://www.theuiaa.org/uiaa/join-the-uiaa-respect-the-mountains-movement/)
 [trees](https://ecobnb.com/blog/trees/)
 [blue mountains mist](https://wallpaperclicker.com/image/Blue-Mountains-Mist-HD-Wallpaper/15347665/)
-[parallax-effect](https://www.haleyschafer.com/)
+[unicornPNG](https://www.pinclipart.com/downpngs/ThJbJ_image-royalty-free-baby-unicorn-clipart-baby-unicorn/)
+[Unicorn logo](https://pngtree.com/so/unicorn)

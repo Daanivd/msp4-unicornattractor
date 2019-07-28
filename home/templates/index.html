@@ -1,20 +1,49 @@
 {% extends 'base.html' %} {% block content %}
 
-<!--TOP-->
-<!--<section id="unicornattractor"></section>-->
-{% endblock %}
-{% block home %}
-
 <!--FEATURES-->
-<section id="features">
-    <h1>Features</h1>
-    <div class="row">
+
+<div class="row">
+    <div class="col-xs-4 col-md-6">
+        <h1>UNICORN ATTRACTOR</h1>
         {% for feature in features %}
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="card ftcard" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{ feature.featureName }}</h5>
+                </div>
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} {% block home %}
+
+<!--POSSIBLE NEW FEATURES-->
+<section id="features">
+    <h1>Features you can support</h1>
+    <div class="row">
+        {% for feature in productFeatures %}
+        <div class="col-sm-6 col-md-4">
+            <div class="ftcard card featurecard" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                     <p class="card-text">{{ feature.description }}</p>
+                    <p class="feature-description">Price: {{ feature.price }}</p>
+                    <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
+                    <p class="feature-description">Requested by: {{ feature.author }}</p>
+
+                    <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="contribution" type="number" min="1" max="999" class="form-control" placeholder="Contribution">
+                            <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Add</button>
+                        </span>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -23,7 +52,7 @@
 </section>
 
 
-<!--Features under development-->
+<!--FEATURES BEING DEVELOPED ALREADY-->
 <section id="blog">
     <h1>Features in Development</h1>
     <div class="row">
@@ -40,16 +69,15 @@
     </div>
 </section>
 
-<!--TICKETS-->
+<!--BUGS WE ARE WORKING ON-->
 <section id="tickets">
-    <h1>Bugs we are working on</h1>
+    <h1>Statistics</h1>
     <div class="row">
         {% for ticket in tickets %}
         <div class="col-sm-6 col-md-3">
             <div class="ftcard card ticketcard" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{ ticket.ticketName }}</h5>
-                    <p class="card-text">{{ ticket.description }}</p>
                 </div>
             </div>
         </div>

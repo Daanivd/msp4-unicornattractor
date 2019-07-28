@@ -5,10 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def all_features(request):
-    features = Feature.objects.all()
+    features = Feature.objects.filter(status=4)
     productFeatures = Feature.objects.filter(status=2)
-    return render(request, 'features.html', {'features': features, 'productFeatures': productFeatures})
-    
+    devFeatures = Feature.objects.filter(status=3)
+    return render(request, 'features.html', {'features': features, 'productFeatures': productFeatures, 'devFeatures': devFeatures})
+
+   
 def feature_detail(request, pk):
     """
     Create a view that returns a single
