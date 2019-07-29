@@ -9,6 +9,7 @@
 [Testing for redirects](https://stackoverflow.com/questions/21215035/django-test-always-returning-301)
 [Django Test Cases](https://micropyramid.com/blog/django-unit-test-cases-with-forms-and-views/)
 [Get verbose version of choice](https://stackoverflow.com/questions/1105638/django-templates-verbose-version-of-a-choice)
+[Get length of list jinja2](https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template)
 [parallax-effect](https://www.haleyschafer.com/)
 
 ##Future implementations:
