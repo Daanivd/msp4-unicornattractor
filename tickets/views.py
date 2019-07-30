@@ -5,14 +5,31 @@ from .forms import TicketForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def all_tickets(request):
+def all_tickets(request, pk=None):
     """
     Create a view that will return a list
     of tickets that have been published up to now
     and render them to the 'tickets.html' template
     """
     tickets = Ticket.objects.all().order_by('-upvotes')
-    return render(request, "tickets.html", {'tickets': tickets})
+    """
+    Allow us to create
+    or edit a ticket depending if the ticket-ID
+    is null or not
+    """
+    ticket = get_object_or_404(Ticket, pk=pk) if pk else None
+    if request.method == "POST":
+        form = TicketForm(request.POST, request.FILES, instance=ticket)
+        if form.is_valid():
+            form.author = request.user
+            ticket = form.save(commit=False)
+            ticket.author = request.user
+            ticket.save()
+        
+            # return redirect(ticket_detail, ticket.pk)
+    else:
+        form = TicketForm(instance=ticket)
+    return render(request, "tickets.html", {'tickets': tickets, 'form':form})
  
 @login_required    
 def ticket_detail(request, pk):
@@ -25,7 +42,15 @@ def ticket_detail(request, pk):
     """
     ticket = get_object_or_404(Ticket, pk=pk)
     ticket.save()
-    return render(request, "ticket.html", {'ticket': ticket})   
+    form = TicketForm(request.POST, request.FILES, instance=ticket)
+    if form.is_valid():
+            form.author = request.user
+            ticket = form.save(commit=False)
+            ticket.author = request.user
+            ticket.save()
+    else:
+        form = TicketForm(instance=ticket)        
+    return render(request, "ticket.html", {'ticket': ticket, 'form':form})   
     
     
 

@@ -1,34 +1,69 @@
-{% extends 'base.html' %} {% load bootstrap_tags %} {% block content %}{% block headerTag %} <header id="trees"> {% endblock headerTag %}
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block content %}{% block headerTag %}
+<header id="trees"> {% endblock headerTag %}
 
-<div class="row">
-    <div class="col-sm-6 col-md-4">
-        <div class="ftcard card ticketcard" style="width: 18rem;">
-            <div class="card-body">
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="ftcard card ticketcard" style="width: 18rem;">
+                <div class="card-body">
 
-                <h5 Report a Bug!</a></h5>
-                <p class="card-text">Please check bugs already submitted to see if your bug has already been known, or maybe even solved! If someone else already made a ticket for similar bug, simply press the 'upvote' button to indicate you have experienced the same.</p>
-                <p>If you would like to report a new bug, please go <a href="/tickets/new/">here</a></p>
-                <div class="display">
-                    <form action="{% url 'search' %}" method="get">
-                        <input type="text" name="query">
-                        <button type="submit">Search</button>
-                    </form>
+                    <h5 Report a Bug!</a></h5>
+                    <p class="card-text">Please check bugs already submitted to see if your bug has already been known, or maybe even solved! If someone else already made a ticket for similar bug, simply press the 'upvote' button to indicate you have experienced the same.</p>
+                    <p>If you would like to report a new bug, please click <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+  here
+</button></p>
+                    <div class="display">
+                        <form action="{% url 'search' %}" method="get">
+                            <input type="text" name="query">
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% for ticket in tickets %}
-    <div class="col-sm-6 col-md-4">
-        <div class="ftcard card ticketcard" style="width: 18rem;">
-            <div class="card-body">
+        {% for ticket in tickets %}
+        <div class="col-sm-6 col-md-4">
+            <div class="ftcard card ticketcard" style="width: 18rem;">
+                <div class="card-body">
 
-                <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
-                <p class="card-text">{{ ticket.description }}</p>
-                <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                    <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
+                    <p class="card-text">{{ ticket.description }}</p>
+                    <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                </div>
             </div>
         </div>
+        {% endfor %}
+
+  
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Submit a bug!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-10 offset-1">
+                                    <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %} {{ form | as_bootstrap }}
+                                        <button type="submit" class="btn btn-info">Submit new bug</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    {% endfor %}
-</div>
-{% endblock %}
+    {% endblock %}
