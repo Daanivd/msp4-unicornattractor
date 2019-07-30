@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="ftcard card">
+    <div class="row no-gutters cart">
+        <div class="cart col-10 offset-1">
+            <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
@@ -15,7 +15,7 @@
                     <hr>
                     <div class="row">
                         {% for item in cart_items %}
-                        <div class="col-6">
+                        <div class="col-6" style="border-right: solid 1px #555;">
                             {% if item.feature.image %}
                             <div class="feature" style="background-image: url('{{ MEDIA_URL }}{{ item.feature.image }}')"></div>
                             {% endif %}
@@ -26,15 +26,15 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label><i class="fas fa-euro-sign"></i></label>
-                                    <input name="contribution" type="number" min="0" step="5" max="9999" class="form-control" value="{{item.contribution}}">
+                                    <input name="contribution" type="number" min="0" step="5" max="9999" value="{{item.contribution}}">
                                 </div>
-                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><i class="far fa-edit"></i></button>
                             </form>
                         </div>
-                    
-                     {% endfor %}
-                     </div>
-                     <hr>
+
+                        {% endfor %}
+                    </div>
+                    <hr>
                     <div class="row">
                         <div class="col-6">
                             <p>Total:</p>
@@ -43,9 +43,11 @@
                             <p><i class="fas fa-euro-sign"></i>{{ total }}</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+
+                    <div class="float-right">
+                        <a href="{% url 'checkout' %}" class="btn btn-primary float-right" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
                     </div>
+
                 </div>
             </div>
         </div>

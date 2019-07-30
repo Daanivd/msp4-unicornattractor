@@ -4,13 +4,13 @@ body {
 }
 
 nav {
-    margin-top: 15px;
-    margin-left: 25px;
+    margin-right: 25px;
 }
 
-.row {
-    margin-left: 15px;
+li.nav-item {
+    margin-top:20px
 }
+
 
 li.nav-item a {
    color: #fafafa;
@@ -95,11 +95,59 @@ footer {
     }
 
 
-form {
+.tickets form {
     margin: 30px;
 }
 
 /*CART*/
-form {
+
+.cart {
+    margin-top: 5%
+}
+
+.cart form {
     margin-left: 35%;
 }
+
+.cart.card-body {
+    text-align: center;
+}
+
+
+/*CHECKOUT*/
+.checkout {
+    margin-top: 5%
+}
+
+.orderdetails {
+    margin-top: 5%;
+}
+
+.orderdetails h4 {
+    margin-left: 15px;
+}
+
+
+.paymentdetails {
+    margin-top: 5%;
+}
+
+
+.ordercard {
+    margin-top: 5%;
+
+}
+
+.addressform {
+    margin-top: 0px;
+    padding-left: 0px; 
+}
+
+.submitpayment {
+    margin-top: 32px;  
+}
+
+.featurecontribution {
+    margin-bottom: 20px;
+}
+
