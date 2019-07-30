@@ -24,41 +24,54 @@
     <title>{% block page_title %}{% endblock %}</title>
 </head>
 
+<body >
+    {% block headerTag %} {% endblock headerTag %}
+        <div class="container-fluid">
+            <div class="row navigation">
+                <div class="col-md-4">
+                    <a class="nav-link" href="{% url 'index' %}">
+                        <h2>Unicorn Preservation Society</h2>
+                    </a>
+                </div>
+                <div class="col-md-2 offset-md-6">
+                    <nav class="justify-content-end">
+                        <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+                        class="fas fa-bars fa-1x"></i></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                            <ul class="navbar-nav mr-auto">
+
+                                <li class="nav-item"><a class="nav-link" href="{% url 'all_features' %}">Features</a></li>
+
+                                {% if user.is_authenticated %}
+
+                                <li class="nav-item"><a class="nav-link" href="{% url 'all_tickets' %}">Report bugs</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'all_features' %}">Features</a></li>
+                                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                    </div>
+                                </li>
 
 
-<body>
-    <header id="unicornattractor">
-        <nav>
-            <ul class="nav justify-content-end navbar-header">
-                <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'all_features' %}">Features</a></li>
-
-                {% if user.is_authenticated %}
-
-                <li class="nav-item"><a class="nav-link" href="{% url 'all_tickets' %}">Report bugs</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'all_features' %}">Features</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    </div>
-                </li>
-
-
-                {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
-                {% endif %}
-                <li class="nav-item">
-                    <a href="{% url 'view_cart' %}">
+                                {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
+                                {% endif %}
+                                <li class="nav-item shoppingcart">
+                                    <a href="{% url 'view_cart' %}">
                             <i class="fas fa-shopping-cart"></i>
                             {% if cart_items|length > 0 %}
                             <label class="badge badge-warning">{{ cart_items|length }}</label>
                             {% endif %}
                         </a>
-                </li>
-            </ul>
-        </nav>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
         {% block content %}{% endblock %}
     </header>
     {% block home %}{% endblock %}

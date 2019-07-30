@@ -4,7 +4,7 @@
 {% block page_title %}Login Page{% endblock %} 
 {% block page_heading %}Login{% endblock %}
 
-{% block content %}
+{% block content %}{% block headerTag %} <header id="trees"> {% endblock headerTag %}
     <form method="POST">
         {% csrf_token %}
         {{ login_form | as_bootstrap }}
