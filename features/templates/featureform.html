@@ -1,7 +1,6 @@
 {% extends "base.html" %} {% load bootstrap_tags %} {% block content %}{% block headerTag %} <header id="trees"> {% endblock headerTag %}
 <div class="row">
     <div class="col-xs-10 col-md-6">
-    <h1>Request Feature</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %} {{ form | as_bootstrap }}
         <button type="submit" class="btn btn-info">Save</button>
