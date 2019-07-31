@@ -26,7 +26,7 @@ def all_tickets(request, pk=None):
             ticket.author = request.user
             ticket.save()
         
-            # return redirect(ticket_detail, ticket.pk)
+            return redirect(ticket_detail, ticket.pk)
     else:
         form = TicketForm(instance=ticket)
     return render(request, "tickets.html", {'tickets': tickets, 'form':form})
@@ -79,5 +79,6 @@ def create_or_edit_ticket(request, pk=None):
 def ticket_upvote(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     ticket.upvotes += 1
-    return render(request, "ticket.html", {'ticket': ticket})
+    form = TicketForm(instance=ticket)
+    return render(request, "ticket.html", {'ticket': ticket, 'form':form})
     

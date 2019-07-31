@@ -10,6 +10,11 @@
 [Django Test Cases](https://micropyramid.com/blog/django-unit-test-cases-with-forms-and-views/)
 [Get verbose version of choice](https://stackoverflow.com/questions/1105638/django-templates-verbose-version-of-a-choice)
 [Get length of list jinja2](https://stackoverflow.com/questions/1465249/get-lengths-of-a-list-in-a-jinja2-template)
+[Forloop counter](https://stackoverflow.com/questions/12145434/how-to-output-loop-counter-in-python-jinja-template)
+[Django divisibleby](https://stackoverflow.com/questions/36185303/how-to-check-whether-a-number-is-divisible-by-another-in-jinja-template-django?rq=1)
+[Django create custom template tag](https://www.codementor.io/hiteshgarg14/creating-custom-template-tags-in-django-application-58wvmqm5f)
+[Django use forloop.counter for index](https://stackoverflow.com/questions/4731572/django-counter-in-loop-to-index-list)
+
 [parallax-effect](https://www.haleyschafer.com/)
 
 ##Future implementations:

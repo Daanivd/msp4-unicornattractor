@@ -10,8 +10,10 @@ body {
 
 .navbar-toggler {
     font-size: 4rem;
-    color: #fafafa
+    color: #fafafa;
+    border-radius: 0rem; 
 }
+
 
 nav {
     margin-right: 25px;
@@ -174,4 +176,15 @@ footer {
 .featurecontribution {
     margin-bottom: 20px;
 }
+
+/*TICKETS*/
+.infocard {
+    margin-top: 25px;
+}
+
+.ftcard {
+    margin-top: 25px;
+}
+
+
 

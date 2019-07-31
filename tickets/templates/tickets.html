@@ -1,69 +1,121 @@
-{% extends 'base.html' %} {% load bootstrap_tags %} {% block content %}{% block headerTag %}
+{% extends 'base.html' %} {% load bootstrap_tags %} {% load index_tag %} {% block content %}{% block headerTag %}
 <header id="trees"> {% endblock headerTag %}
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-10 offset-sm-1">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="infocard card ticketcard">
+                            <div class="card-body">
 
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="ftcard card ticketcard" style="width: 18rem;">
-                <div class="card-body">
 
-                    <h5 Report a Bug!</a></h5>
-                    <p class="card-text">Please check bugs already submitted to see if your bug has already been known, or maybe even solved! If someone else already made a ticket for similar bug, simply press the 'upvote' button to indicate you have experienced the same.</p>
-                    <p>If you would like to report a new bug, please click <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-  here
-</button></p>
-                    <div class="display">
-                        <form action="{% url 'search' %}" method="get">
-                            <input type="text" name="query">
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        {% for ticket in tickets %}
-        <div class="col-sm-6 col-md-4">
-            <div class="ftcard card ticketcard" style="width: 18rem;">
-                <div class="card-body">
 
-                    <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
-                    <p class="card-text">{{ ticket.description }}</p>
-                    <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
 
-  
-
-        <!-- Modal -->
-        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Submit a bug!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-10 offset-1">
-                                    <form method="POST" enctype="multipart/form-data">
-                                        {% csrf_token %} {{ form | as_bootstrap }}
-                                        <button type="submit" class="btn btn-info">Submit new bug</button>
+                                <h5 Report a Bug!</a></h5>
+                                <p class="card-text">Please check bugs already submitted to see if your bug has already been known, or maybe even solved! If someone else already made a ticket for similar bug, simply press the 'upvote' button to indicate you have experienced
+                                    the same.
+                                </p>
+                                <p>If you would like to report a new bug, please click <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">here</button></p>
+                                <div class="display">
+                                    <form action="{% url 'search' %}" method="get">
+                                        <input type="text" name="query">
+                                        <button type="submit">Search</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+
+                <!--CAROUSEL-->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner">
+                                {% for ticket in tickets %} {% if forloop.counter0|divisibleby:3 %} {% if forloop.counter0 == 0 %}
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        {% for ticket in tickets|index:forloop.counter0 %}
+                                        <div class="col-4">
+                                            <div class="ftcard card ticketcard">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
+                                                    <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
+                                                    <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {%endfor%}
+                                    </div>
+                                </div>
+                                {%else%}
+                                <div class="carousel-item">
+                                    <div class="row">
+                                    {% for ticket in tickets|index:forloop.counter0 %}
+                                    <div class="col-4">
+                                        <div class="ftcard card ticketcard">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
+                                                <p class="card-text">{{ ticket.description|truncatewords:10 }}</p>
+                                                <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                    </div>
+                                </div>
+                                {%endif%} {%endif%} {% endfor %}
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+                        </div>
                     </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Submit a bug!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-10 offset-1">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %} {{ form | as_bootstrap }}
+                                    <button type="submit" class="btn btn-info">Submit new bug</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+
 
     </div>
     {% endblock %}

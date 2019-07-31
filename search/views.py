@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from tickets.models import Ticket
+from tickets.forms import TicketForm
 
 # Create your views here.
 def ticket_search(request):
     tickets = Ticket.objects.filter(ticketName__icontains=request.GET['query'])
-    return render(request, "tickets.html", {"tickets": tickets})
+    form = TicketForm(instance=None)
+    return render(request, "tickets.html", {"tickets": tickets, 'form':form})
