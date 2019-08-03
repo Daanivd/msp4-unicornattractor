@@ -1,4 +1,20 @@
-{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %}{% block headerTag %} <header id="trees"> {% endblock headerTag %}
-<p>{{ profile.email }}</p>
-<p>{{ profile.username }}</p>
-{% endblock %}
+{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %} {% block headerTag %}
+<header id="trees"> {% endblock headerTag %}
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-10 offset-1">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="infocard card ticketcard">
+                            <div class="card-body">
+                                <h5>Your Profile</h5>
+                                <p>Name: {{ profile.username }}</p>
+                                <p>E-mail: {{ profile.email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
