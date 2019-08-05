@@ -40,7 +40,7 @@ footer {
         background-position: center;
         background-size: cover;
         width: 100vw;
-        height: 50vh; 
+        height: 60vh; 
         }    
 
 #contactform {
@@ -84,7 +84,7 @@ footer {
         background-position: center;
         background-size: cover;
         width: 100vw;
-        height: 50vh; 
+        height: 75vh; 
         opacity: 0.3;
     }
     
@@ -100,9 +100,7 @@ footer {
     opacity: 0.5;
 }     
 
-.ftcard {
-   
-} 
+ 
 
 .card-body {
     height: auto;
