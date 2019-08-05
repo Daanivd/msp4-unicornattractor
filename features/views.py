@@ -4,26 +4,13 @@ from .forms import featureForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def all_features(request, pk=None):
+def all_features(request):
     features = Feature.objects.filter(status=4)
     productFeatures = Feature.objects.filter(status=2)
     devFeatures = Feature.objects.filter(status=3)
+    form = featureForm
+    request_feature(request, pk=None)
     
-    """
-    Request a feature by user
-    """
-    feature = get_object_or_404(Feature, pk=pk) if pk else None
-    if request.method == 'POST':
-        form = featureForm(request.POST, request.FILES, instance=feature)
-        if form.is_valid():
-            form.author = request.user
-            feature = form.save(commit=False)
-            feature.author = request.user
-            feature.save()
-        
-            return redirect(feature_detail, feature.pk)
-    else:
-         form = featureForm(instance=feature)
     return render(request, 'features.html', {'features': features, 'productFeatures': productFeatures, 'devFeatures': devFeatures, 'form': form})
     
    
@@ -40,7 +27,7 @@ def feature_detail(request, pk):
     return render(request, 'feature.html', {'feature': feature})  
     
 @login_required
-def request_feature(request, pk=None):
+def request_feature(request, pk):
     """
     Request a feature by user
     """
@@ -48,12 +35,10 @@ def request_feature(request, pk=None):
     if request.method == 'POST':
         form = featureForm(request.POST, request.FILES, instance=feature)
         if form.is_valid():
-            # form.author = request.user
-            feature = form.save(commit=False)
-            feature.author = request.user
-            feature.save()
-        
-            return redirect(feature_detail, feature.pk)
-    # else:
-        # form = featureForm(instance=feature)
-    return render(request, 'featureform.html', {'form': form})    
+                    feature = form.save(commit=False)
+                    feature.author = request.user
+                    feature.save()
+       
+
+    
+
