@@ -1,18 +1,21 @@
-{% extends 'base.html' %} 
-
-{% load bootstrap_tags %}
-
-{% block page_title %}Registration Page{% endblock %} 
-{% block page_heading %}User Registration{% endblock %} 
-
-{% block content %}{% block headerTag %} <header id="trees"> {% endblock headerTag %}
-<p>If you already have an account, you can <a href="{% url 'login' %}">sign in</a></p>
-
-<form method="POST">
-    {% csrf_token %} 
-    {{ registration_form | as_bootstrap }}
-    <button type="submit">Register</button>
-</form>
-{% endblock %}
-
-
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Registration Page{% endblock %} {% block page_heading %}User Registration{% endblock %} {% block content %}{% block headerTag %}
+<header id="trees"> {% endblock headerTag %}
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-10 offset-1">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <div class="infocard card">
+                            <div class="card-body">
+                                <p class="card-text">If you already have an account, you can <a href="{% url 'login' %}">sign in</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %} {{ registration_form | as_bootstrap }}
+                        <button type="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

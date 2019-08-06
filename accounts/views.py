@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 # Views
 def registration(request):
-    """Render the registration page"""
+    """Render the home page"""
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
@@ -20,7 +20,7 @@ def registration(request):
                                      password=request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered")
+                messages.success(request, "You have successfully registered with UPS")
             else:
                 messages.error(request, "Unable to register your account at this time")
     else:
