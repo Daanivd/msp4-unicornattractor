@@ -12,8 +12,7 @@ def all_features(request):
     request_feature(request, pk=None)
     
     return render(request, 'features.html', {'features': features, 'productFeatures': productFeatures, 'devFeatures': devFeatures, 'form': form})
-    
-   
+     
 def feature_detail(request, pk):
     """
     Create a view that returns a single

@@ -21,23 +21,18 @@ class TestViews(TestCase):
         self.assertTemplateUsed(page, "feature.html")
         
     
-    def test_get_request_feature_page(self):
-        user = User.objects.create_user(username='test_user', password='password')
-        self.client.login(username='test_user', password='password')
-        page = self.client.get("/features/new/")
-        self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "featureform.html")
-    
     def test_post_request_feature(self):
         user = User.objects.create_user(username='test_user', password='password')
         self.client.login(username='test_user', password='password')
-        page = self.client.post("/features/new/", { 
+        page = self.client.post("/features/", { 
                                                         'description':'test content',
                                                         'featureName': 'test feature',
                                                     }, 
                                                         follow=True)
+                                   
+        
         self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "feature.html")                                                
+        self.assertTemplateUsed(page, "features.html")                                                
         
         
     
