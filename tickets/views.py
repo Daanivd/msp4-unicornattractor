@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.utils import timezone
 from .models import Ticket
 from .forms import TicketForm
@@ -12,25 +12,13 @@ def all_tickets(request, pk=None):
     and render them to the 'tickets.html' template
     """
     tickets = Ticket.objects.all().order_by('-upvotes')
-    """
-    Allow us to create
-    or edit a ticket depending if the ticket-ID
-    is null or not
-    """
-    ticket = get_object_or_404(Ticket, pk=pk) if pk else None
-    if request.method == "POST":
-        form = TicketForm(request.POST, request.FILES, instance=ticket)
-        if form.is_valid():
-            form.author = request.user
-            ticket = form.save(commit=False)
-            ticket.author = request.user
-            ticket.save()
-        
-            return redirect(ticket_detail, ticket.pk)
-    else:
-        form = TicketForm(instance=ticket)
+    
+    """ To create new ticket through Modal, see 'create_or_edit_ticket function below' """
+    form = TicketForm
+    create_or_edit_ticket(request)
+    
     return render(request, "tickets.html", {'tickets': tickets, 'form':form})
- 
+
 @login_required    
 def ticket_detail(request, pk):
     """
@@ -41,15 +29,12 @@ def ticket_detail(request, pk):
     not found
     """
     ticket = get_object_or_404(Ticket, pk=pk)
-    ticket.save()
-    form = TicketForm(request.POST, request.FILES, instance=ticket)
-    if form.is_valid():
-            form.author = request.user
-            ticket = form.save(commit=False)
-            ticket.author = request.user
-            ticket.save()
-    else:
-        form = TicketForm(instance=ticket)        
+    """
+    To edit ticket through modal, see 'create_or_edit_ticket function below
+    """
+    form = TicketForm(instance=ticket)
+    create_or_edit_ticket(request, pk=pk)
+    
     return render(request, "ticket.html", {'ticket': ticket, 'form':form})   
     
     
@@ -69,16 +54,22 @@ def create_or_edit_ticket(request, pk=None):
             ticket = form.save(commit=False)
             ticket.author = request.user
             ticket.save()
-        
-            return redirect(ticket_detail, ticket.pk)
+            pk=ticket.pk
+            
+            # return redirect(reverse('ticket_detail', pk))
+            
     else:
         form = TicketForm(instance=ticket)
-    return render(request, 'ticketform.html', {'form': form})
+        
+        # return render(request, "ticket.html", {'ticket': ticket, 'form':form})
+    
     
 @login_required
 def ticket_upvote(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     ticket.upvotes += 1
+    ticket.save()
     form = TicketForm(instance=ticket)
+    
     return render(request, "ticket.html", {'ticket': ticket, 'form':form})
     

@@ -5,5 +5,5 @@ class TestViews(TestCase):
     
     def test_index_tag(self):
         sequence = [1,2,3,4,5,6,7]
-        position = 1
+        position = 0
         self.assertEqual(index(sequence, position), [1,2,3])
