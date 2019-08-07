@@ -27,7 +27,7 @@ def checkout(request):
             total = 0
             for id, contribution in cart.items():
                 product = get_object_or_404(Feature, pk=id)
-                total += contribution
+                total += int(contribution)
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
@@ -42,20 +42,22 @@ def checkout(request):
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id']
                 )
-            except stripe.error.CardError:
-                messages.error(request, "Your card was declined!")
             
-            if customer.paid:
-                messages.error(request, "Thank you for your contribution")
-                request.session['cart'] = {}
-                
-                for id, contribution in cart.items():
-                    feature = get_object_or_404(Feature, pk=id)
-                    feature.totalContributions = int(feature.totalContributions) + int(contribution)
+                if customer.paid:
+                    messages.error(request, "Thank you for your contribution")
+                    request.session['cart'] = {}
                     
-                return redirect(reverse('all_features'))
-            else:
-                messages.error(request, "Unable to take payment")
+                    for id, contribution in cart.items():
+                        feature = get_object_or_404(Feature, pk=id)
+                        feature.totalContributions = int(feature.totalContributions) + int(contribution)
+                        
+                    return redirect(reverse('all_features'))
+                else:
+                    messages.error(request, "Unable to take payment")
+                    
+            except stripe.error.CardError:
+                messages.error(request, "Your card was declined!")      
+                
         else:
             print(payment_form.errors)
             messages.error(request, "We were unable to take a payment with that card!")

@@ -14,7 +14,7 @@ class TestViews(TestCase):
         self.client.login(username='test_user', password='password')
         feature = Feature(featureName="Test Feature", author=user)
         feature.save()
-        page = self.client.post('/cart/add/{0}'.format(feature.id), {'contribution': 100}, follow=True)
+        page = self.client.post('/cart/add/{0}'.format(feature.id), {'contribution': 10}, follow=True)
         stripe_id = 'tok_visa'
         
         page = self.client.post('/checkout/', {'full_name':'name',
@@ -25,7 +25,7 @@ class TestViews(TestCase):
                                                'country':'ireland','postcode':'eircode', 
                                                'credit_card_number': '4242424242424242',
                                                'cvv':'111', 'expiry_month':'2',
-                                               'expiry_year':'2019', 
+                                               'expiry_year':'2020', 
                                                'stripe_id':stripe_id}, 
                                                follow=True)
         
@@ -35,66 +35,57 @@ class TestViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed('features.html')
         
-        
-        
-        
-    # def test_checkout_incorrect_creditcard_details(self):
-    #     user = User.objects.create_user(username='test_user', email='test@test.com', password='password')
-    #     self.client.login(username='test_user', password='password')
-    #     feature = Feature(featureName="Test Feature", author=user)
-    #     feature.save()
-    #     page = self.client.post('/cart/add/{0}'.format(feature.id), {'contribution': 100}, follow=True)
-    #     stripe_id = 'tok_chargeDeclined'
-        
-    #     page = self.client.post('/checkout/', {'full_name':'name',
-    #                                           'phone_number':'1234', 
-    #                                           'street_address1':'my', 
-    #                                           'street_address2':'address', 
-    #                                           'town_or_city':'xx', 'county':'ireland', 
-    #                                           'country':'ireland','postcode':'pcode', 
-    #                                           'credit_card_number': '4000400040004000',
-    #                                           'cvv':'111', 
-    #                                           'expiry_month':'2',
-    #                                           'expiry_year':'2019', 
-    #                                           'stripe_id':stripe_id
-    #                                             }, 
-    #                                           follow=True)
-    #     #self.assertTrue(form.is_valid)
-    #     messages = list(page.context['messages'])
-    #     self.assertEqual(len(messages), 1)
-    #     self.assertEqual(str(messages[0]), 'We were unable to take a payment with that card!')
-    #     self.assertEqual(page.status_code, 200)
-    #     self.assertTemplateUsed('features/feature_detail.html')
-        
-        
-        
-        
-    def test_checkout_invalid_form(self):
-        user = User.objects.create_user(username='test_user', email='test@test.com', password='password')
+    def test_checkout_chargeDeclined(self):
+        user = User.objects.create_user(username='test_user', password='password')
         self.client.login(username='test_user', password='password')
         feature = Feature(featureName="Test Feature", author=user)
         feature.save()
-        page = self.client.post('/cart/add/{0}'.format(feature.id), {'contribution': 100}, follow=True)
-        #stripe_id = 'tok_cvcCheckFail'
+        page = self.client.post('/cart/add/{0}'.format(feature.id), {'contribution': 10}, follow=True)
+        stripe_id = 'tok_chargeDeclined'
         
         page = self.client.post('/checkout/', {'full_name':'name',
                                                'phone_number':'1234', 
                                                'street_address1':'my', 
                                                'street_address2':'address', 
                                                'town_or_city':'xx', 'county':'ireland', 
-                                               'country':'ireland','postcode':'pcode', 
-                                               #'credit_card_number': '4242424242424241',
-                                               'cvv':'111', 
-                                               'expiry_month':'2',
-                                               'expiry_year':'2019', 
-                                               #'stripe_id':stripe_id
-                                                }, 
+                                               'country':'ireland','postcode':'eircode', 
+                                               'credit_card_number': '4000400040004000',
+                                               'cvv':'111', 'expiry_month':'2',
+                                               'expiry_year':'2020', 
+                                               'stripe_id':stripe_id}, 
                                                follow=True)
+        
         messages = list(page.context['messages'])
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), 'Your card was declined!')
         self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed('features/feature_detail.html')
+        self.assertTemplateUsed('features.html')
+        
+    def test_checkout_invalidForm(self):
+        user = User.objects.create_user(username='test_user', password='password')
+        self.client.login(username='test_user', password='password')
+        feature = Feature(featureName="Test Feature", author=user)
+        feature.save()
+        page = self.client.post('/cart/add/{0}'.format(feature.id), {'contribution': 10}, follow=True)
+        stripe_id = 'tok_chargeDeclined'
+        
+        page = self.client.post('/checkout/', {'phone_number':'1234', 
+                                               'street_address1':'my', 
+                                               'street_address2':'address', 
+                                               'town_or_city':'xx', 'county':'ireland', 
+                                               'country':'ireland','postcode':'eircode', 
+                                               'credit_card_number': '4000400040004000',
+                                               'cvv':'111', 'expiry_month':'2',
+                                               'expiry_year':'2020', 
+                                               'stripe_id':stripe_id}, 
+                                               follow=True)
+        
+        messages = list(page.context['messages'])
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(str(messages[0]), 'We were unable to take a payment with that card!')
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed('features.html')    
+   
         
     def test_get_payment_and_order_form(self):
         user = User.objects.create_user(username='test_user', email='test@test.com', password='password')
