@@ -26,19 +26,12 @@ class TestViews(TestCase):
         user = User.objects.create_user(username='test_user', password='password')
         self.client.login(username='test_user', password='password')
         page = self.client.post('/tickets/edit/', {'author': user, 'description':'test content2', 'ticketName': 'test title2'}, follow=True)
-        self.assertEqual(page.status_code, 200)
-        # self.assertTemplateUsed(page, "ticket.html")
-
-        
-    
+      
     def test_create_ticket(self):
         user = User.objects.create_user(username='test_user', password='password')
         self.client.login(username='test_user', password='password')
         page = self.client.post('/tickets/new/', {'author': user, 'description':'test content', 'ticketName': 'test title'}, follow=True)
-        # self.assertEqual(page.status_code, 200)
-        # self.assertTemplateUsed(page, "tickets.html")
-        
-          
+    
      
     def test_upvote(self):
         user = User.objects.create_user(username='test_user', password='password')
@@ -48,7 +41,6 @@ class TestViews(TestCase):
         self.assertEqual(ticket.upvotes, 0)
         page = self.client.get("/tickets/{0}/upvote/".format(ticket.id), follow=True)
         self.assertEqual(ticket.upvotes, 1)
-        # self.assertEqual(page.status_code, 200)
-        # self.assertTemplateUsed(page, "ticket.html")  
+     
         
             
