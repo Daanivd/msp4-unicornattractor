@@ -31,8 +31,10 @@ def checkout(request):
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
-                    contribution = contribution
+                    contribution = contribution,
+                    user = request.user
                 )
+                
                 order_line_item.save()
             
             try:
