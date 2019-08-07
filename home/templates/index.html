@@ -54,7 +54,7 @@
                                                                     <form method="post" action="{% url 'add_to_cart' feature.id %}">
                                                                         {% csrf_token %}
                                                                         <div class="input-group">
-                                                                            <input name="contribution" type="number" min="1" max="999" class="form-control" placeholder="Contribution">
+                                                                            <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required='required'>
                                                                             <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
                                                                         </div>
                                                                     </form>
@@ -147,8 +147,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
+                            
+                          
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,18 @@
         </section>
 
 
+<script>
+// var data = '{{data|safe}}'
+
+var data;
+d3.json('/api/data', function(fdata, error) {
+    
+});
+console.log(data)
 
 
+
+    
+</script>
 
         {% endblock %}

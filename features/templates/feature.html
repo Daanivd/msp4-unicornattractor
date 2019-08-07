@@ -20,6 +20,17 @@
                 {% endif %}
                 <p class="card-text">{{ feature.description }}</p>
                 <p><span class="boldtext">Views:</span> {{ feature.views }}</p>
+                
+                  <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                                    {% csrf_token %}
+                                    <div class="input-group">
+                                        <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
+                                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit"><i class="fas fa-cart-arrow-down"></i></button>
+                        </span>
+                                    </div>
+                                </form>
+                
                 <a href="/features/" class="btn btn-default">Back to features</a>
             </div>
         </div>
