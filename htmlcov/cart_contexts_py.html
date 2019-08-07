@@ -81,10 +81,10 @@
 <p id="n12" class="stm run hide_run"><a href="#n12">12</a></p>
 <p id="n13" class="stm run hide_run"><a href="#n13">13</a></p>
 <p id="n14" class="pln"><a href="#n14">14</a></p>
-<p id="n15" class="pln"><a href="#n15">15</a></p>
+<p id="n15" class="stm run hide_run"><a href="#n15">15</a></p>
 <p id="n16" class="stm run hide_run"><a href="#n16">16</a></p>
 <p id="n17" class="stm run hide_run"><a href="#n17">17</a></p>
-<p id="n18" class="stm run hide_run"><a href="#n18">18</a></p>
+<p id="n18" class="pln"><a href="#n18">18</a></p>
 <p id="n19" class="stm run hide_run"><a href="#n19">19</a></p>
 <p id="n20" class="stm run hide_run"><a href="#n20">20</a></p>
 <p id="n21" class="pln"><a href="#n21">21</a></p>
@@ -106,10 +106,10 @@
 <p id="t12" class="stm run hide_run">    <span class="nam">cart_items</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
 <p id="t13" class="stm run hide_run">    <span class="nam">total</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
 <p id="t14" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t15" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t16" class="stm run hide_run">    <span class="key">for</span> <span class="nam">id</span><span class="op">,</span> <span class="nam">contribution</span> <span class="key">in</span> <span class="nam">cart</span><span class="op">.</span><span class="nam">items</span><span class="op">(</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t17" class="stm run hide_run">        <span class="nam">feature</span> <span class="op">=</span> <span class="nam">get_object_or_404</span><span class="op">(</span><span class="nam">Feature</span><span class="op">,</span> <span class="nam">pk</span><span class="op">=</span><span class="nam">id</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t18" class="stm run hide_run">        <span class="nam">total</span> <span class="op">+=</span> <span class="nam">contribution</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm run hide_run">    <span class="key">for</span> <span class="nam">id</span><span class="op">,</span> <span class="nam">contribution</span> <span class="key">in</span> <span class="nam">cart</span><span class="op">.</span><span class="nam">items</span><span class="op">(</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="stm run hide_run">        <span class="nam">feature</span> <span class="op">=</span> <span class="nam">get_object_or_404</span><span class="op">(</span><span class="nam">Feature</span><span class="op">,</span> <span class="nam">pk</span><span class="op">=</span><span class="nam">id</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="stm run hide_run">        <span class="nam">total</span> <span class="op">+=</span> <span class="nam">contribution</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t19" class="stm run hide_run">        <span class="nam">cart_items</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="op">{</span><span class="str">'id'</span><span class="op">:</span> <span class="nam">id</span><span class="op">,</span> <span class="str">'contribution'</span><span class="op">:</span><span class="nam">contribution</span><span class="op">,</span> <span class="str">'feature'</span><span class="op">:</span> <span class="nam">feature</span><span class="op">}</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t20" class="stm run hide_run">        <span class="nam">print</span><span class="op">(</span><span class="nam">cart_items</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t21" class="pln"><span class="strut">&nbsp;</span></p>
@@ -124,7 +124,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.3</a>,
-            created at 2019-07-16 08:20
+            created at 2019-08-07 06:48
         </p>
     </div>
 </div>

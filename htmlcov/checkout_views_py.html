@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for checkout/views.py: 90%</title>
+    <title>Coverage for checkout/views.py: 98%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>checkout/views.py</b> :
-            <span class="pc_cov">90%</span>
+            <span class="pc_cov">98%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             42 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">38 run</span>
-            <span class="mis shortkey_m button_toggle_mis">4 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">41 run</span>
+            <span class="mis shortkey_m button_toggle_mis">1 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -102,17 +102,17 @@
 <p id="n33" class="pln"><a href="#n33">33</a></p>
 <p id="n34" class="pln"><a href="#n34">34</a></p>
 <p id="n35" class="pln"><a href="#n35">35</a></p>
-<p id="n36" class="stm run hide_run"><a href="#n36">36</a></p>
+<p id="n36" class="pln"><a href="#n36">36</a></p>
 <p id="n37" class="pln"><a href="#n37">37</a></p>
 <p id="n38" class="stm run hide_run"><a href="#n38">38</a></p>
-<p id="n39" class="stm run hide_run"><a href="#n39">39</a></p>
-<p id="n40" class="pln"><a href="#n40">40</a></p>
-<p id="n41" class="pln"><a href="#n41">41</a></p>
+<p id="n39" class="pln"><a href="#n39">39</a></p>
+<p id="n40" class="stm run hide_run"><a href="#n40">40</a></p>
+<p id="n41" class="stm run hide_run"><a href="#n41">41</a></p>
 <p id="n42" class="pln"><a href="#n42">42</a></p>
 <p id="n43" class="pln"><a href="#n43">43</a></p>
 <p id="n44" class="pln"><a href="#n44">44</a></p>
-<p id="n45" class="stm mis"><a href="#n45">45</a></p>
-<p id="n46" class="stm mis"><a href="#n46">46</a></p>
+<p id="n45" class="pln"><a href="#n45">45</a></p>
+<p id="n46" class="pln"><a href="#n46">46</a></p>
 <p id="n47" class="pln"><a href="#n47">47</a></p>
 <p id="n48" class="stm run hide_run"><a href="#n48">48</a></p>
 <p id="n49" class="stm run hide_run"><a href="#n49">49</a></p>
@@ -122,17 +122,21 @@
 <p id="n53" class="stm run hide_run"><a href="#n53">53</a></p>
 <p id="n54" class="stm run hide_run"><a href="#n54">54</a></p>
 <p id="n55" class="pln"><a href="#n55">55</a></p>
-<p id="n56" class="stm mis"><a href="#n56">56</a></p>
+<p id="n56" class="stm run hide_run"><a href="#n56">56</a></p>
 <p id="n57" class="pln"><a href="#n57">57</a></p>
 <p id="n58" class="stm mis"><a href="#n58">58</a></p>
 <p id="n59" class="pln"><a href="#n59">59</a></p>
 <p id="n60" class="stm run hide_run"><a href="#n60">60</a></p>
 <p id="n61" class="stm run hide_run"><a href="#n61">61</a></p>
 <p id="n62" class="pln"><a href="#n62">62</a></p>
-<p id="n63" class="stm run hide_run"><a href="#n63">63</a></p>
+<p id="n63" class="pln"><a href="#n63">63</a></p>
 <p id="n64" class="stm run hide_run"><a href="#n64">64</a></p>
-<p id="n65" class="pln"><a href="#n65">65</a></p>
-<p id="n66" class="stm run hide_run"><a href="#n66">66</a></p>
+<p id="n65" class="stm run hide_run"><a href="#n65">65</a></p>
+<p id="n66" class="pln"><a href="#n66">66</a></p>
+<p id="n67" class="stm run hide_run"><a href="#n67">67</a></p>
+<p id="n68" class="stm run hide_run"><a href="#n68">68</a></p>
+<p id="n69" class="pln"><a href="#n69">69</a></p>
+<p id="n70" class="stm run hide_run"><a href="#n70">70</a></p>
 
             </td>
             <td class="text">
@@ -165,43 +169,47 @@
 <p id="t27" class="stm run hide_run">            <span class="nam">total</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="stm run hide_run">            <span class="key">for</span> <span class="nam">id</span><span class="op">,</span> <span class="nam">contribution</span> <span class="key">in</span> <span class="nam">cart</span><span class="op">.</span><span class="nam">items</span><span class="op">(</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t29" class="stm run hide_run">                <span class="nam">product</span> <span class="op">=</span> <span class="nam">get_object_or_404</span><span class="op">(</span><span class="nam">Feature</span><span class="op">,</span> <span class="nam">pk</span><span class="op">=</span><span class="nam">id</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t30" class="stm run hide_run">                <span class="nam">total</span> <span class="op">+=</span> <span class="nam">contribution</span><span class="strut">&nbsp;</span></p>
+<p id="t30" class="stm run hide_run">                <span class="nam">total</span> <span class="op">+=</span> <span class="nam">int</span><span class="op">(</span><span class="nam">contribution</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t31" class="stm run hide_run">                <span class="nam">order_line_item</span> <span class="op">=</span> <span class="nam">OrderLineItem</span><span class="op">(</span><span class="strut">&nbsp;</span></p>
 <p id="t32" class="pln">                    <span class="nam">order</span><span class="op">=</span><span class="nam">order</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t33" class="pln">                    <span class="nam">product</span><span class="op">=</span><span class="nam">product</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t34" class="pln">                    <span class="nam">contribution</span> <span class="op">=</span> <span class="nam">contribution</span><span class="strut">&nbsp;</span></p>
-<p id="t35" class="pln">                <span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t36" class="stm run hide_run">                <span class="nam">order_line_item</span><span class="op">.</span><span class="nam">save</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t34" class="pln">                    <span class="nam">contribution</span> <span class="op">=</span> <span class="nam">contribution</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t35" class="pln">                    <span class="nam">user</span> <span class="op">=</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="strut">&nbsp;</span></p>
+<p id="t36" class="pln">                <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t37" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t38" class="stm run hide_run">            <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t39" class="stm run hide_run">                <span class="nam">customer</span> <span class="op">=</span> <span class="nam">stripe</span><span class="op">.</span><span class="nam">Charge</span><span class="op">.</span><span class="nam">create</span><span class="op">(</span><span class="strut">&nbsp;</span></p>
-<p id="t40" class="pln">                    <span class="nam">amount</span><span class="op">=</span><span class="nam">int</span><span class="op">(</span><span class="nam">total</span> <span class="op">*</span> <span class="num">100</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t41" class="pln">                    <span class="nam">currency</span><span class="op">=</span><span class="str">"EUR"</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t42" class="pln">                    <span class="nam">description</span><span class="op">=</span><span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">email</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t43" class="pln">                    <span class="nam">card</span><span class="op">=</span><span class="nam">payment_form</span><span class="op">.</span><span class="nam">cleaned_data</span><span class="op">[</span><span class="str">'stripe_id'</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
-<p id="t44" class="pln">                <span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t45" class="stm mis">            <span class="key">except</span> <span class="nam">stripe</span><span class="op">.</span><span class="nam">error</span><span class="op">.</span><span class="nam">CardError</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t46" class="stm mis">                <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"Your card was declined!"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t38" class="stm run hide_run">                <span class="nam">order_line_item</span><span class="op">.</span><span class="nam">save</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t39" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t40" class="stm run hide_run">            <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t41" class="stm run hide_run">                <span class="nam">customer</span> <span class="op">=</span> <span class="nam">stripe</span><span class="op">.</span><span class="nam">Charge</span><span class="op">.</span><span class="nam">create</span><span class="op">(</span><span class="strut">&nbsp;</span></p>
+<p id="t42" class="pln">                    <span class="nam">amount</span><span class="op">=</span><span class="nam">int</span><span class="op">(</span><span class="nam">total</span> <span class="op">*</span> <span class="num">100</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t43" class="pln">                    <span class="nam">currency</span><span class="op">=</span><span class="str">"EUR"</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t44" class="pln">                    <span class="nam">description</span><span class="op">=</span><span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">email</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t45" class="pln">                    <span class="nam">card</span><span class="op">=</span><span class="nam">payment_form</span><span class="op">.</span><span class="nam">cleaned_data</span><span class="op">[</span><span class="str">'stripe_id'</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t46" class="pln">                <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t47" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t48" class="stm run hide_run">            <span class="key">if</span> <span class="nam">customer</span><span class="op">.</span><span class="nam">paid</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t49" class="stm run hide_run">                <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"Thank you for your contribution"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t50" class="stm run hide_run">                <span class="nam">request</span><span class="op">.</span><span class="nam">session</span><span class="op">[</span><span class="str">'cart'</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
+<p id="t48" class="stm run hide_run">                <span class="key">if</span> <span class="nam">customer</span><span class="op">.</span><span class="nam">paid</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t49" class="stm run hide_run">                    <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"Thank you for your contribution"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t50" class="stm run hide_run">                    <span class="nam">request</span><span class="op">.</span><span class="nam">session</span><span class="op">[</span><span class="str">'cart'</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
 <p id="t51" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t52" class="stm run hide_run">                <span class="key">for</span> <span class="nam">id</span><span class="op">,</span> <span class="nam">contribution</span> <span class="key">in</span> <span class="nam">cart</span><span class="op">.</span><span class="nam">items</span><span class="op">(</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t53" class="stm run hide_run">                    <span class="nam">feature</span> <span class="op">=</span> <span class="nam">get_object_or_404</span><span class="op">(</span><span class="nam">Feature</span><span class="op">,</span> <span class="nam">pk</span><span class="op">=</span><span class="nam">id</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t54" class="stm run hide_run">                    <span class="nam">feature</span><span class="op">.</span><span class="nam">totalContributions</span> <span class="op">=</span> <span class="nam">int</span><span class="op">(</span><span class="nam">feature</span><span class="op">.</span><span class="nam">totalContributions</span><span class="op">)</span> <span class="op">+</span> <span class="nam">int</span><span class="op">(</span><span class="nam">contribution</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t52" class="stm run hide_run">                    <span class="key">for</span> <span class="nam">id</span><span class="op">,</span> <span class="nam">contribution</span> <span class="key">in</span> <span class="nam">cart</span><span class="op">.</span><span class="nam">items</span><span class="op">(</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t53" class="stm run hide_run">                        <span class="nam">feature</span> <span class="op">=</span> <span class="nam">get_object_or_404</span><span class="op">(</span><span class="nam">Feature</span><span class="op">,</span> <span class="nam">pk</span><span class="op">=</span><span class="nam">id</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t54" class="stm run hide_run">                        <span class="nam">feature</span><span class="op">.</span><span class="nam">totalContributions</span> <span class="op">=</span> <span class="nam">int</span><span class="op">(</span><span class="nam">feature</span><span class="op">.</span><span class="nam">totalContributions</span><span class="op">)</span> <span class="op">+</span> <span class="nam">int</span><span class="op">(</span><span class="nam">contribution</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t55" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t56" class="stm mis">                <span class="key">return</span> <span class="nam">redirect</span><span class="op">(</span><span class="nam">reverse</span><span class="op">(</span><span class="str">'all_features'</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t57" class="pln">            <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t58" class="stm mis">                <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"Unable to take payment"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t59" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t60" class="stm run hide_run">            <span class="nam">print</span><span class="op">(</span><span class="nam">payment_form</span><span class="op">.</span><span class="nam">errors</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t61" class="stm run hide_run">            <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"We were unable to take a payment with that card!"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t62" class="pln">    <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t63" class="stm run hide_run">        <span class="nam">payment_form</span> <span class="op">=</span> <span class="nam">MakePaymentForm</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t64" class="stm run hide_run">        <span class="nam">order_form</span> <span class="op">=</span> <span class="nam">OrderForm</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t65" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t66" class="stm run hide_run">    <span class="key">return</span> <span class="nam">render</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"checkout.html"</span><span class="op">,</span> <span class="op">{</span><span class="str">"order_form"</span><span class="op">:</span> <span class="nam">order_form</span><span class="op">,</span> <span class="str">"payment_form"</span><span class="op">:</span> <span class="nam">payment_form</span><span class="op">,</span> <span class="str">"publishable"</span><span class="op">:</span> <span class="nam">settings</span><span class="op">.</span><span class="nam">STRIPE_PUBLISHABLE</span><span class="op">}</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t56" class="stm run hide_run">                    <span class="key">return</span> <span class="nam">redirect</span><span class="op">(</span><span class="nam">reverse</span><span class="op">(</span><span class="str">'all_features'</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t57" class="pln">                <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t58" class="stm mis">                    <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"Unable to take payment"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t59" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t60" class="stm run hide_run">            <span class="key">except</span> <span class="nam">stripe</span><span class="op">.</span><span class="nam">error</span><span class="op">.</span><span class="nam">CardError</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t61" class="stm run hide_run">                <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"Your card was declined!"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t62" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t63" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t64" class="stm run hide_run">            <span class="nam">print</span><span class="op">(</span><span class="nam">payment_form</span><span class="op">.</span><span class="nam">errors</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t65" class="stm run hide_run">            <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"We were unable to take a payment with that card!"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t66" class="pln">    <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t67" class="stm run hide_run">        <span class="nam">payment_form</span> <span class="op">=</span> <span class="nam">MakePaymentForm</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t68" class="stm run hide_run">        <span class="nam">order_form</span> <span class="op">=</span> <span class="nam">OrderForm</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t69" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t70" class="stm run hide_run">    <span class="key">return</span> <span class="nam">render</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"checkout.html"</span><span class="op">,</span> <span class="op">{</span><span class="str">"order_form"</span><span class="op">:</span> <span class="nam">order_form</span><span class="op">,</span> <span class="str">"payment_form"</span><span class="op">:</span> <span class="nam">payment_form</span><span class="op">,</span> <span class="str">"publishable"</span><span class="op">:</span> <span class="nam">settings</span><span class="op">.</span><span class="nam">STRIPE_PUBLISHABLE</span><span class="op">}</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -212,7 +220,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.3</a>,
-            created at 2019-07-17 15:10
+            created at 2019-08-07 15:17
         </p>
     </div>
 </div>

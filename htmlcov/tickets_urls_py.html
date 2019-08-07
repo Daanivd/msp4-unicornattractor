@@ -76,18 +76,20 @@
 <p id="n7" class="pln"><a href="#n7">7</a></p>
 <p id="n8" class="pln"><a href="#n8">8</a></p>
 <p id="n9" class="pln"><a href="#n9">9</a></p>
+<p id="n10" class="pln"><a href="#n10">10</a></p>
 
             </td>
             <td class="text">
 <p id="t1" class="stm run hide_run"><span class="key">from</span> <span class="nam">django</span><span class="op">.</span><span class="nam">conf</span><span class="op">.</span><span class="nam">urls</span> <span class="key">import</span> <span class="nam">url</span><span class="strut">&nbsp;</span></p>
-<p id="t2" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">views</span> <span class="key">import</span> <span class="nam">get_tickets</span><span class="op">,</span> <span class="nam">ticket_detail</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="strut">&nbsp;</span></p>
+<p id="t2" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">views</span> <span class="key">import</span> <span class="nam">all_tickets</span><span class="op">,</span> <span class="nam">ticket_detail</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="op">,</span> <span class="nam">ticket_upvote</span><span class="strut">&nbsp;</span></p>
 <p id="t3" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t4" class="stm run hide_run"><span class="nam">urlpatterns</span> <span class="op">=</span> <span class="op">[</span><span class="strut">&nbsp;</span></p>
-<p id="t5" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^$'</span><span class="op">,</span> <span class="nam">get_tickets</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'get_tickets'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t5" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^$'</span><span class="op">,</span> <span class="nam">all_tickets</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'all_tickets'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t6" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/$'</span><span class="op">,</span> <span class="nam">ticket_detail</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'ticket_detail'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t7" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^new/$'</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'new_ticket'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t8" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/edit/$'</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'edit_ticket'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t9" class="pln"><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/edit/$'</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'edit_ticket'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t9" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/upvote/$'</span><span class="op">,</span> <span class="nam">ticket_upvote</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'ticket_upvote'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="pln"><span class="op">]</span><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -98,7 +100,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.3</a>,
-            created at 2019-07-15 14:33
+            created at 2019-08-06 11:50
         </p>
     </div>
 </div>

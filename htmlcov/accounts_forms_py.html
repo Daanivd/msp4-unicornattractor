@@ -141,7 +141,7 @@
 <p id="t24" class="stm run hide_run">        <span class="nam">fields</span> <span class="op">=</span> <span class="op">[</span><span class="str">'email'</span><span class="op">,</span> <span class="str">'username'</span><span class="op">,</span> <span class="str">'password1'</span><span class="op">,</span> <span class="str">'password2'</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
 <p id="t25" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t26" class="stm run hide_run">    <span class="key">def</span> <span class="nam">clean_email</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t27" class="pln">        <span class="str">"""Check if new user doens't already have a user account (using email address)"""</span><span class="strut">&nbsp;</span></p>
+<p id="t27" class="pln">        <span class="str">"""Check if new user doesn't already have a user account (using email address)"""</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="stm run hide_run">        <span class="nam">email</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">cleaned_data</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'email'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t29" class="stm run hide_run">        <span class="nam">username</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">cleaned_data</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'username'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t30" class="stm run hide_run">        <span class="key">if</span> <span class="nam">User</span><span class="op">.</span><span class="nam">objects</span><span class="op">.</span><span class="nam">filter</span><span class="op">(</span><span class="nam">email</span><span class="op">=</span><span class="nam">email</span><span class="op">)</span><span class="op">.</span><span class="nam">exclude</span><span class="op">(</span><span class="nam">username</span><span class="op">=</span><span class="nam">username</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -170,7 +170,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.3</a>,
-            created at 2019-07-17 10:12
+            created at 2019-08-07 11:48
         </p>
     </div>
 </div>

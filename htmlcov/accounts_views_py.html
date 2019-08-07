@@ -145,7 +145,7 @@
 <p id="t6" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t7" class="pln"><span class="com"># Views</span><span class="strut">&nbsp;</span></p>
 <p id="t8" class="stm run hide_run"><span class="key">def</span> <span class="nam">registration</span><span class="op">(</span><span class="nam">request</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t9" class="pln">    <span class="str">"""Render the registration page"""</span><span class="strut">&nbsp;</span></p>
+<p id="t9" class="pln">    <span class="str">"""Render the home page"""</span><span class="strut">&nbsp;</span></p>
 <p id="t10" class="stm run hide_run">    <span class="key">if</span> <span class="nam">request</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">is_authenticated</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t11" class="stm run hide_run">        <span class="key">return</span> <span class="nam">redirect</span><span class="op">(</span><span class="nam">reverse</span><span class="op">(</span><span class="str">'index'</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t12" class="pln"><span class="strut">&nbsp;</span></p>
@@ -159,7 +159,7 @@
 <p id="t20" class="pln">                                     <span class="nam">password</span><span class="op">=</span><span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">[</span><span class="str">'password1'</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t21" class="stm run hide_run">            <span class="key">if</span> <span class="nam">user</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t22" class="stm run hide_run">                <span class="nam">auth</span><span class="op">.</span><span class="nam">login</span><span class="op">(</span><span class="nam">user</span><span class="op">=</span><span class="nam">user</span><span class="op">,</span> <span class="nam">request</span><span class="op">=</span><span class="nam">request</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t23" class="stm run hide_run">                <span class="nam">messages</span><span class="op">.</span><span class="nam">success</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"You have successfully registered"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t23" class="stm run hide_run">                <span class="nam">messages</span><span class="op">.</span><span class="nam">success</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"You have successfully registered with UPS"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t24" class="pln">            <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t25" class="stm mis">                <span class="nam">messages</span><span class="op">.</span><span class="nam">error</span><span class="op">(</span><span class="nam">request</span><span class="op">,</span> <span class="str">"Unable to register your account at this time"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t26" class="pln">    <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -214,7 +214,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.3</a>,
-            created at 2019-07-17 14:12
+            created at 2019-08-07 11:48
         </p>
     </div>
 </div>
