@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% block content %} {% load bootstrap_tags %} {% load index_tag %}
+{% extends 'base.html' %} {% load staticfiles %} {% block head_js %}
+<link rel="stylesheet" href="{% static 'C3/c3.css' %}">
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript" src="{% static 'C3/c3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>
+{% endblock head_js %} {% block content %} {% load bootstrap_tags %} {% load index_tag %}
 
 <!--FEATURES-->
 {% block headerTag %}
@@ -100,13 +105,13 @@
                                 {%endif%} {%endif%} {% endfor %}
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
-    <span class="sr-only">Previous</span>
-  </a>
+                                <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+                                <span class="sr-only">Previous</span>
+                             </a>
                             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-    <span class="sr-only">Next</span>
-  </a>
+                                <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                                <span class="sr-only">Next</span>
+                             </a>
                         </div>
                     </div>
             </div>
@@ -134,7 +139,7 @@
                                 <div class="ftcard card featurecard">
                                     <div class="card-body">
                                         <h5>New feature development time</h5>
-                                        <p>Pretty Graph</p>
+                                        <div id="featureChart"></div>
                                     </div>
                                 </div>
                             </div>
@@ -143,31 +148,79 @@
                                 <div class="ftcard card featurecard">
                                     <div class="card-body">
                                         <h5>Bug resolvement time</h5>
-                                        <p>Pretty Graph</p>
+
+                                        <div id="bugHistogram"></div>
                                     </div>
                                 </div>
                             </div>
-                            
-                          
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <script>
+            var chart = c3.generate({
+                bindto: '#featureChart',
+    data: {
+        x: 'Timeline',
+        xFormat: '%Y-%m-%d %H:%M:%S',
+        columns: {{featureDevData|safe}}
+    },
+    axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                format: '%Y-%m-%d'
+            }
+        },
+        y: {
+            tick:{
+            values: [1,2,3,4]
+            }
+            
+        }
+    },
+    color: {
+        pattern: ['pink']
+    }
+});
 
-
-<script>
-// var data = '{{data|safe}}'
-
-var data;
-d3.json('/api/data', function(fdata, error) {
+var histogram = c3.generate({
+bindto: '#bugHistogram',
+    data: {
+        x: 'bugT',
+        columns: {{bugData|safe}},
+        type: 'bar'
+        
+    },
+    axis: {
+        x: {
+            type: 'bar',
+            tick: {
+                
+            }
+        },
+        y: {
+            tick:{
+            values: [1,2,3,4]
+            }
+            
+        }
+    },
+    bar: {
+        width: {
+            ratio: 0.15 
+        }
+    
+    },
+    
+    color: {
+        pattern: ['pink']
+    }
     
 });
-console.log(data)
-
-
-
     
-</script>
+        </script>
 
         {% endblock %}
