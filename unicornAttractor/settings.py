@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import dj_database_url
 
-if "DATABASE_URL" in os.environ:
-    print("Database URL found --> Not importing env.py")
-else: 
-    import env
+# if "DATABASE_URL" in os.environ:
+#     print("Database URL found --> Not importing env.py")
+# else: 
+#     import env
 
 
 
