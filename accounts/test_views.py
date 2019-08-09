@@ -15,7 +15,7 @@ class TestViews(TestCase):
                                                         follow=True)
         messages = list(page.context['messages'])  
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), 'You have successfully registered')
+        self.assertEqual(str(messages[0]), 'You have successfully registered with UPS')
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "registration.html")
         
