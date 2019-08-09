@@ -1,26 +1,33 @@
 {% extends "base.html" %} {% block content %}{% load bootstrap_tags %} {% block headerTag %}
 <header id="trees"> {% endblock headerTag %}
-    <div class="row">
-        <div class="col-xs-10">
-            <div class="ftcard card ticketcard" style="width: 18rem;">
-                <div class="card-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 offset-1 intro">
+                <div class="row">
+                    <div class="col-12 col-md-6 offset-md-3">
+                        <div class="ftcard card ticketcard">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title">{{ ticket.ticketName }}</h5>
+                                <p class=>Published on: {{ ticket.published_date }}</p>
+                                    <p><span class="boldtext">Author:</span> {{ ticket.author }}</p>
+                                    {% if ticket.image %}
+                                    <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
+                                    <p class="card-text">status: {{ ticket.get_status_display }}</p>
+                                    {% if ticket.fix_version %}
+                                    <p class="card-text">Bug fixed since: {{ ticket.fixed_date }} | version: {{ ticket.fix_version }}</p>
+                                    {% endif %} {% if ticket.devComments %}
+                                    <p class="card-text">Developers' comments:</p>
+                                    <p class="devComments">{{ ticket.devComments }}</p>
+                                    {% endif %}
+                                    <a href="{% url 'all_tickets' %}" class="btn btn-default">Back to tickets</a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>
+                                    <a href="{% url 'ticket_upvote' ticket.id %}" class="btn btn-default">I have this problem too!</a>
+                                    <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
 
-                    <h5 class="card-title">{{ ticket.ticketName }}</h5>
-                    <p><span class="boldtext">Published on:</span> {{ ticket.published_date }}
-                        <p><span class="boldtext">Author:</span> {{ ticket.author }}</p>
-                        {% if ticket.image %}
-                        <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
-                        <p class="card-text">status: {{ ticket.get_status_display }}</p>
-                        {% if ticket.fix_version %}
-                        <p class="card-text">Bug fixed since: {{ ticket.fixed_date }} | version: {{ ticket.fix_version }}</p>
-                        {% endif %} {% if ticket.devComments %}
-                        <p class="card-text">{{ ticket.devComments }}</p>
-                        {% endif %}
-                        <a href="{% url 'all_tickets' %}" class="btn btn-default">Back to tickets</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>
-                        <a href="{% url 'ticket_upvote' ticket.id %}" class="btn btn-default">I have this problem too!</a>
-                        <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
-
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
