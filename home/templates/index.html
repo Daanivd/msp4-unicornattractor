@@ -89,7 +89,7 @@
                                                             <form method="post" action="{% url 'add_to_cart' feature.id %}">
                                                                 {% csrf_token %}
                                                                 <div class="input-group">
-                                                                    <input name="contribution" type="number" min="1" max="999" class="form-control" placeholder="Contribution">
+                                                                    <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
                                                                     <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
                                                                 </div>
                                                             </form>
@@ -105,11 +105,11 @@
                                 {%endif%} {%endif%} {% endfor %}
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+                                <span><i class="fa fa-arrow-circle-left"></i></span>
                                 <span class="sr-only">Previous</span>
                              </a>
                             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                                <span<i class="fa fa-arrow-circle-right"></i></span>
                                 <span class="sr-only">Next</span>
                              </a>
                         </div>
@@ -193,7 +193,7 @@
         pattern: ['pink']
     },
 });
-    var labels = {{featureVarData|safe}};
+    // var labels = {{featureVarData|safe}};
 // // series
 // var series = chart.internal.main
 //                 .selectAll('.' + c3.chart.internal.fn.CLASS.circles)[0];

@@ -124,14 +124,25 @@ footer {
     margin: 30px;
 }
 
-.carousel-control-prev {
-    color: #000;
-}
 
-.carousel-control-next, .carousel-control-previous {
+
+
+.carousel-control-next, .carousel-control-prev {
     top: 18%;
     width: 2%;
+    color: #000;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 30px
 }
+
+.fa-arrow-circle-left::before {
+    color: #000;
+} 
+
+.fa-arrow-circle-right::before {
+    color: #000;
+} 
 
 /*CART*/
 
