@@ -8,11 +8,8 @@
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %} 
-
-{% block content %}
+{% endblock %} {% block content %} 
 {% block headerTag %} <header id="trees"> {% endblock headerTag %}
-
 
 <div class="container-fluid checkout">
 
@@ -70,6 +67,7 @@
                         <div id="credit-card-errors" style="display: none;">
                             <div id="alert-message block-message error" id="stripe-error-message"></div>
                         </div>
+                        
                         <div class="form-group col-md-5 addressform">
                             {{ order_form | as_bootstrap }}
                         </div>
@@ -82,7 +80,6 @@
                         </div>
 
                         {% csrf_token %}
-
 
                     </div>
 
