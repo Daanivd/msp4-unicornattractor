@@ -14,6 +14,8 @@
 [Django divisibleby](https://stackoverflow.com/questions/36185303/how-to-check-whether-a-number-is-divisible-by-another-in-jinja-template-django?rq=1)
 [Django create custom template tag](https://www.codementor.io/hiteshgarg14/creating-custom-template-tags-in-django-application-58wvmqm5f)
 [Django use forloop.counter for index](https://stackoverflow.com/questions/4731572/django-counter-in-loop-to-index-list)
+[Get data from Python into D3](https://github.com/fgmacedo/django-d3-example/blob/master/play/templates/graph/graph.html)
+
 
 [parallax-effect](https://www.haleyschafer.com/)
 
