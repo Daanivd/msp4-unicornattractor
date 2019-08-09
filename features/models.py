@@ -14,7 +14,7 @@ class Feature(models.Model):
     featureName = models.CharField(max_length=254)
     description = models.TextField()
     contribution = models.IntegerField(blank=True, null=True)
-    totalContributions = models.IntegerField(blank=True, null=True)
+    totalContributions = models.IntegerField(blank=True, default= 0)
     price = models.IntegerField(blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True, null=True)
     author = models.ForeignKey(User)
