@@ -25,21 +25,21 @@ class TestViews(TestCase):
     def test_edit_ticket(self):
         user = User.objects.create_user(username='test_user', password='password')
         self.client.login(username='test_user', password='password')
-        page = self.client.post('/tickets/edit/', {'author': user, 'description':'test content2', 'ticketName': 'test title2'}, follow=True)
+        page = self.client.post('/tickets/edit/', {'author': user, 'description':'test content2', 'ticketName': 'test title2'})
       
     def test_create_ticket(self):
         user = User.objects.create_user(username='test_user', password='password')
         self.client.login(username='test_user', password='password')
-        page = self.client.post('/tickets/new/', {'author': user, 'description':'test content', 'ticketName': 'test title'}, follow=True)
+        page = self.client.post('/tickets/new/', {'author': user, 'description':'test content', 'ticketName': 'test title'})
     
-     
+    
     def test_upvote(self):
-        user = User.objects.create_user(username='test_user', password='password')
+        user = User.objects.create_user(username='test_user2', password='password')
         self.client.login(username='test_user', password='password')
-        ticket = Ticket(ticketName="Test Ticket", description='test-content', author=user)
+        ticket = Ticket(ticketName='Test Ticket', description='test-content', author=user)
         ticket.save()
         self.assertEqual(ticket.upvotes, 0)
-        page = self.client.get("/tickets/{0}/upvote/".format(ticket.id), follow=True)
+        page = self.client.get("/tickets/{0}/upvote".format(ticket.id), follow=True)
         self.assertEqual(ticket.upvotes, 1)
      
         

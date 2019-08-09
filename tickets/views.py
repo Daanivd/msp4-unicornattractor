@@ -61,7 +61,7 @@ def create_or_edit_ticket(request, pk=None):
     else:
         form = TicketForm(instance=ticket)
         
-        # return render(request, "ticket.html", {'ticket': ticket, 'form':form})
+    return render(request, "tickets.html", {'ticket': ticket, 'form':form})
     
     
 @login_required
