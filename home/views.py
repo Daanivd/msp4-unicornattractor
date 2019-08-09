@@ -19,9 +19,9 @@ def index(request):
     tickets = Ticket.objects.all()
   
     bugData = get_bugData()
-    featureDevData = get_featureData()
+    featureDevData, featureVarData = get_featureData()
     
-    return render(request, "index.html", {"features": features, 'productFeatures': productFeatures, "devFeatures": devFeatures, 'tickets': tickets, 'featureDevData': featureDevData, 'bugData': bugData})
+    return render(request, "index.html", {"features": features, 'productFeatures': productFeatures, "devFeatures": devFeatures, 'tickets': tickets, 'featureDevData': featureDevData, 'featureVarData':featureVarData, 'bugData': bugData})
 
 
 def get_bugData():
@@ -32,7 +32,7 @@ def get_bugData():
         bugs_list.append(round(deltaT.total_seconds()/3600/24))
       
     bugs_list_set = list(set(bugs_list))
-    count_list = ['Days to Resolve Bugs',]
+    count_list = ['Days to Resolve',]
     for n in bugs_list_set:
         count_list.append(bugs_list.count(n))
         
@@ -45,26 +45,27 @@ def get_bugData():
     return bugData
     
 def get_featureData():  
-    features = Feature.objects.filter(status=4)
-    # flist = ['feature',]
+    features = Feature.objects.filter(status=4).order_by('feature_added_date')
+    flist = []
     dlist = ['Timeline',]
     nlist = ['Number of Features over Time',]
     
     for feature in features:
-        # flist.append(feature.featureName)
+        flist.append(feature.featureName)
         dlist.append(str(feature.feature_added_date)[0:19])
     for i in range(0, len(dlist)-1):
         nlist.append(i+1)
        
     featureDevData = [dlist, nlist]   
+    featureVarData = flist
     
-    return featureDevData
+    return featureDevData, featureVarData
     
     
     
 
-def fdata(request):
-    fdata = Feature.objects.all()
-    fdata = serializers.serialize('json', fdata)
-    d = json.loads(fdata)
-    return JsonResponse(d, safe=False)
+# def fdata(request):
+#     fdata = Feature.objects.all()
+#     fdata = serializers.serialize('json', fdata)
+#     d = json.loads(fdata)
+#     return JsonResponse(d, safe=False)

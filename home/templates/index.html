@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'C3/c3.css' %}">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript" src="{% static 'C3/c3.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>
+<!--<script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>-->
 {% endblock head_js %} {% block content %} {% load bootstrap_tags %} {% load index_tag %}
 
 <!--FEATURES-->
@@ -139,7 +139,7 @@
                                 <div class="ftcard card featurecard">
                                     <div class="card-body">
                                         <h5>New feature development time</h5>
-                                        <div id="featureChart"></div>
+                                        <div id="chart"></div>
                                     </div>
                                 </div>
                             </div>
@@ -161,11 +161,20 @@
         
         <script>
             var chart = c3.generate({
-                bindto: '#featureChart',
+                bindto: '#chart',
+                 point: {
+        focus: {
+            expand: {
+                enabled: false
+            }
+        },
+        r: 16
+    },
     data: {
         x: 'Timeline',
         xFormat: '%Y-%m-%d %H:%M:%S',
-        columns: {{featureDevData|safe}}
+        columns: {{featureDevData|safe}},
+        type: 'scatter' 
     },
     axis: {
         x: {
@@ -178,13 +187,35 @@
             tick:{
             values: [1,2,3,4]
             }
-            
         }
     },
     color: {
         pattern: ['pink']
-    }
+    },
 });
+    var labels = {{featureVarData|safe}};
+// // series
+// var series = chart.internal.main
+//                 .selectAll('.' + c3.chart.internal.fn.CLASS.circles)[0];
+//                 console.log(series);
+// // text layers
+// var texts = chart.internal.main
+//                 .selectAll('.' + c3.chart.internal.fn.CLASS.chartTexts)
+//                 .selectAll('.' + c3.chart.internal.fn.CLASS.chartText)[0]
+// series.forEach(function (series, i) {
+//     var points = d3.select(series).selectAll('.' + c3.chart.internal.fn.CLASS.circle)[0]
+//     points.forEach(function (point, j) {
+//         d3.select(texts[i])
+//             .append('text')
+//             .attr('text-anchor', 'middle')
+//             .attr('dy', '0.3em')
+//             .attr('x', d3.select(point).attr('cx'))
+//             .attr('y', d3.select(point).attr('cy'))
+//             .text(labels[i][j])
+//     })
+// });
+
+
 
 var histogram = c3.generate({
 bindto: '#bugHistogram',
