@@ -55,7 +55,7 @@
                                         <div class="ftcard card ticketcard">
                                             <div class="card-body">
                                                 <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
-                                                <p class="card-text">{{ ticket.description|truncatewords:10 }}</p>
+                                                <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
                                                 <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
                                             </div>
                                         </div>
