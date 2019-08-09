@@ -3,7 +3,7 @@
     data: {
         x: 'Timeline',
         xFormat: '%Y-%m-%d %H:%M:%S',
-        columns: {{featureDevData|safe}}
+        columns: {{featureDevData|safe}},
     },
     axis: {
         x: {
