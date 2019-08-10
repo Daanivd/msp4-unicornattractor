@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
 
-
+@login_required
 def add_to_cart(request, id):
     """Add a contribution to the feature to the cart"""
     contribution = int(request.POST.get('contribution'))
