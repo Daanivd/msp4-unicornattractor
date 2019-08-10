@@ -1,16 +1,19 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block head_js %}
+{% extends 'base.html' %} {% load staticfiles %} {% load index_tag %} {% load bootstrap_tags %} 
+{% block head_js %}
 <link rel="stylesheet" href="{% static 'C3/c3.css' %}">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript" src="{% static 'C3/c3.min.js' %}"></script>
 <!--<script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>-->
+{% endblock head_js %} 
 
-{% endblock head_js %} {% block content %} {% load bootstrap_tags %} {% load index_tag %} 
-
-{% block headerTag %} <header id="GIF"> {% endblock headerTag %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-10 offset-1 intro">
-                <div class="row">
+{% block headerTag %} 
+<header id="GIF"> 
+{% endblock headerTag %}
+{% block content %}
+    <!--<div class="container-fluid">-->
+    <!--    <div class="row">-->
+    <!--        <div class="col-10 offset-1 intro">-->
+    <!--            <div class="row">-->
 
                     <div class="card ftcard">
                         <div class="card-body">
@@ -19,8 +22,10 @@
                                 us now!</p>
                         </div>
                     </div>
-                </div>
-                {% endblock %} {% block home %}
+                <!--</div>-->
+{% endblock content %} 
+
+{% block home %}
 
                 <!--SUPPORT US-->
                 <section id="features">
@@ -43,7 +48,7 @@
                                     <!--CAROUSEL LARGE-->
                                     <div class="col-12 large">
                                         <div class="row no-gutters">
-                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" {%if productFeatures|length < 3 %} data-interval="false" {%else%} data-pause="true" {%endif%}>
+                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                                                 <div class="row no-gutters">
                                                     <div class="col-1">
                                                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -83,10 +88,10 @@
 
                                                         {%else%}
                                                         <div class="carousel-item">
-                                                            <div class="row no-gutters">
+                                                            <div class="row">
                                                                 {% for feature in productFeatures|index:forloop.counter0 %}
                                                                 <div class="col-4">
-                                                                    <div class="ftcard card">
+                                                                    <div class="ftcard card featurecard">
                                                                         <div class="card-body">
                                                                             <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                                                                             <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
@@ -163,9 +168,9 @@
 
                                                         {%else%}
                                                         <div class="carousel-item">
-                                                            <div class="row no-gutters">
+                                                            <div class="row">
                                                                 <div class="col-12">
-                                                                    <div class="ftcard card">
+                                                                    <div class="ftcard card featurecard">
                                                                         <div class="card-body">
                                                                             <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                                                                             <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
@@ -246,6 +251,7 @@
                     </div>
                 </div>
             </section>
+
 
             <script>
                 var chart = c3.generate({
@@ -340,5 +346,4 @@
 
                 });
             </script>
-
-            {% endblock %}
+            {% endblock home %}

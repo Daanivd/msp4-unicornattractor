@@ -78,12 +78,13 @@
                             </ul>
                         </div>
                     </nav>
+                    {% block content %}{% endblock content %}
                 </div>
             </div>
         </div>
-        {% block content %}{% endblock %}
         </header>
-        {% block home %}{% endblock %}
+        
+        {% block home %}{% endblock home %}
 
 
         <footer id="footer">
