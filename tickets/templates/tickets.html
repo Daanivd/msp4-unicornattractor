@@ -2,7 +2,7 @@
 <header id="trees"> {% endblock headerTag %}
     <div class="container-fluid">
         <div class="row no-gutters">
-            <div class="col-10 offset-sm-1">
+            <div class="col-10 offset-1">
                 <div class="row">
                     <div class="col-12">
                         <div class="infocard card ticketcard">
@@ -21,65 +21,189 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <!--CAROUSEL-->
 
-                <div class="row">
-                    <div class="col-12">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-                            <div class="carousel-inner">
-                                {% for ticket in tickets %} {% if forloop.counter0|divisibleby:3 %} {% if forloop.counter0 == 0 %}
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        {% for ticket in tickets|index:forloop.counter0 %}
-                                        <div class="col-4">
-                                            <div class="ftcard card ticketcard">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
-                                                    <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
-                                                    <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+
+                    <!--CAROUSEL LARGE-->
+
+                    <div class="col-12 large">
+                        <div class="row no-gutters">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" {%if tickets|length < 3 %} data-interval="false" {%else%} data-pause="true" {%endif%} style="width: 100%;">
+                                <div class="row no-gutters">
+                                    <div class="col-1">
+                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                            <span><i class="fa fa-arrow-circle-left"></i></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                    </div>
+                                    <div class="col-10 carousel-inner">
+                                        {% for ticket in tickets %} {% if forloop.counter0|divisibleby:3 %} {% if forloop.counter0 == 0 %}
+                                        <div class="carousel-item active">
+                                            <div class="row">
+                                                {% for ticket in tickets|index:forloop.counter0 %}
+                                                <div class="col-4">
+                                                    <div class="ftcard card ticketcard">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
+                                                            <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
+                                                            <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {%endfor%}
+                                            </div>
+                                        </div>
+
+                                        {%else%}
+                                        <div class="carousel-item">
+                                            <div class="row no-gutters">
+                                                {% for ticket in tickets|index:forloop.counter0 %}
+                                                <div class="col-4">
+                                                    <div class="ftcard card ticketcard">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
+                                                            <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
+                                                            <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {%endfor%}
+                                            </div>
+                                        </div>
+                                        {%endif%} {%endif%} {% endfor %}
+
+                                    </div>
+                                    <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
+                                                        <span class="sr-only">Next</span>
+                                                     </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+
+
+                <!--CAROUSEL SMALL-->
+                <div class="col-12 small">
+                    <div class="row no-gutters">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" {%if tickets|length == 1 %} data-interval="false" {%else%} data-pause="true" {%endif%} style="width: 100%;">
+                            <div class="row no-gutters">
+                                <div class="col-1">
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                            <span><i class="fa fa-arrow-circle-left"></i></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                </div>
+                                <div class="col-10 carousel-inner">
+                                    {% for ticket in tickets %} {% if forloop.counter0 == 0 %}
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                            
+                                            <div class="col-12">
+                                                <div class="ftcard card ticketcard">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
+                                                        <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
+                                                        <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {%endfor%}
                                     </div>
-                                </div>
-                                {%else%}
-                                <div class="carousel-item">
-                                    <div class="row">
-                                    {% for ticket in tickets|index:forloop.counter0 %}
-                                    <div class="col-4">
-                                        <div class="ftcard card ticketcard">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
-                                                <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
-                                                <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+
+                                    {%else%}
+                                    <div class="carousel-item">
+                                        <div class="row no-gutters">
+                                            
+                                            <div class="col-12">
+                                                <div class="ftcard card ticketcard">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>
+                                                        <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>
+                                                        <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                                                    </div>
+                                                </div>
                                             </div>
+                                           
                                         </div>
                                     </div>
-                                    {%endfor%}
-                                    </div>
+                                    {%endif%} {% endfor %}
+
                                 </div>
-                                {%endif%} {%endif%} {% endfor %}
+                                <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
+                                                        <span class="sr-only">Next</span>
+                                                     </a>
+                                </div>
                             </div>
-                                                       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span><i class="fa fa-arrow-circle-left"></i></span>
-                                <span class="sr-only">Previous</span>
-                             </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span<i class="fa fa-arrow-circle-right"></i></span>
-                                <span class="sr-only">Next</span>
-                             </a>
+
                         </div>
                     </div>
                 </div>
-
-
             </div>
+
+
+
+            <!--<div class="row">-->
+            <!--    <div class="col-12">-->
+            <!--        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">-->
+            <!--            <div class="carousel-inner">-->
+            <!--                {% for ticket in tickets %} -->
+            <!--                    {% if forloop.counter0|divisibleby:3 %} -->
+            <!--                        {% if forloop.counter0 == 0 %}-->
+            <!--                <div class="carousel-item active">-->
+            <!--                    <div class="row">-->
+            <!--                        {% for ticket in tickets|index:forloop.counter0 %}-->
+            <!--                        <div class="col-6">-->
+            <!--                            <div class="ftcard card ticketcard">-->
+            <!--                                <div class="card-body">-->
+            <!--                                    <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>-->
+            <!--                                    <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>-->
+            <!--                                    <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+
+            <!--                    {%endfor%}-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                {%else%}-->
+            <!--                <div class="carousel-item">-->
+            <!--                    <div class="row">-->
+            <!--                    {% for ticket in tickets|index:forloop.counter0 %}-->
+            <!--                    <div class="col-6">-->
+            <!--                        <div class="ftcard card ticketcard">-->
+            <!--                            <div class="card-body">-->
+            <!--                                <h5 class="card-title"><a href="/tickets/{{ ticket.id }}/">{{ ticket.ticketName }}</a></h5>-->
+            <!--                                <p class="card-text">{{ ticket.description|truncatewords:7 }}</p>-->
+            <!--                                <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    {%endfor%}-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                {%endif%} {%endif%} {% endfor %}-->
+            <!--            </div>-->
+            <!--                                       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
+            <!--                <span><i class="fa fa-arrow-circle-left"></i></span>-->
+            <!--                <span class="sr-only">Previous</span>-->
+            <!--             </a>-->
+            <!--            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
+            <!--                <span<i class="fa fa-arrow-circle-right"></i></span>-->
+            <!--                <span class="sr-only">Next</span>-->
+            <!--             </a>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+
+
         </div>
+    </div>
     </div>
 
 

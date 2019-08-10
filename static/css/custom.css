@@ -77,8 +77,9 @@ a.social:hover {
         background-position: center;
         background-size: cover;
         width: 100vw;
-        height: 75vh; 
+        height: auto; 
         opacity: 0.8;
+        padding-bottom:50px;
     }
     
 #stats {
@@ -86,9 +87,9 @@ a.social:hover {
     background-image: url('/static/img/clouds.jpg');
     background-position: bottom;
     background-size: cover;
-    height: 75vh;
+    height: auto;
     width: 100vw;
-    margin-bottom: 0px;
+    padding-bottom: 50px;
     z-index: 1;
     opacity: 0.8;
 }     
@@ -119,6 +120,18 @@ a.social:hover {
 
 
 /*CAROUSELS (HOME AND TICKETS TEMPLATES)*/
+@media screen and (max-width: 1024px) {
+    .large {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .small {
+        display: none !important;
+    }
+}
+
 
 .carousel-control-next, .carousel-control-prev {
     top: 18%;
