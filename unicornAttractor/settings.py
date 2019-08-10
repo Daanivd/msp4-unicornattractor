@@ -14,8 +14,10 @@ import os
 import dj_database_url
 
 if "TRAVIS" in os.environ:
-    print("TRAVIS variable found --> Not importing env.py")
+    if "DATABASE_URL" in os.environ:
+        print("TRAVIS/Database URL found --> Not importing env.py")
 else: 
+    print("TRAVIS/Database URL not found --> Importing env.py")
     import env
 
 
