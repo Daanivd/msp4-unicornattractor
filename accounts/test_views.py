@@ -70,7 +70,8 @@ class TestViews(TestCase):
         
     def test_logout_user(self):
         user = User.objects.create_user(username='test_user', password='password')
-        self.client.login(username='test_user', password='password')
+        login = self.client.login(username='test_user', password='password')
+        self.assertTrue(login)
         page = self.client.get("/accounts/logout/", follow=True)
         messages = list(page.context['messages'])  
         self.assertEqual(len(messages), 1)

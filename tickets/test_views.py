@@ -29,15 +29,17 @@ class TestViews(TestCase):
       
     def test_create_ticket(self):
         user = User.objects.create_user(username='test_user', password='password')
-        self.client.login(username='test_user', password='password')
+        login = self.client.login(username='test_user', password='password')
+        self.assertTrue(login)
         page = self.client.post('/tickets/new/', {'author': user, 'description':'test content', 'ticketName': 'test title'})
     
     
     # def test_upvote(self):
-    #     user = User.objects.create_user(username='test_user2', password='password')
-    #     self.client.login(username='test_user', password='password')
+    #     user = User.objects.create_user(username='test_user', password='password')
+    #     login = self.client.login(username='test_user', password='password')
     #     ticket = Ticket(ticketName='Test Ticket', description='test-content', author=user)
     #     ticket.save()
+    #     self.assertTrue(login)
     #     self.assertEqual(ticket.upvotes, 0)
     #     page = self.client.get("/tickets/{0}/upvote".format(ticket.id), follow=True)
     #     self.assertEqual(ticket.upvotes, 1)
