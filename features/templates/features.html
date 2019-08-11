@@ -1,76 +1,68 @@
 {% extends 'base.html' %}{% load bootstrap_tags %} {% block headerTag %}
 <header id="trees"> {% endblock headerTag %}{% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-10 offset-1">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="ftcard card ticketcard">
-                            <div class="card-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="ftcard card ticketcard">
+                <div class="card-body">
 
-                                <h5>Support a feature!</h5>
-                                <p class="card-text">Here you can see all the features for which we are raising funds to develop. Once the goal has been hit, we will start developing it! If you have a suggestion for a feature, please fill out <a data-toggle="modal" data-target="#modal"
-                                        href="/features/new/">this form</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    {% for feature in productFeatures %}
-                    <div class="col-sm-6 col-md-4">
-                        <div class="ftcard card featurecard">
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
-                                <p class="card-text">{{ feature.description }}</p>
-                                <p class="feature-description">Price: {{ feature.price }}</p>
-                                <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
-                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+                    <h5>Support a feature!</h5>
+                    <p class="card-text">Here you can see all the features for which we are raising funds to develop. Once the goal has been hit, we will start developing it! If you have a suggestion for a feature, please fill out <a data-toggle="modal" data-target="#modal"
+                            href="/features/new/">this form</a></p>
+                </div>
+            </div>
+        </div>
+        {% for feature in productFeatures %}
+        <div class="col-sm-6 col-md-4">
+            <div class="ftcard card featurecard">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
+                    <p class="card-text">{{ feature.description }}</p>
+                    <p class="feature-description">Price: {{ feature.price }}</p>
+                    <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
+                    <p class="feature-description">Requested by: {{ feature.author }}</p>
 
-                                <form method="post" action="{% url 'add_to_cart' feature.id %}">
-                                    {% csrf_token %}
-                                    <div class="input-group">
-                                        <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
-                                        <span class="input-group-btn">
+                    <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
+                            <span class="input-group-btn">
                             <button class="btn btn-success" type="submit"><i class="fas fa-cart-arrow-down"></i></button>
                         </span>
-                                    </div>
-                                </form>
-
-                            </div>
                         </div>
-                    </div>
-                    {% endfor %}
+                    </form>
+
                 </div>
             </div>
         </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Request a new feature!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-10 offset-1">
-                                    <form method="POST" enctype="multipart/form-data">
-                                        {% csrf_token %} {{ form | as_bootstrap }}
-                                        <button type="submit" class="btn btn-info">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Request a new feature!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-10 offset-1">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %} {{ form | as_bootstrap }}
+                                    <button type="submit" class="btn btn-info">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endblock %}

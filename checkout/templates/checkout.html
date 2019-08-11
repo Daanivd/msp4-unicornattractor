@@ -1,6 +1,4 @@
-{% extends "base.html" %} {% load static from staticfiles %} {% load bootstrap_tags %} 
-
-{% block head_js %}
+{% extends "base.html" %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
@@ -8,87 +6,78 @@
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %} 
-{% block headerTag %} <header id="trees"> {% endblock headerTag %}{% block content %} 
+{% endblock %} {% block headerTag %}
+<header id="trees"> {% endblock headerTag %}{% block content %}
 
-<div class="container-fluid checkout">
-
-    <div class="row no-gutters">
-        <div class="col-md-10 offset-md-1">
-            <!--ORDER DETAILS-->
-            <div class="row no gutters">
-                <div class="col-md-4 orderdetails">
+    <div class="checkout row no gutters">
+        <div class="col-md-4 orderdetails">
+            <div class="row">
+                <h4>Order Details</h4>
+            </div>
+            <div class="ordercard card">
+                <div class="card-body">
                     <div class="row">
-                        <h4>Order Details</h4>
+                        <div class="col-6 ">
+                            <h5>Feature</h5>
+                        </div>
+                        <div class="col-6 featurecontribution">
+                            <h5>Contribution</h5>
+                        </div>
                     </div>
-                    <div class="ordercard card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6 ">
-                                    <h5>Feature</h5>
-                                </div>
-                                <div class="col-6 featurecontribution">
-                                    <h5>Contribution</h5>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                {% for item in cart_items %}
-                                <div class="col-6 featurecontribution">
-                                    {% if item.feature.image %}
-                                    <div class="feature" style="background-image: url('{{ MEDIA_URL }}{{ item.feature.image }}')"></div>
-                                    {% endif %}
-                                    <p>{{ item.feature.featureName }}</p>
-                                </div>
-                                <div class="col-6 featurecontribution">
-                                    <p><i class="fas fa-euro-sign"></i>{{ item.contribution }}</p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p>Total:</p>
-                                </div>
-                                <div class="col-6">
-                                    <p><i class="fas fa-euro-sign"></i>{{ total }}</p>
-                                </div>
-                            </div>
+                    <hr>
+                    <div class="row">
+                        {% for item in cart_items %}
+                        <div class="col-6 featurecontribution">
+                            {% if item.feature.image %}
+                            <div class="feature" style="background-image: url('{{ MEDIA_URL }}{{ item.feature.image }}')"></div>
+                            {% endif %}
+                            <p>{{ item.feature.featureName }}</p>
+                        </div>
+                        <div class="col-6 featurecontribution">
+                            <p><i class="fas fa-euro-sign"></i>{{ item.contribution }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Total:</p>
+                        </div>
+                        <div class="col-6">
+                            <p><i class="fas fa-euro-sign"></i>{{ total }}</p>
                         </div>
                     </div>
                 </div>
-
-                <!--PAYMENT DETAILS-->
-                <form class="offset-md-1 col-md-7 col-12 paymentdetails" role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-                    <div class="row">
-                        <h4>Payment Details</h4>
-                    </div>
-                    <div class="row">
-                        <div id="credit-card-errors" style="display: none;">
-                            <div id="alert-message block-message error" id="stripe-error-message"></div>
-                        </div>
-                        
-                        <div class="form-group col-md-5 addressform">
-                            {{ order_form | as_bootstrap }}
-                        </div>
-
-                        <div class="form-group col-md-5 offset-md-1 creditcard">
-                            {{ payment_form | as_bootstrap }}
-                            <div class="float-right">
-                                <input class="btn btn-primary submitpayment" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-                            </div>
-                        </div>
-
-                        {% csrf_token %}
-
-                    </div>
-
-
-                </form>
             </div>
         </div>
+
+        <!--PAYMENT DETAILS-->
+        <form class="offset-md-1 col-md-7 col-12 paymentdetails" role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+            <div class="row">
+                <h4>Payment Details</h4>
+            </div>
+            <div class="row">
+                <div id="credit-card-errors" style="display: none;">
+                    <div id="alert-message block-message error" id="stripe-error-message"></div>
+                </div>
+
+                <div class="form-group col-md-5 addressform">
+                    {{ order_form | as_bootstrap }}
+                </div>
+
+                <div class="form-group col-md-5 offset-md-1 creditcard">
+                    {{ payment_form | as_bootstrap }}
+                    <div class="float-right">
+                        <input class="btn btn-primary submitpayment" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                    </div>
+                </div>
+
+                {% csrf_token %}
+
+            </div>
+        </form>
     </div>
-</div>
 
 
-{% endblock %}
+
+    {% endblock %}
