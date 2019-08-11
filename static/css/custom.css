@@ -1,3 +1,8 @@
+/*GENERAL*/
+body {
+    color: #fafafa;
+}
+
 .container-fluid {
     padding-left: 0px;
     padding-right: 0px;
@@ -15,6 +20,14 @@ li.nav-item a.dropdown-item {
 li.nav-item a {
    color: #fafafa; 
 }
+
+.shoppingcart {
+    padding-left: 10px;
+    padding-top: 8px;
+
+}
+
+/*FOOTER*/
 footer {
         background-image: url('/static/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
         background-position: center;
@@ -81,7 +94,7 @@ a.social:hover {
     background-image: url(/static/img/forest-trees-mist-sunlight.jpeg);
     background-size: cover;
     background-position: 75%;
-    height: 100vh;
+    height: auto;
     width: 100vw;
     margin-bottom: 0px;
     z-index: 1;
@@ -223,5 +236,13 @@ a.social:hover {
     margin-top: 25px;
 }
 
+/*LOGIN/REGISTRATION FORMS*/
+.login, .registration {
+    margin-top: 50px;
+}
+
+.reset {
+    margin-top: 10px;
+}
 
 

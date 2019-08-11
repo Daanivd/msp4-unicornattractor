@@ -11,7 +11,7 @@
                             </div>
                         </div>
                     </div>
-                    <form method="POST">
+                    <form class="registration col-md-6 offset-md-3 col-12" method="POST">
                         {% csrf_token %} {{ registration_form | as_bootstrap }}
                         <button type="submit">Register</button>
                     </form>

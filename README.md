@@ -15,7 +15,7 @@
 [Django create custom template tag](https://www.codementor.io/hiteshgarg14/creating-custom-template-tags-in-django-application-58wvmqm5f)
 [Django use forloop.counter for index](https://stackoverflow.com/questions/4731572/django-counter-in-loop-to-index-list)
 [Get data from Python into D3](https://github.com/fgmacedo/django-d3-example/blob/master/play/templates/graph/graph.html)
-
+[Add text to datapoints d3.js](https://www.oipapio.com/question-1046870)
 
 [parallax-effect](https://www.haleyschafer.com/)
 

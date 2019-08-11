@@ -51,7 +51,7 @@ def get_featureData():
     nlist = ['Number of Features over Time',]
     
     for feature in features:
-        flist.append(feature.featureName)
+        flist.append(feature.version)
         dlist.append(str(feature.feature_added_date)[0:19])
     for i in range(0, len(dlist)-1):
         nlist.append(i+1)

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'C3/c3.css' %}">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript" src="{% static 'C3/c3.min.js' %}"></script>
-<!--<script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>-->
+<script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>
 {% endblock head_js %} 
 
 {% block headerTag %} 
@@ -130,18 +130,18 @@
                                         <div class="row no-gutters">
                                             <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel" {%if productFeatures|length == 1 %} data-interval="false" {%else%} data-pause="true" {%endif%}>
                                                 <div class="row no-gutters">
-                                                    <div class="col-1">
+                                                    <div class="col-1 offset-1">
                                                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 100%;">
                                                             <span><i class="fa fa-arrow-circle-left"></i></span>
                                                             <span class="sr-only">Previous</span>
                                                         </a>
                                                     </div>
-                                                    <div class="col-10 carousel-inner">
+                                                    <div class="col-8 carousel-inner">
                                                         {% for feature in productFeatures %}
                                                             {% if forloop.counter0 == 0 %}
                                                         <div class="carousel-item active">
                                                             <div class="row">
-                                                                <div class="col-12">
+                                                                <div class="col-12 p-0">
                                                                     <div class="ftcard card featurecard">
                                                                         <div class="card-body">
                                                                             <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
@@ -168,7 +168,7 @@
                                                         {%else%}
                                                         <div class="carousel-item">
                                                             <div class="row">
-                                                                <div class="col-12">
+                                                                <div class="col-12 p-0">
                                                                     <div class="ftcard card featurecard">
                                                                         <div class="card-body">
                                                                             <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
@@ -273,7 +273,7 @@
                         x: {
                             type: 'timeseries',
                             tick: {
-                                format: '%Y-%m-%d'
+                                format: '%Y-%m'
                             }
                         },
                         y: {
@@ -286,30 +286,8 @@
                         pattern: ['pink']
                     },
                 });
-                // var labels = {{featureVarData|safe}};
-                // // series
-                // var series = chart.internal.main
-                //                 .selectAll('.' + c3.chart.internal.fn.CLASS.circles)[0];
-                //                 console.log(series);
-                // // text layers
-                // var texts = chart.internal.main
-                //                 .selectAll('.' + c3.chart.internal.fn.CLASS.chartTexts)
-                //                 .selectAll('.' + c3.chart.internal.fn.CLASS.chartText)[0]
-                // series.forEach(function (series, i) {
-                //     var points = d3.select(series).selectAll('.' + c3.chart.internal.fn.CLASS.circle)[0]
-                //     points.forEach(function (point, j) {
-                //         d3.select(texts[i])
-                //             .append('text')
-                //             .attr('text-anchor', 'middle')
-                //             .attr('dy', '0.3em')
-                //             .attr('x', d3.select(point).attr('cx'))
-                //             .attr('y', d3.select(point).attr('cy'))
-                //             .text(labels[i][j])
-                //     })
-                // });
 
-
-
+// BUG RESOLVEMENT TIME HISTOGRAM
                 var histogram = c3.generate({
                     bindto: '#bugHistogram',
                     data: {
@@ -344,5 +322,39 @@
                     }
 
                 });
+                
+                
+              
+   var labels = {{featureVarData|safe}};
+   var series = chart.internal.main.selectAll('.' + c3.chart.internal.fn.CLASS.circles);
+
+   
+  // get the parent of the the <circles> to add <text as siblings>
+  var g = d3.selectAll('.c3-circles-Number-of-Features-over-Time');
+  console.log(g);
+  //Get all circle tags
+  var circles = d3.selectAll('circle')._groups[0];; //first had [0]
+  
+  //go to each circle and add a text label for it
+  for(var i = 0; i < circles.length; i++){
+    //fetch x-coordinate
+    var x = circles[i].cx;
+    //fetch y-coordinate
+    var y = circles[i].cy;
+
+  //create and append the text tag
+    g.append('text')
+      .attr('y', y.baseVal.value)  // (-15) places the tag above the circle, adjust it according to your need
+      .attr('x', x.baseVal.value)
+      .attr('text-anchor', 'middle')
+      .attr('class', 'c3-text c3-text-'+i)
+      .text(labels[i]) // the text that needs to be added can be hard coded or fetched for the original data.
+      //Since I am using a JSON to plot the data, I am referencing it and using the key of the value to be shown.
+  };
+
+  
+  
+  
+            
             </script>
             {% endblock home %}
