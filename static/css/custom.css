@@ -141,7 +141,6 @@ a.social:hover {
         opacity: 0.8;
     }
 
-
 .tickets form {
     margin: 30px;
 }
@@ -160,6 +159,10 @@ a.social:hover {
     }
 }
 
+.carousel {
+    margin-top: 50px;
+    margin-bottom: 50px
+}
 
 .carousel-control-next, .carousel-control-prev {
     top: 18%;

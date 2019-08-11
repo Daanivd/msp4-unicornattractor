@@ -1,11 +1,10 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block page_title %}FEATURES{% endblock %}
 {% block headerTag %} <header id="trees"> {% endblock headerTag %}{% block content %}
     <div class="row">
           <div class="col-xs-10">
         <div class="ftcard card featurecard" style="width: 18rem;">
             <div class="card-body">
                 
-
                 <h5 class="card-title">{{ feature.featureName }}</h5>
                 <p><span class="boldtext">Published on:</span> {{ feature.published_date }}
                 <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
@@ -21,16 +20,15 @@
                 <p class="card-text">{{ feature.description }}</p>
                 <p><span class="boldtext">Views:</span> {{ feature.views }}</p>
                 
-                  <form method="post" action="{% url 'add_to_cart' feature.id %}">
-                                    {% csrf_token %}
-                                    <div class="input-group">
-                                        <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
-                                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><i class="fas fa-cart-arrow-down"></i></button>
-                        </span>
-                                    </div>
-                                </form>
-                
+                <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit"><i class="fas fa-cart-arrow-down"></i></button>
+                            </span>
+                        </div>
+                </form>
                 <a href="/features/" class="btn btn-default">Back to features</a>
             </div>
         </div>

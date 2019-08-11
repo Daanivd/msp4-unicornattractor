@@ -6,7 +6,10 @@
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %} {% block headerTag %}
+{% endblock head_js %}
+{% block page_title %}CHECKOUT{% endblock %}
+
+{% block headerTag %}
 <header id="trees"> {% endblock headerTag %}{% block content %}
 
     <div class="checkout row no gutters">

@@ -1,244 +1,187 @@
-{% extends 'base.html' %} {% load staticfiles %} {% load index_tag %} {% load bootstrap_tags %} 
-{% block head_js %}
+{% extends 'base.html' %} {% load staticfiles %} {% load index_tag %} {% load bootstrap_tags %} {% block head_js %}
 <link rel="stylesheet" href="{% static 'C3/c3.css' %}">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript" src="{% static 'C3/c3.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>
-{% endblock head_js %} 
-
-{% block headerTag %} 
-<header id="GIF"> 
-{% endblock headerTag %}
-{% block content %}
- 
-                <div class="row">
-                    <div class="card ftcard">
-                        <div class="card-body">
-                            <h5 class="card-title">Help save the Unicorn!</h5>
-                            <p>Become a citizen-scientist and help save the unicorn! By downloading our app and spotting unicorns, you can add important information to our research project on the distribution on unicorns and the threats they face! Join
-                                us now!</p>
-                        </div>
-                    </div>
-                </div>
-{% endblock content %} 
-
-{% block home %}
-
-                <!--SUPPORT US-->
-                <section id="features">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-10 offset-1">
-                                <div class="row">
-
-
-                                    <div class="col-12">
-                                        <div class="infocard card">
-                                            <div class="card-body">
-                                                <h2>Support UPS!</h2>
-                                                <p class="card-text">Donate to our cause or support the development of new features for our app so we can save the Unicorn together! With new features, contribute however much you like, and once we hit our goal, we will develop
-                                                    the feature and add it to the app.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!--CAROUSEL LARGE-->
-                                    <div class="col-12 large">
-                                        <div class="row no-gutters">
-                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-                                                <div class="row no-gutters">
-                                                    <div class="col-1">
-                                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 100%;">
-                                                            <span><i class="fa fa-arrow-circle-left"></i></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-10 carousel-inner">
-                                                        {% for feature in productFeatures %} {% if forloop.counter0|divisibleby:3 %} {% if forloop.counter0 == 0 %}
-                                                        <div class="carousel-item active">
-                                                            <div class="row">
-                                                                {% for feature in productFeatures|index:forloop.counter0 %}
-                                                                <div class="col-4">
-                                                                    <div class="ftcard card featurecard">
-                                                                        <div class="card-body">
-                                                                            <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
-                                                                            <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
-                                                                            <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
-                                                                                <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
-                                                                            <p class="feature-description">Requested by: {{ feature.author }}</p>
-
-                                                                            <form method="post" action="{% url 'add_to_cart' feature.id %}">
-                                                                                {% csrf_token %}
-                                                                                <div class="input-group">
-                                                                                    <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required='required'>
-                                                                                    <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
-                                                                                </div>
-                                                                            </form>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {% endfor %}
-                                                            </div>
-                                                        </div>
-
-
-                                                        {%else%}
-                                                        <div class="carousel-item">
-                                                            <div class="row">
-                                                                {% for feature in productFeatures|index:forloop.counter0 %}
-                                                                <div class="col-4">
-                                                                    <div class="ftcard card featurecard">
-                                                                        <div class="card-body">
-                                                                            <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
-                                                                            <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
-                                                                            <p class="feature-description">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
-                                                                            <p class="feature-description">Requested by: {{ feature.author }}</p>
-                                                                            <form method="post" action="{% url 'add_to_cart' feature.id %}">
-                                                                                {% csrf_token %}
-                                                                                <div class="input-group">
-                                                                                    <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
-                                                                                    <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
-                                                                                </div>
-                                                                            </form>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {% endfor %}
-                                                            </div>
-                                                        </div>
-                                                        {%endif%} {%endif%} {% endfor %}
-
-                                                    </div>
-                                                    <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
-                                                        <span class="sr-only">Next</span>
-                                                     </a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!--CAROUSEL SMALL-->
-                                    <div class="col-12 small">
-                                        <div class="row no-gutters">
-                                            <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel" {%if productFeatures|length == 1 %} data-interval="false" {%else%} data-pause="true" {%endif%}>
-                                                <div class="row no-gutters">
-                                                    <div class="col-1 offset-1">
-                                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 100%;">
-                                                            <span><i class="fa fa-arrow-circle-left"></i></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-8 carousel-inner">
-                                                        {% for feature in productFeatures %}
-                                                            {% if forloop.counter0 == 0 %}
-                                                        <div class="carousel-item active">
-                                                            <div class="row">
-                                                                <div class="col-12 p-0">
-                                                                    <div class="ftcard card featurecard">
-                                                                        <div class="card-body">
-                                                                            <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
-                                                                            <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
-                                                                            <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
-                                                                                <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
-                                                                            <p class="feature-description">Requested by: {{ feature.author }}</p>
-
-                                                                            <form method="post" action="{% url 'add_to_cart' feature.id %}">
-                                                                                {% csrf_token %}
-                                                                                <div class="input-group">
-                                                                                    <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required='required'>
-                                                                                    <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
-                                                                                </div>
-                                                                            </form>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        {%else%}
-                                                        <div class="carousel-item">
-                                                            <div class="row">
-                                                                <div class="col-12 p-0">
-                                                                    <div class="ftcard card featurecard">
-                                                                        <div class="card-body">
-                                                                            <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
-                                                                            <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
-                                                                            <p class="feature-description">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
-                                                                            <p class="feature-description">Requested by: {{ feature.author }}</p>
-
-                                                                            <form method="post" action="{% url 'add_to_cart' feature.id %}">
-                                                                                {% csrf_token %}
-                                                                                <div class="input-group">
-                                                                                    <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
-                                                                                    <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
-                                                                                </div>
-                                                                            </form>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {%endif%} {% endfor %}
-
-                                                    </div>
-                                                    <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
-                                                        <span class="sr-only">Next</span>
-                                                     </a>
-                                                    </div>
-                                                </div>
-
-                                           
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+{% endblock head_js %} {% block page_title %}HOME{% endblock %} {% block headerTag %}
+<header id="GIF">{% endblock headerTag %} {% block content %}
+    <div class="row">
+        <div class="card ftcard">
+            <div class="card-body">
+                <h5 class="card-title">Help save the Unicorn!</h5>
+                <p>Become a citizen-scientist and help save the unicorn! By downloading our app and spotting unicorns, you can add important information to our research project on the distribution on unicorns and the threats they face! Join us now!</p>
             </div>
-
-            <!--Statistics on feature developement and bug-fixing-->
-            <section id="stats">
-                <div class="container-fluid">
+        </div>
+    </div>
+    {% endblock content %} 
+    
+    {% block home %}
+    <!--SUPPORT US-->
+    <section id="features">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-10 offset-1">
                     <div class="row">
-                        <div class="col-10 offset-1">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="infocard card">
-                                        <div class="card-body">
-                                            <h2>Our track record</h2>
-                                            <p class="card-text">We work hard to ensure our apps works perfectly for you. Please see below for our track record!</p>
+
+
+                        <div class="col-12">
+                            <div class="infocard card">
+                                <div class="card-body">
+                                    <h2>Support UPS!</h2>
+                                    <p class="card-text">Donate to our cause or support the development of new features for our app so we can save the Unicorn together! With new features, contribute however much you like, and once we hit our goal, we will develop the feature
+                                        and add it to the app.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--CAROUSEL LARGE-->
+                        <div class="col-12 large">
+                            <div class="row no-gutters">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                                    <div class="row no-gutters">
+                                        <div class="col-1">
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 100%;">
+                                                            <span><i class="fa fa-arrow-circle-left"></i></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                        </div>
+                                        <div class="col-10 carousel-inner">
+                                            {% for feature in productFeatures %} {% if forloop.counter0|divisibleby:3 %} {% if forloop.counter0 == 0 %}
+                                            <div class="carousel-item active">
+                                                <div class="row">
+                                                    {% for feature in productFeatures|index:forloop.counter0 %}
+                                                    <div class="col-4">
+                                                        <div class="ftcard card featurecard">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
+                                                                <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
+                                                                <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
+                                                                    <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
+                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+
+                                                                <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                                                                    {% csrf_token %}
+                                                                    <div class="input-group">
+                                                                        <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required='required'>
+                                                                        <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+
+
+                                            {%else%}
+                                            <div class="carousel-item">
+                                                <div class="row">
+                                                    {% for feature in productFeatures|index:forloop.counter0 %}
+                                                    <div class="col-4">
+                                                        <div class="ftcard card featurecard">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
+                                                                <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
+                                                                <p class="feature-description">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
+                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+                                                                <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                                                                    {% csrf_token %}
+                                                                    <div class="input-group">
+                                                                        <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
+                                                                        <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            {%endif%} {%endif%} {% endfor %}
+                                        </div>
+                                        <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
+                                                        <span class="sr-only">Next</span>
+                                                     </a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="col-12 col-md-6">
-                                    <div class="ftcard card featurecard">
-                                        <div class="card-body">
-                                            <h5>New feature development time</h5>
-                                            <div id="chart"></div>
+                        <!--CAROUSEL SMALL-->
+                        <div class="col-12 small">
+                            <div class="row no-gutters">
+                                <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel" data-interval="false">
+                                    <div class="row no-gutters">
+                                        <div class="col-1 offset-1">
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 100%;">
+                                                            <span><i class="fa fa-arrow-circle-left"></i></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
                                         </div>
-                                    </div>
-                                </div>
+                                        <div class="col-8 carousel-inner">
+                                            {% for feature in productFeatures %} {% if forloop.counter0 == 0 %}
+                                            <div class="carousel-item active">
+                                                <div class="row">
+                                                    <div class="col-12 p-0">
+                                                        <div class="ftcard card featurecard">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
+                                                                <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
+                                                                <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
+                                                                    <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
+                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
 
-                                <div class="col-12 col-md-6">
-                                    <div class="ftcard card featurecard">
-                                        <div class="card-body">
-                                            <h5>Bug resolvement time</h5>
+                                                                <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                                                                    {% csrf_token %}
+                                                                    <div class="input-group">
+                                                                        <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required='required'>
+                                                                        <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
+                                                                    </div>
+                                                                </form>
 
-                                            <div id="bugHistogram"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            {%else%}
+                                            <div class="carousel-item">
+                                                <div class="row">
+                                                    <div class="col-12 p-0">
+                                                        <div class="ftcard card featurecard">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
+                                                                <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
+                                                                <p class="feature-description">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
+                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+
+                                                                <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                                                                    {% csrf_token %}
+                                                                    <div class="input-group">
+                                                                        <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
+                                                                        <span class="input-group-btn"><button class="btn btn-success" type="submit">add</button></span>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {%endif%} {% endfor %}
+
+                                        </div>
+                                        <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
+                                                        <span class="sr-only">Next</span>
+                                                     </a>
                                         </div>
                                     </div>
                                 </div>
@@ -246,112 +189,150 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+    </section>
+    </div>
 
 
-            <script>
-                var chart = c3.generate({
-                    bindto: '#chart',
-                    point: {
-                        focus: {
-                            expand: {
-                                enabled: false
-                            }
-                        },
-                        r: 16
-                    },
-                    data: {
-                        x: 'Timeline',
-                        xFormat: '%Y-%m-%d %H:%M:%S',
-                        columns: {{ featureDevData | safe }},
-                        type: 'scatter'
-                    },
-                    axis: {
-                        x: {
-                            type: 'timeseries',
-                            tick: {
-                                format: '%Y-%m'
-                            }
-                        },
-                        y: {
-                            tick: {
-                                values: [1, 2, 3, 4]
-                            }
-                        }
-                    },
-                    color: {
-                        pattern: ['pink']
-                    },
-                });
+    <!--Statistics on feature developement and bug-fixing-->
+    <section id="stats">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-10 offset-1">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="infocard card">
+                                <div class="card-body">
+                                    <h2>Our track record</h2>
+                                    <p class="card-text">We work hard to ensure our apps works perfectly for you. Please see below for our track record!</p>
+                                </div>
+                            </div>
+                        </div>
 
-// BUG RESOLVEMENT TIME HISTOGRAM
-                var histogram = c3.generate({
-                    bindto: '#bugHistogram',
-                    data: {
-                        x: 'bugT',
-                        columns: {{ bugData | safe }},
-                        type: 'bar'
+                        <div class="col-12 col-md-6">
+                            <div class="ftcard card featurecard">
+                                <div class="card-body">
+                                    <h5>New feature development time</h5>
+                                    <div id="chart"></div>
+                                </div>
+                            </div>
+                        </div>
 
-                    },
-                    axis: {
-                        x: {
-                            type: 'bar',
-                            tick: {
+                        <div class="col-12 col-md-6">
+                            <div class="ftcard card featurecard">
+                                <div class="card-body">
+                                    <h5>Bug resolvement time</h5>
 
-                            }
-                        },
-                        y: {
-                            tick: {
-                                values: [1, 2, 3, 4]
-                            }
+                                    <div id="bugHistogram"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock home %}
 
-                        }
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.15
-                        }
+{% block scripts %} 
+    <script>
+        var chart = c3.generate({
+            bindto: '#chart',
+            point: {
+                focus: {
+                    expand: {
+                        enabled: false
+                    }
+                },
+                r: 16
+            },
+            data: {
+                x: 'Timeline',
+                xFormat: '%Y-%m-%d %H:%M:%S',
+                columns: {{ featureDevData | safe }},
+                type: 'scatter'
+            },
+            axis: {
+                x: {
+                    type: 'timeseries',
+                    tick: {
+                        format: '%Y-%m'
+                    }
+                },
+                y: {
+                    tick: {
+                        values: [1, 2, 3, 4]
+                    }
+                }
+            },
+            color: {
+                pattern: ['pink']
+            },
+        });
 
-                    },
+        // BUG RESOLVEMENT TIME HISTOGRAM
+        var histogram = c3.generate({
+            bindto: '#bugHistogram',
+            data: {
+                x: 'bugT',
+                columns: {{ bugData | safe }},
+                type: 'bar'
 
-                    color: {
-                        pattern: ['pink']
+            },
+            axis: {
+                x: {
+                    type: 'bar',
+                    tick: {
+
+                    }
+                },
+                y: {
+                    tick: {
+                        values: [1, 2, 3, 4]
                     }
 
-                });
-                
-                
-              
-   var labels = {{featureVarData|safe}};
-   var series = chart.internal.main.selectAll('.' + c3.chart.internal.fn.CLASS.circles);
+                }
+            },
+            bar: {
+                width: {
+                    ratio: 0.15
+                }
 
-   
-  // get the parent of the the <circles> to add <text as siblings>
-  var g = d3.selectAll('.c3-circles-Number-of-Features-over-Time');
-  console.log(g);
-  //Get all circle tags
-  var circles = d3.selectAll('circle')._groups[0];; //first had [0]
-  
-  //go to each circle and add a text label for it
-  for(var i = 0; i < circles.length; i++){
-    //fetch x-coordinate
-    var x = circles[i].cx;
-    //fetch y-coordinate
-    var y = circles[i].cy;
+            },
 
-  //create and append the text tag
-    g.append('text')
-      .attr('y', y.baseVal.value)  // (-15) places the tag above the circle, adjust it according to your need
-      .attr('x', x.baseVal.value)
-      .attr('text-anchor', 'middle')
-      .attr('class', 'c3-text c3-text-'+i)
-      .text(labels[i]) // the text that needs to be added can be hard coded or fetched for the original data.
-      //Since I am using a JSON to plot the data, I am referencing it and using the key of the value to be shown.
-  };
+            color: {
+                pattern: ['pink']
+            }
 
-  
-  
-  
-            
-            </script>
-            {% endblock home %}
+        });
+
+
+
+        var labels = {{ featureVarData | safe }};
+        var series = chart.internal.main.selectAll('.' + c3.chart.internal.fn.CLASS.circles);
+
+
+        // get the parent of the the <circles> to add <text as siblings>
+        var g = d3.selectAll('.c3-circles-Number-of-Features-over-Time');
+        
+        //Get all circle tags
+        var circles = d3.selectAll('circle')._groups[0];; //first had [0]
+
+        //go to each circle and add a text label for it
+        for (var i = 0; i < circles.length; i++) {
+            //fetch x-coordinate
+            var x = circles[i].cx;
+            //fetch y-coordinate
+            var y = circles[i].cy;
+
+            //create and append the text tag
+            g.append('text')
+                .attr('y', y.baseVal.value) 
+                .attr('x', x.baseVal.value)
+                .attr('text-anchor', 'middle')
+                .attr('class', 'c3-text c3-text-' + i)
+                .text(labels[i]) 
+        };
+    </script>
+    {% endblock scripts %}
+    
