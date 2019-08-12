@@ -27,13 +27,20 @@ def adjust_cart(request, id):
     Adjust the contribution of the specified feature to the specified
     amount
     """
-    contribution = int(request.POST.get('contribution'))
+    contribution = request.POST.get('contribution')
+    if contribution:
+        contribution = int(contribution)
+        
+    else:
+        contribution = 0
     cart = request.session.get('cart', {})
 
     if contribution > 0:
-        cart[id] = contribution
+            cart[id] = contribution
+        
     else:
-        cart.pop(id)
+            cart.pop(id)
+    
     
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
