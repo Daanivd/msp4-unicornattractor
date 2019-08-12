@@ -10,8 +10,12 @@
                         <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
                         {% if feature.image %}
                         <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
-                        <p class="card-text">Goal: {{ feature.price }}</p>
-                        <p class="card-text font-weight-bold"> </p>
+                        <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> 
+                        {% if feature.totalContributions %}
+                            {{feature.totalContributions}} 
+                        {%else %}
+                            <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
+                        <p class="card-text font-weight-bold">Description</p>
                         <p class="card-text">{{ feature.description }}</p>
 
                         <form method="post" action="{% url 'add_to_cart' feature.id %}">
