@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                     <p class="card-text">{{ feature.description }}</p>
-                    <<p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}}
+                    <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}}
                     {%else %}
                     <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
                     <p class="feature-description">Requested by: {{ feature.author }}</p>

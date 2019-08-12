@@ -43,10 +43,12 @@
                         <p><i class="fas fa-euro-sign"></i>{{ total }}</p>
                     </div>
                 </div>
-
+                
+                {% if cart_items %}
                 <div class="float-right">
                     <a href="{% url 'checkout' %}" class="btn btn-primary float-right" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
                 </div>
+                {% endif %}
 
             </div>
         </div>
