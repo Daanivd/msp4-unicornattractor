@@ -1,53 +1,54 @@
-{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} 
-{% block headerTag %} <header id="trees"> {% endblock headerTag %} 
-{% block page_title %}CART{% endblock %}
-{% block content %}
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <h4>Feature</h4>
-                        </div>
-                        <div class="col-6">
-                            <h4>Contribution</h4>
-                        </div>
+{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block headerTag %}
+<header id="trees"> {% endblock headerTag %} {% block page_title %}CART{% endblock %} {% block content %}
+    <div class="row justify-content-center">
+        <div class="col-12">
+        <div class="card ftcard">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <h4>Feature</h4>
                     </div>
-                    <hr>
-                    <div class="row">
-                        {% for item in cart_items %}
-                        <div class="col-6" style="border-right: solid 1px #555;">
-                            {% if item.feature.image %}
-                            <div class="feature" style="background-image: url('{{ MEDIA_URL }}{{ item.feature.image }}')"></div>
-                            {% endif %}
-                            <p>{{ item.feature.featureName }}</p>
-                        </div>
-                        <div class="col-6">
-                            <form class="form-inline cart-adjust" method="post" action="{% url 'adjust_cart' item.id %}">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label><i class="fas fa-euro-sign"></i></label>
-                                    <input name="contribution" type="number" min="0" step="5" max="9999" value="{{item.contribution}}">
-                                </div>
-                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><i class="far fa-edit"></i></button>
-                            </form>
-                        </div>
-
-                        {% endfor %}
+                    <div class="col-6">
+                        <h4>Contribution</h4>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6">
-                            <p>Total:</p>
-                        </div>
-                        <div class="col-6">
-                            <p><i class="fas fa-euro-sign"></i>{{ total }}</p>
-                        </div>
-                    </div>
-
-                    <div class="float-right">
-                        <a href="{% url 'checkout' %}" class="btn btn-primary float-right" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
-                    </div>
-
                 </div>
+                <hr>
+                <div class="row">
+                    {% for item in cart_items %}
+                    <div class="col-6" style="border-right: solid 1px #555;">
+                        {% if item.feature.image %}
+                        <div class="feature" style="background-image: url('{{ MEDIA_URL }}{{ item.feature.image }}')"></div>
+                        {% endif %}
+                        <p>{{ item.feature.featureName }}</p>
+                    </div>
+                    <div class="col-6">
+                        <form class="form-inline cart-adjust" method="post" action="{% url 'adjust_cart' item.id %}" style="display:inline-block;">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label><i class="fas fa-euro-sign"></i></label>
+                                <input name="contribution" type="number" min="0" step="5" max="9999" value="{{item.contribution}}">
+                            </div>
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><i class="far fa-edit"></i></button>
+                        </form>
+                    </div>
+
+                    {% endfor %}
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Total:</p>
+                    </div>
+                    <div class="col-6">
+                        <p><i class="fas fa-euro-sign"></i>{{ total }}</p>
+                    </div>
+                </div>
+
+                <div class="float-right">
+                    <a href="{% url 'checkout' %}" class="btn btn-primary float-right" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+                </div>
+
             </div>
-{% endblock %}
+        </div>
+    </div>
+    {% endblock %}
