@@ -1,11 +1,12 @@
 {% extends "base.html" %}{% load bootstrap_tags %} {% block page_title %}TICKETS{% endblock %}{% block headerTag %}
 <header id="trees"> {% endblock headerTag %} {% block content %}
 
-    <div class="row">
-        <div class="col-12 col-md-6 offset-md-3">
+    <div class="row justify-content-center">
+        <div class="col-12">
             
             <div class="ftcard card ticketcard">
                 <div class="card-body">
+                    <p class="text-right"><a href="{% url 'all_tickets' %}" class="btn btn-default font-italic">Back to tickets</a></p>
                     <h5 class="card-title">{{ ticket.ticketName }}</h5>
                     <p class=>Published on: {{ ticket.published_date }}</p>
                     <p><span class="boldtext">Author:</span> {{ ticket.author }}</p>
@@ -14,14 +15,17 @@
                     <p class="card-text">status: {{ ticket.get_status_display }}</p>
                     {% if ticket.fix_version %}
                     <p class="card-text">Bug fixed since: {{ ticket.fixed_date }} | version: {{ ticket.fix_version }}</p>
-                    {% endif %} {% if ticket.devComments %}
-                    <p class="card-text">Developers' comments:</p>
+                    {% endif %}
+                    <p class="card-text font-weight-bold">Description</p>
+                    <p class="card-text">{{ ticket.description }}</p>
+                     {% if ticket.devComments %}
+                    <p class="card-text font-weight-bold">Developers' comments:</p>
                     <p class="devComments">{{ ticket.devComments }}</p>
                     {% endif %}
-                    <a href="{% url 'all_tickets' %}" class="btn btn-default">Back to tickets</a>
+                    
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>
-                    <a href="{% url 'ticket_upvote' ticket.id %}" class="btn btn-default">I have this problem too!</a>
-                    <p class="card-text">Upvotes: {{ ticket.upvotes }}</p>
+                    <a href="{% url 'ticket_upvote' ticket.id %}" class="btn btn-default"><i class="far fa-hand-paper"></i></a>
+                    <span class="card-text">Upvotes: {{ ticket.upvotes }}</span>
                 </div>
             </div>
             

@@ -20,8 +20,9 @@
                 <div class="card-body">
                     <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                     <p class="card-text">{{ feature.description }}</p>
-                    <p class="feature-description">Price: {{ feature.price }}</p>
-                    <p class="feature-description">Contributions so far: {{ feature.totalContributions }}</p>
+                    <<p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}}
+                    {%else %}
+                    <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
                     <p class="feature-description">Requested by: {{ feature.author }}</p>
 
                     <form method="post" action="{% url 'add_to_cart' feature.id %}">

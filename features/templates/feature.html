@@ -1,38 +1,31 @@
-{% extends "base.html" %} {% block page_title %}FEATURES{% endblock %}
-{% block headerTag %} <header id="trees"> {% endblock headerTag %}{% block content %}
-    <div class="row">
-          <div class="col-xs-10">
-        <div class="ftcard card featurecard" style="width: 18rem;">
-            <div class="card-body">
-                
-                <h5 class="card-title">{{ feature.featureName }}</h5>
-                <p><span class="boldtext">Published on:</span> {{ feature.published_date }}
-                <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
-                {% if feature.image %}-->
-                <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
-                <p class="card-text">status: {{ feature.get_status_display }}</p>
-                {% if feature.version %}
-                <p class="card-text">feature added: {{ feature.feature_added_date }} | version: {{ feature.version }}</p>
-                {% endif %}
-                {% if feature.devComments %}
-                <p class="card-text">Developer's comments: {{ feature.devComments }}</p>
-                {% endif %}
-                <p class="card-text">{{ feature.description }}</p>
-                <p><span class="boldtext">Views:</span> {{ feature.views }}</p>
-                
-                <form method="post" action="{% url 'add_to_cart' feature.id %}">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
-                            <span class="input-group-btn">
+{% extends "base.html" %} {% block page_title %}FEATURES{% endblock %} {% block headerTag %}
+<header id="trees"> {% endblock headerTag %}{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="ftcard card featurecard">
+                <div class="card-body">
+                    <p class="text-right"><a href="{% url 'all_features' %}" class="btn btn-default font-italic">Back to Features</a></p>
+                    <h5 class="card-title">{{ feature.featureName }}</h5>
+                    <p><span class="boldtext">Published on:</span> {{ feature.published_date }}
+                        <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
+                        {% if feature.image %}
+                        <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
+                        <p class="card-text">Goal: {{ feature.price }}</p>
+                        <p class="card-text font-weight-bold"> </p>
+                        <p class="card-text">{{ feature.description }}</p>
+
+                        <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input name="contribution" type="number" min="10" max="10000" class="form-control" placeholder="Contribution" required="required">
+                                <span class="input-group-btn">
                                 <button class="btn btn-success" type="submit"><i class="fas fa-cart-arrow-down"></i></button>
                             </span>
-                        </div>
-                </form>
-                <a href="/features/" class="btn btn-default">Back to features</a>
+                            </div>
+                        </form>
+                </div>
             </div>
         </div>
+
     </div>
-     
-    </div>
-{% endblock %}
+    {% endblock %}
