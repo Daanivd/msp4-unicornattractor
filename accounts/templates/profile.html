@@ -1,20 +1,71 @@
-{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %}  {% block headerTag %}
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %} {% load staticfiles %} {{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block headerTag %}
 <header id="trees"> {% endblock headerTag %} {% block content %}
-    <div class="container-fluid">
-        <div class="row no-gutters">
-            <div class="col-10 offset-1">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="infocard card ticketcard">
-                            <div class="card-body">
-                                <h5>Your Profile</h5>
-                                <p>Name: {{ profile.username }}</p>
-                                <p>E-mail: {{ profile.email }}</p>
-                            </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="infocard card ticketcard">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-3">
+                            {% if user.profile.photo %}
+                            <img class="profile-photo" alt="Profile Photo" src="/media/{{ user.profile.photo }}" style="max-width:100%"> {%else%}
+                            <img class="profile-photo" alt="Profile Photo" src="{% static 'img/profilePic.png' %}" style="max-width:100%"> {%endif%}
+                        </div>
+                        <div class="col-9 profile">
+                            <h5 class="text-capitalize">{{ user.username }}'s Profile</h5>
+                            <hr>
+
+                            <p>E-mail: {{ user.email }}</p>
+
+                            {% if user.first_name and user.last_name %}
+                            <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+                            {% else %}
+                            <p>Name: N/A</p>
+                            {%endif%} {% if user.profile.info %}
+                            <p><span>Info:<span> {{ user.profile.info }}</span></p>
+                            {% else %}
+                            <p><span>Info:<span> N/A</span></p>
+                            {% endif %}
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Submit a bug!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-10 offset-1">
+                                    <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %} {{ userForm | as_bootstrap }} {{ profileForm | as_bootstrap }}
+                                        <button type="submit" class="btn btn-info">Save edits</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
     {% endblock %}

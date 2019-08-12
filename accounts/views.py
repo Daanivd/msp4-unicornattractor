@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
-from accounts.forms import LoginForm, UserRegoForm
+from accounts.forms import LoginForm, UserRegoForm, ProfileForm, UserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from accounts.models import Profile
+from accounts.forms import UserForm, ProfileForm
 
 # Views
 def registration(request):
-    """Render the home page"""
+    """Render the registration page"""
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
@@ -18,11 +20,16 @@ def registration(request):
 
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
+                                     
+                  
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered with UPS")
+                messages.success(request, "You have successfully registered with UPS and are now logged in")
+                # return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to register your account at this time")
+                
+                
     else:
         registration_form = UserRegoForm()
     return render(request, 'registration.html', {
@@ -59,8 +66,55 @@ def logout(request):
 @login_required
 def user_profile(request):
     """The user's profile page"""
-    user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
+    user = User.objects.get(id=request.user.id)
+    profile = user.profile
+    userForm = UserForm(instance=user)
+    profileForm = ProfileForm(instance=profile)
+    edit_profile(request)
+    
+    if request.method == 'GET':
+        return render(request, 'profile.html', {'user': user, 'userForm':userForm, 'profileForm':profileForm})
+    if request.method == 'POST':
+        return redirect('edit_profile')
+        
+    
+@login_required
+def edit_profile(request):
+    """
+    Create a view that allows us to edit your profile
+    """
+    user = request.user
+    profile = user.profile
+
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        userForm = UserForm(request.POST)
+        profileForm = ProfileForm(request.POST)
+
+        # check whether it's valid:
+        if userForm.is_valid() and profileForm.is_valid():
+
+            # Save User model fields
+            user.first_name = request.POST['first_name']
+            user.last_name = request.POST['last_name']
+            user.email = request.POST['email']
+            user.save()
+
+            # Save Employee model fields
+            profile.info = request.POST['info']
+            profile.photo = request.POST['photo']
+            profile.save() 
+            
+            
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        userForm = UserForm(instance=user)
+        profileForm = ProfileForm(instance=profile)
+    
+    return render(request, 'profile.html', {'userForm': userForm, 'profileForm': profileForm})
+    
+
 
 
    

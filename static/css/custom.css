@@ -258,3 +258,9 @@ a.social:hover {
     color: #555;
 }
 
+/*PROFILE*/
+.profile {
+    text-align: left;
+    padding-left: 50px; 
+}
+
