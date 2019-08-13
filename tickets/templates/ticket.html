@@ -25,10 +25,9 @@
                     
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>
                     <a href="{% url 'ticket_upvote' ticket.id %}" class="btn btn-default"><i class="far fa-hand-paper"></i></a>
-                    <span class="card-text">Upvotes: {{ ticket.upvotes }}</span>
+                    <span class="card-text">Upvotes: {{ ticket.total_upvotes }}</span>
                 </div>
             </div>
-            
         </div>
 
 

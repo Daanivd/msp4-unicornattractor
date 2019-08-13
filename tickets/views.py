@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.utils import timezone
+from django.contrib import messages
 from .models import Ticket
 from .forms import TicketForm
 from django.contrib.auth.decorators import login_required
@@ -17,7 +18,15 @@ def all_tickets(request, pk=None):
     form = TicketForm
     create_or_edit_ticket(request)
     
-    return render(request, "tickets.html", {'tickets': tickets, 'form':form})
+    if request.method == 'GET':
+        return render(request, "tickets.html", {'tickets': tickets, 'form':form}) 
+    if request.method == 'POST':
+        #  create_or_edit_ticket(request)
+        #  return redirect('new_ticket')
+        return render(request, "tickets.html", {'tickets': tickets, 'form':form})
+        
+    
+    # return render(request, "tickets.html", {'tickets': tickets, 'form':form})
 
 @login_required    
 def ticket_detail(request, pk):
@@ -33,12 +42,13 @@ def ticket_detail(request, pk):
     To edit ticket through modal, see 'create_or_edit_ticket function below
     """
     form = TicketForm(instance=ticket)
+    
     create_or_edit_ticket(request, pk=pk)
     
     if request.method == 'GET':
         return render(request, "ticket.html", {'ticket': ticket, 'form':form}) 
     if request.method == 'POST':
-        return redirect('edit_ticket', pk=pk)
+        return redirect('ticket_detail', pk=pk)
     
       
     
@@ -51,6 +61,7 @@ def create_or_edit_ticket(request, pk=None):
     or edit a ticket depending if the ticket-ID
     is null or not
     """
+    
     ticket = get_object_or_404(Ticket, pk=pk) if pk else None
     if request.method == "POST":
         form = TicketForm(request.POST, request.FILES, instance=ticket)
@@ -61,20 +72,35 @@ def create_or_edit_ticket(request, pk=None):
             ticket.save()
             pk=ticket.pk
             
+            messages.error(request, "Thank you, your ticket has been added/edited and passed on to our development team!")   
+            
+            
             # return redirect(reverse('ticket_detail', pk))
+            return redirect('ticket_detail', pk=pk)
             
     else:
         form = TicketForm(instance=ticket)
+    # return redirect('ticket_detail', pk=pk)
+    # return render(request, "ticket.html", {'ticket': ticket, 'form':form, 'pk':pk})
+    
+    
+    
+    
+    
         
-    return render(request, "ticket.html", {'ticket': ticket, 'form':form})
     
     
 @login_required
 def ticket_upvote(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
-    ticket.upvotes += 1
-    ticket.save()
-    form = TicketForm(instance=ticket)
+    if ticket.upvotes.filter(id=request.user.id).exists():
+        ticket.upvotes.remove(request.user)
+        is_upvoted = False
+        messages.error(request, 'You already upvoted this!')
+    else:
+        ticket.upvotes.add(request.user)
+        is_upvoted = True
     
-    return render(request, "ticket.html", {'ticket': ticket, 'form':form})
+    return redirect('ticket_detail', pk=pk)
+            
     
