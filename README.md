@@ -11,45 +11,54 @@ Users are also able to report any bugs with the app on the website in the form o
 
 
 ## UX
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+-Features: Users can suggest new features. After submitting a feature suggestion, developers will look if it the feature is feasible and how much it would cost to develop (status=awaiting pricing). If the feature is feasible, it will be posted
+            on the website as a feature users can contribute to (status=price set). Once the goal price has been obtained through the developers they will start developing it (status=in development), and once it is developed, the feature is added to the app (status=feature added)
+            For only front-end users, the features in status 'price is set' are visible as these are the only ones they can contribute to.
+-Ticket/Bugs: If a user has found a bug with the app, they can report it on the website. User can submit a form to report the bug, edit it later or others can add to it. they can also check up the particular ticket for updates from the developers.          
+- New User: Interested in Unicorns and their plight has found the UPS and their app. That person goes onto the website to see what they can do to help. Here they see they can create
+            create a user account. From here they can make contributions in the form of a donation or supporting potential new features. They can also report bugs they have had with the app
+            through submitting a ticket.
+- User with account: Here the user can be an active member, participating in improving the app by reporting known bugs or suggesting new features. 
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
 
-As a user type, I want to perform an action, so that I can achieve a goal.
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+# Wireframes
+!!!!Please see [here]() to view the wireframes.
+
+
 
 ## Features
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
 
 ### Existing Features
-Register - Allows a person to register as a user, a user is automatically logged in after registering
-Login - Allows user to login using username or emailaddress, and password
-Reset password - Allows user who have forgotten their password to get an email with a link to reset it
-Request feature - Allows user to fill in form to request a new feature
-View feature(s) - Allows user to view list of features or one specific feature (only features that funds are being raised for, for development)
-Contribute to new feature - Allows user to contribute to a feature by adding it to their cart and pay by credit card using the Stripe Payment platform. 
-Add to cart - Allows user to add their contribution to their cart.
-Checkout - Allows user to pay for everything in their cart by filling out a form with their address and credit card details. Uses the Stripe Payment platform. 
-Report a bug - Allows user to report a bug he/she experiences with the app in the form of a ticket. 
-View bug(s) (tickets) - See list of bugs or one specific bug users have reported 
-Search bugs (tickets) - The user can type in text in an input field to search bugs
-Edit ticket - A user can alter the exisiting information of an existing ticket. 
-Upvote ticket - If a user has experienced a bug and someone else has already reported it, he/she can upvote the corresponding ticket to indicate this. 
+- Register - Allows a person to register as a user, a user is automatically logged in after registering
+- Login - Allows user to login using username or emailaddress, and password
+- Reset password - Allows user who have forgotten their password to get an email with a link to reset it
+- Request feature - Allows user to fill in form to request a new feature
+- View feature(s) - Allows user to view list of features or one specific feature (only features that funds are being raised for, for development)
+- Contribute to new feature - Allows user to contribute to a feature by adding it to their cart and pay by credit card using the Stripe Payment platform. 
+- Add to cart - Allows user to add their contribution to their cart.
+- Checkout - Allows user to pay for everything in their cart by filling out a form with their address and credit card details. Uses the Stripe Payment platform. 
+- Report a bug - Allows user to report a bug he/she experiences with the app in the form of a ticket. 
+- View bug(s) (tickets) - See list of bugs or one specific bug users have reported 
+- Search bugs (tickets) - The user can type in text in an input field to search bugs
+- Edit ticket - A user can alter the exisiting information of an existing ticket. 
+- Upvote ticket - If a user has experienced a bug and someone else has already reported it, he/she can upvote the corresponding ticket to indicate this. 
 
 ### Django Apps
-Accounts - for users to register and login
-Cart - for users to add items (features awaiting development if sufficient funds have been raised) to their cart 
-Checkout - for users to pay for their items using the Stripe Payment Platform. This also stores orders in the backend once payment has been done. 
-Features - View and suggest (new) features
-Home - Functions to view the home page, including statistics on how often new features are developed and time it takes to resolve bugs.
-Search - Search tickets (reported bugs) based on a query
-Tickets - Create and edit tickets to report on bugs experienced with the apps
+- Accounts - for users to register and login
+- Cart - for users to add items (features awaiting development if sufficient funds have been raised) to their cart 
+- Checkout - for users to pay for their items using the Stripe Payment Platform. This also stores orders in the backend once payment has been done. 
+- Features - View and suggest (new) features
+- Home - Functions to view the home page, including statistics on how often new features are developed and time it takes to resolve bugs.
+- Search - Search tickets (reported bugs) based on a query
+- Tickets - Create and edit tickets to report on bugs experienced with the apps
 
 
 ### Features Left to Implement
 - Strong Customer Authentication (SCA) for Stripe for near future (for payments in Europe)
 - Blog with updates on the Unicorn Preservation Society
-- More stats on bugs/new features and/or Unicorn sightings.
+- More stats on bugs/new features and/or Unicorn sightings
+- More options on viewing different kind of features (not just with status=price set)
 
 
 ## Technologies Used
@@ -77,7 +86,9 @@ Tickets - Create and edit tickets to report on bugs experienced with the apps
 
 
 ## Testing
-Testing was done manually, by the developer himself and by a third party, and also for the automatic Django Test Suite.
+Testing was done manually, by the developer himself and by a third party (person with no developer background), and also using the automatic Django Test Suite.
+
+
 
 ### Automatic Testing
 The plugin **Coverage** was used to 
@@ -86,6 +97,14 @@ with 'test_xxxxx.py' (eg. test_views.py). The continuous integration service pro
 
 [![Build Status](https://travis-ci.org/Daanivd/msp4-unicornattractor.svg?branch=master)](https://travis-ci.org/Daanivd/msp4-unicornattractor)
 
+Location of test files:
+- Accounts App: test_apps.py, test_backends.py, test_forms.py, test_views.py
+- Cart App: test_apps.py, test_views.py
+- Checkout App: test_apps.py, test_models.py, test_views.py
+- Features App: test_apps.py, test_models.py, test_views.py
+- Home App: test_apps.py, test_views.py
+- Tickets App: test_apps.py, test_models.py, test_views.py
+
 The tests in general go through the steps a user would have to do. A test would have to create instances of users, features and tickets where necessary and then 
 subsequently the created user would perform specific actions such as logging in, creating a feature, editing an exisiting ticket or making a payment. Then the test
 would see if the correct template, or message was returned. Defensive design was implemented in which a test would purposefully perform an action without logging in,
@@ -93,6 +112,10 @@ or filling in a form in a faulty manner, to see if any user-errors would give th
 
 Especially important were the payment tests, using the Stripe-functionality. Using the credit card details and tokens provided by Stripe for testing, as many user scenarios
 as possible were tested (as recommended by Stripe). 
+
+
+
+
 
 Test files can be performed through the CLI, using the following command:
 `coverage run --source='app-name' manage.py test`
@@ -112,31 +135,17 @@ Correct display of the website was checked in the following browsers:
   - Opera
 
 ### Testing different devices
-Testing of display on various device was done using the model options given by the Chrome Devtools, including iPhone 5,6,7,8,X, iPad, iPad Pro, Google Pixel 2 and Galaxy S5 and desktop experience on computer.
-
-
-
-  
-
-  
- 
-
-
-
-
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
-Contact form:
-Go to the "Contact Us" page
-Try to submit the empty form and verify that an error message about the required fields appears
-Try to submit the form with an invalid email address and verify that a relevant error message appears
-Try to submit the form with all inputs valid and verify that a success message appears.
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
+Testing of display on various device was done using the model options given by the Chrome Devtools, including:
+- Desktop experience (desktop computer or laptop)
+- Galaxy S5
+- Pixel 2
+- Pixel 2 XL
+- Iphone 5/SE
+- Iphone 6/7/8
+- Iphone 6/7/8 plus
+- Iphone XL
+- Ipad
+- Ipad Pro
 
 
 ##Deployment
@@ -167,10 +176,11 @@ If this section grows too long, you may want to split it off into a separate fil
 ### Travis Continuous Testing (if needed, after deployment through Heroku or Cloud9)
 1. Create/log into account on travis-ci.org
 2. Link github repository
-3. Set environmental variables, but instead of 'DATABASE_URL' create TRAVIS (empty variable)
+3. Set environmental variables, but instead of 'DATABASE_URL' variable create TRAVIS variable (empty variable).
 
-
-
+##DEVELOPER INSTRUCTIONS
+Unicorn Preservation Society developers working with this system need to regularly check for new features by logging in as an admin. If new features have been suggested, 
+developers need to decide on a price. During each status change the 
 
 
 ## Credits
@@ -193,6 +203,11 @@ The GIF's used as backgrounds on the home page were made by the developer, Danie
 
 ### Acknowledgements
 Various code was inspired by the following links:
+[Change form field name on form](https://stackoverflow.com/questions/36905060/how-can-i-change-the-modelform-label-and-give-it-a-custom-name)
+[Django messages Alert box](https://pythonprogramming.net/messages-django-tutorial/)
+[Extending user model with profile](https://docs.djangoproject.com/en/2.2/topics/auth/customizing/)
+[Edit two models in one form](https://stackoverflow.com/questions/26184277/edit-two-models-in-one-form)
+[Create profile on registration](https://stackoverflow.com/questions/1909617/django-registration-and-user-profile-creation)
 [IntegerFields with min/max values](https://stackoverflow.com/questions/849142/how-to-limit-the-maximum-value-of-a-numeric-field-in-a-django-model)
 [Display custom name instead of Object in models](https://stackoverflow.com/questions/33784129/django-display-model-object-in-the-admin-page-instead-of-object-title/33784238)
 [Testing for redirects](https://stackoverflow.com/questions/21215035/django-test-always-returning-301)
