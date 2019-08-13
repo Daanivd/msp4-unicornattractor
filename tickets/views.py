@@ -18,12 +18,12 @@ def all_tickets(request, pk=None):
     form = TicketForm
     create_or_edit_ticket(request)
     
-    if request.method == 'GET':
-        return render(request, "tickets.html", {'tickets': tickets, 'form':form}) 
-    if request.method == 'POST':
-        #  create_or_edit_ticket(request)
-        #  return redirect('new_ticket')
-        return render(request, "tickets.html", {'tickets': tickets, 'form':form})
+    # if request.method == 'GET':
+    return render(request, "tickets.html", {'tickets': tickets, 'form':form}) 
+    # if request.method == 'POST':
+    #     #  create_or_edit_ticket(request)
+    #     #  return redirect('new_ticket')
+    #     return render(request, "tickets.html", {'tickets': tickets, 'form':form})
         
     
     # return render(request, "tickets.html", {'tickets': tickets, 'form':form})
