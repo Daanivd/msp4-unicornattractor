@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .models import Feature
 from .forms import featureForm
 from django.contrib.auth.decorators import login_required
@@ -37,6 +38,7 @@ def request_feature(request, pk):
                     feature = form.save(commit=False)
                     feature.author = request.user
                     feature.save()
+        messages.error(request, "Thank you, your suggested feature has been passed on to our developer team!")            
        
 
     
