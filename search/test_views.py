@@ -14,4 +14,4 @@ class TestSearch(TestCase):
         self.client.post
         page = self.client.get("/search/?query=unicorn",  follow=True)
         self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "tickets.html")
+        self.assertTemplateUsed(page, "search_results.html")

@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Feature
+from .forms import featureForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -29,10 +30,20 @@ class TestViews(TestCase):
                                                         'featureName': 'test feature',
                                                     }, 
                                                         follow=True)
-                                   
-        
         self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "features.html")                                                
+        self.assertTemplateUsed(page, "features.html")     
+        
+    def test_feature_form(self):
+        user = User.objects.create_user(username='test_user', password='password')
+        self.client.login(username='test_user', password='password')
+        featureform = featureForm(data={'featureName': "testFeature", 'description': "testDescription"})
+        self.assertTrue(featureform.is_valid())
+        
+    def test_feature_form_missing_field(self):
+        user = User.objects.create_user(username='test_user', password='password')
+        self.client.login(username='test_user', password='password')
+        featureform = featureForm(data={'ticketName': "", 'description': "testDescription"})
+        self.assertFalse(featureform.is_valid())    
         
         
     
