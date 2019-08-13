@@ -17,7 +17,7 @@ class TestViews(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), 'You have successfully registered with UPS')
         self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "registration.html")
+        self.assertTemplateUsed(page, "index.html")
         
 
     def test_registration_when_user_is_already_authenticated(self):
@@ -85,6 +85,13 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/profile/", follow=True)
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "profile.html")
+        
+    def test_edit_profile(self):
+        user = User.objects.create_user(username='test_user', password='password')
+        self.client.login(username='test_user', password='password')
+        page = self.client.post('account/edit_profile/', {'first_name': 'testName', 'last_name':'test lastname', 'email': 'test@test.com', 'info':'testinfo' })
+
+      
         
         
         

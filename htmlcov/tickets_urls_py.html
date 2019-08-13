@@ -86,8 +86,8 @@
 <p id="t4" class="stm run hide_run"><span class="nam">urlpatterns</span> <span class="op">=</span> <span class="op">[</span><span class="strut">&nbsp;</span></p>
 <p id="t5" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^$'</span><span class="op">,</span> <span class="nam">all_tickets</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'all_tickets'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t6" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/$'</span><span class="op">,</span> <span class="nam">ticket_detail</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'ticket_detail'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t7" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^new/$'</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'new_ticket'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t8" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/edit/$'</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'edit_ticket'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t7" class="pln">    <span class="com"># url(r'^new/$', create_or_edit_ticket, name='new_ticket'),</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/edit/$'</span><span class="op">,</span> <span class="nam">create_or_edit_ticket</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'new_ticket'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t9" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^(?P&lt;pk>\d+)/upvote/$'</span><span class="op">,</span> <span class="nam">ticket_upvote</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'ticket_upvote'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t10" class="pln"><span class="op">]</span><span class="strut">&nbsp;</span></p>
 
@@ -100,7 +100,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.3</a>,
-            created at 2019-08-06 11:50
+            created at 2019-08-13 15:50
         </p>
     </div>
 </div>
