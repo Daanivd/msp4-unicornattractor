@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from django.db.models.signals import post_save
 from accounts.forms import LoginForm, UserRegoForm, ProfileForm, UserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -17,6 +18,7 @@ def registration(request):
 
         if registration_form.is_valid():
             registration_form.save()
+            
 
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
@@ -24,8 +26,11 @@ def registration(request):
                   
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered with UPS and are now logged in")
-                # return redirect(reverse('index'))
+                messages.success(request, "You have successfully registered with UPS")
+                # Profile.objects.get_or_create(info=)
+                # post_save.connect(Profile, sender=User)
+                
+                return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to register your account at this time")
                 
@@ -68,6 +73,9 @@ def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(id=request.user.id)
     profile = user.profile
+    # profile = user.profile.objects.get_or_create(instance=user)
+    
+        
     userForm = UserForm(instance=user)
     profileForm = ProfileForm(instance=profile)
     edit_profile(request)
@@ -76,6 +84,8 @@ def user_profile(request):
         return render(request, 'profile.html', {'user': user, 'userForm':userForm, 'profileForm':profileForm})
     if request.method == 'POST':
         return redirect('edit_profile')
+        
+  
         
     
 @login_required
@@ -106,8 +116,7 @@ def edit_profile(request):
             profile.save() 
             
             
-
-    # if a GET (or any other method) we'll create a blank form
+    # if a GET (or any other method): create a blank form
     else:
         userForm = UserForm(instance=user)
         profileForm = ProfileForm(instance=profile)
