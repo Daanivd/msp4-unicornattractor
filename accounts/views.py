@@ -27,9 +27,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered with UPS")
-                # Profile.objects.get_or_create(info=)
-                # post_save.connect(Profile, sender=User)
-                
+            
                 return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to register your account at this time")
