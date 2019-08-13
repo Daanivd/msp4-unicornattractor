@@ -35,7 +35,12 @@ def ticket_detail(request, pk):
     form = TicketForm(instance=ticket)
     create_or_edit_ticket(request, pk=pk)
     
-    return render(request, "ticket.html", {'ticket': ticket, 'form':form})   
+    if request.method == 'GET':
+        return render(request, "ticket.html", {'ticket': ticket, 'form':form}) 
+    if request.method == 'POST':
+        return redirect('edit_ticket', pk=pk)
+    
+      
     
     
 
@@ -61,7 +66,7 @@ def create_or_edit_ticket(request, pk=None):
     else:
         form = TicketForm(instance=ticket)
         
-    return render(request, "tickets.html", {'ticket': ticket, 'form':form})
+    return render(request, "ticket.html", {'ticket': ticket, 'form':form})
     
     
 @login_required
