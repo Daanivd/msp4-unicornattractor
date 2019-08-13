@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', ticket_detail, name='ticket_detail'),
     # url(r'^new/$', create_or_edit_ticket, name='new_ticket'),
     url(r'^(?P<pk>\d+)/edit/$', create_or_edit_ticket, name='new_ticket'),
-    url(r'^(?P<pk>\d+)/upvote/$', ticket_upvote, name='ticket_upvote')
+    url(r'^(?P<pk>\d+)/upvote/$', ticket_upvote, name='ticket_upvote'),
+    
 ]
