@@ -21,7 +21,6 @@ class Ticket(models.Model):
     fix_version = models.CharField(max_length=20, blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS, default=1)
     upvotes = models.ManyToManyField(User, blank=True, related_name="upvoted_tickets")
-    # upvotes = models.IntegerField(default=0)
     devComments = models.TextField(blank=True, null=True)
 
     def __str__(self):

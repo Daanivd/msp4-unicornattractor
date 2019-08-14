@@ -15,16 +15,15 @@ class Order(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return "Order {0}-{1}-{2}".format(self.id, self.date, self.full_name)
+        return 'Order {0}-{1}-{2}'.format(self.id, self.date, self.full_name)
 
 
 class OrderLineItem(models.Model):
-    user = models.ForeignKey(User, null=False, blank=True, related_name="user-contribution+")
+    user = models.ForeignKey(User, null=False, blank=True, related_name='user-contribution+')
     order = models.ForeignKey(Order, null=False)
     product = models.ForeignKey(Feature, null=False)
     contribution = models.IntegerField(blank=False)
     
-
     def __str__(self):
-        return "{0} {1} @ {2}".format(
+        return '{0} {1} @ {2}'.format(
             self.contribution, self.product.featureName, self.product.price, self.user.username)

@@ -1,16 +1,12 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Login Page{% endblock %} {% block page_heading %}Login{% endblock %} {% block headerTag %}
+<!--HEADER-->
 <header id="trees"> {% endblock headerTag %}{% block content %}
-    <div class="container-fluid">
-        <div class="row no-gutters">
-            <div class="col-10 offset-1">
-                <div class="row no-gutters">
-                    <form class="login col-md-6 offset-md-3 col-12" method="POST">
-                        {% csrf_token %} {{ login_form | as_bootstrap }}
-                        <button type="submit">Login</button>
-                        <p class="reset"><a href="{% url 'password_reset' %}" style="color: #fafafa;">Reset Password</a></p>
-                    </form>
-                </div
-            </div>
-        </div>
+
+    <div class="row no-gutters">
+        <form class="login col-md-6 offset-md-3 col-12" method="POST">
+            {% csrf_token %} {{ login_form | as_bootstrap }}
+            <button type="submit">Login</button>
+            <p class="reset"><a href="{% url 'password_reset' %}" style="color: #fafafa;">Reset Password</a></p>
+        </form>
     </div>
     {% endblock %}

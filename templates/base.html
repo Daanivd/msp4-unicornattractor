@@ -25,14 +25,13 @@
 </head>
 
 <body>
-
     {% block headerTag %} {% endblock headerTag %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 offset-1 intro">
                 <div class="row">
+                    <!--NAVIGATION-->
                     <nav class="col-12 navbar navbar-expand-lg navbar-dark">
-
                         <a class="col-2 navbar-brand" href="{% url 'index' %}">Unicorn Preservation Society</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -82,20 +81,14 @@
                         </div>
                     </nav>
                 </div>
-
-                {% if messages %} {% for message in messages %}
-                <script>
-                    alert("{{message}}");
-                </script>
-                {% endfor %} {% endif %} {% block content %}{% endblock content %}
+                {% block content %}{% endblock content %}
             </div>
         </div>
         </header>
 
-
         {% block home %}{% endblock home %}
 
-
+        <!--FOOTER-->
         <footer id="footer">
             <div class="container-fluid">
                 <div class="row">
@@ -142,15 +135,18 @@
             </div>
         </footer>
 
+        <!--MESSAGE ALERT-->
+        {% if messages %} {% for message in messages %}
+        <script>
+            alert("{{message}}");
+        </script>
+        {% endfor %} {% endif %} {% block scripts %} {% endblock scripts %}
 
-        {% block scripts %} {% endblock scripts %}
+
         <script type="text/javascript">
             $('#modal').on('shown.bs.modal', function() {
                 $('#myInput').trigger('focus')
             });
         </script>
-
-
 </body>
-
 </html>

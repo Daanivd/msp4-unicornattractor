@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 from features.models import Feature
 
 class TestCheckoutModel(TestCase):
-    
     def test_OrderLineItem_as_a_string(self):
             user = User.objects.create_user(username='test_user', password='password')
             feature = Feature(featureName="Test Feature", price=500, author=user)
             orderlineitem = OrderLineItem(user=user, product = feature, contribution='50')
             self.assertEqual("50 Test Feature @ 500", str(orderlineitem))
+            
             
     def test_Order_as_a_string(self):
         user = User.objects.create_user(username='test_user', password='password')

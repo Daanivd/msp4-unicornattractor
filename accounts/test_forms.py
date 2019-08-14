@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 # Create your tests here.
 class TestRegoForm(TestCase):
-    
     def test_email_address_is_unique_true(self):
         User.objects.create_user(email='email@email.com', username='test_username', password='password')
         form = UserRegoForm({'username': 'test_username2','password1': 'password', 'password2': 'password', 'email':'email@email.com'})
@@ -14,7 +13,7 @@ class TestRegoForm(TestCase):
     
     def test_create_account_with_only_a_username(self):
         form = UserRegoForm({'username': 'test_username'})
-        self.assertFalse(form.is_valid()) #Passes
+        self.assertFalse(form.is_valid())
         
     def test_create_account_with_no_username(self):
         form = UserRegoForm({'password1': 'password', 'password2': 'password'})

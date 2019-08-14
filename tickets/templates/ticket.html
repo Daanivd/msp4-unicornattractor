@@ -1,9 +1,9 @@
 {% extends "base.html" %}{% load bootstrap_tags %} {% block page_title %}TICKETS{% endblock %}{% block headerTag %}
-<header id="trees"> {% endblock headerTag %} {% block content %}
 
+<!--HEADER-->
+<header id="trees"> {% endblock headerTag %} {% block content %}
     <div class="row justify-content-center">
         <div class="col-12">
-            
             <div class="ftcard card ticketcard">
                 <div class="card-body">
                     <p class="text-right"><a href="{% url 'all_tickets' %}" class="btn btn-default font-italic">Back to tickets</a></p>
@@ -22,7 +22,6 @@
                     <p class="card-text font-weight-bold">Developers' comments:</p>
                     <p class="devComments">{{ ticket.devComments }}</p>
                     {% endif %}
-                    
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>
                     <a href="{% url 'ticket_upvote' ticket.id %}" class="btn btn-default"><i class="far fa-hand-paper"></i></a>
                     <span class="card-text">Upvotes: {{ ticket.total_upvotes }}</span>
@@ -53,12 +52,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
             </div>
         </div>
-
     </div>
     {% endblock %}

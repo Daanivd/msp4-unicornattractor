@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def view_cart(request):
     """A View that renders the cart contents page"""
-    return render(request, "cart.html")
+    return render(request, 'cart.html')
+
 
 @login_required
 def add_to_cart(request, id):
@@ -20,6 +21,7 @@ def add_to_cart(request, id):
   
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+
 
 @login_required
 def adjust_cart(request, id):
@@ -40,7 +42,6 @@ def adjust_cart(request, id):
         
     else:
             cart.pop(id)
-    
-    
+            
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))

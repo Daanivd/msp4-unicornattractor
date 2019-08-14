@@ -13,7 +13,7 @@ def registration(request):
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
-    if request.method == "POST":
+    if request.method == 'POST':
         registration_form = UserRegoForm(request.POST)
 
         if registration_form.is_valid():
@@ -26,23 +26,23 @@ def registration(request):
                   
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered with UPS")
+                messages.success(request, 'You have successfully registered with UPS')
             
                 return redirect(reverse('index'))
             else:
-                messages.error(request, "Unable to register your account at this time")
+                messages.error(request, 'Unable to register your account at this time')
                 
                 
     else:
         registration_form = UserRegoForm()
     return render(request, 'registration.html', {
-        "registration_form": registration_form})  
+        'registration_form': registration_form})  
     
 def login(request):
     """Return a login page"""
     if request.user.is_authenticated:
         return redirect(reverse('index'))
-    if request.method == "POST":
+    if request.method == 'POST':
         login_form = LoginForm(request.POST)
 
         if login_form.is_valid():
@@ -54,7 +54,7 @@ def login(request):
                 auth.login(user=user, request=request)
                 return redirect(reverse('index'))
             else:
-                login_form.add_error(None, "Your username or password is incorrect")
+                login_form.add_error(None, 'Your username or password is incorrect')
     else:
         login_form = LoginForm()
     return render(request, 'login.html', {'login_form': login_form})   
@@ -63,7 +63,7 @@ def login(request):
 def logout(request):
     """Log the user out"""
     auth.logout(request)
-    messages.success(request, "You have successfully been logged out")
+    messages.success(request, 'You have successfully been logged out')
     return redirect(reverse('index'))
     
 @login_required
@@ -112,7 +112,6 @@ def edit_profile(request):
             profile.info = request.POST['info']
             profile.photo = request.POST['photo']
             profile.save() 
-            
             
     # if a GET (or any other method): create a blank form
     else:

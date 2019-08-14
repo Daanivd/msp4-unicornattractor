@@ -4,7 +4,6 @@ from .apps import HomeConfig
 
 
 class TestHomeConfig(TestCase):
-
     def test_app(self):
-        self.assertEqual("home", HomeConfig.name)
-        self.assertEqual("home", apps.get_app_config("home").name)
+        self.assertEqual('home', HomeConfig.name)
+        self.assertEqual('home', apps.get_app_config('home').name)

@@ -11,10 +11,10 @@ import stripe
 # Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
 
-
 @login_required()
 def checkout(request):
-    if request.method == "POST":
+    """Get cart-items and proceed to checkout and pay using Stripe"""
+    if request.method == 'POST':
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
 
@@ -22,7 +22,8 @@ def checkout(request):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
+            
+            """Get cart items and save order_line_item"""
             cart = request.session.get('cart', {})
             total = 0
             for id, contribution in cart.items():
@@ -34,19 +35,19 @@ def checkout(request):
                     contribution = contribution,
                     user = request.user
                 )
-                
                 order_line_item.save()
             
+            """Payment through Stripe"""
             try:
                 customer = stripe.Charge.create(
                     amount=int(total * 100),
-                    currency="EUR",
+                    currency='EUR',
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id']
                 )
             
                 if customer.paid:
-                    messages.error(request, "Thank you for your contribution")
+                    messages.error(request, 'Thank you for your contribution')
                     request.session['cart'] = {}
                     
                     for id, contribution in cart.items():
@@ -55,16 +56,16 @@ def checkout(request):
                         
                     return redirect(reverse('all_features'))
                 else:
-                    messages.error(request, "Unable to take payment")
+                    messages.error(request, 'Unable to take payment')
                     
             except stripe.error.CardError:
-                messages.error(request, "Your card was declined!")      
+                messages.error(request, 'Your card was declined!')      
                 
         else:
             print(payment_form.errors)
-            messages.error(request, "We were unable to take a payment with that card!")
+            messages.error(request, 'We were unable to take a payment with that card!')
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, 'checkout.html', {'order_form': order_form, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})

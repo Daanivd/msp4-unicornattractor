@@ -18,13 +18,15 @@ def index(request):
     devFeatures = Feature.objects.filter(status=3)
     tickets = Ticket.objects.all()
   
+    """See functions below"""
     bugData = get_bugData()
     featureDevData, featureVarData = get_featureData()
     
-    return render(request, "index.html", {"features": features, 'productFeatures': productFeatures, "devFeatures": devFeatures, 'tickets': tickets, 'featureDevData': featureDevData, 'featureVarData':featureVarData, 'bugData': bugData})
+    return render(request, 'index.html', {'features': features, 'productFeatures': productFeatures, 'devFeatures': devFeatures, 'tickets': tickets, 'featureDevData': featureDevData, 'featureVarData':featureVarData, 'bugData': bugData})
 
 
 def get_bugData():
+    """To get the correct data regarding bugs that have been resolved and how long that has taken"""
     bugs =  Ticket.objects.filter(status=3) 
     bugs_list = []
     for ticket in bugs:
@@ -41,10 +43,11 @@ def get_bugData():
         bugT.append(bug)
         
     bugData = [bugT, count_list]     
-    
     return bugData
     
-def get_featureData():  
+    
+def get_featureData():
+    """To get data on how often new features are developed"""
     features = Feature.objects.filter(status=4).order_by('feature_added_date')
     flist = []
     dlist = ['Timeline',]

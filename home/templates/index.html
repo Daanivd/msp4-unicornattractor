@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="{% static 'C3/c3.css' %}">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript" src="{% static 'C3/c3.min.js' %}"></script>
-<!--<script type="text/javascript" src="{% static 'C3/charts.js' %}"></script>-->
 {% endblock head_js %} {% block page_title %}HOME{% endblock %} {% block headerTag %}
+<!--HEADER-->
 <header id="GIF">{% endblock headerTag %} {% block content %}
     <div class="row">
         <div class="card ftcard">
@@ -13,17 +13,14 @@
             </div>
         </div>
     </div>
-    {% endblock content %} 
+    {% endblock content %} {% block home %}
     
-    {% block home %}
     <!--SUPPORT US-->
     <section id="features">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-10 offset-1">
                     <div class="row">
-
-
                         <div class="col-12">
                             <div class="infocard card">
                                 <div class="card-body">
@@ -74,7 +71,6 @@
                                                 </div>
                                             </div>
 
-
                                             {%else%}
                                             <div class="carousel-item">
                                                 <div class="row">
@@ -103,9 +99,9 @@
                                             {%endif%} {%endif%} {% endfor %}
                                         </div>
                                         <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="width: 100%;">
-                                                        <span><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <span class="sr-only">Next</span>
-                                                     </a>
+                                                                <span><i class="fa fa-arrow-circle-right"></i></span>
+                                                                <span class="sr-only">Next</span>
+                                                           </a>
                                         </div>
                                     </div>
                                 </div>
@@ -119,9 +115,9 @@
                                     <div class="row no-gutters">
                                         <div class="col-1">
                                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 100%;">
-                                                            <span><i class="fa fa-arrow-circle-left"></i></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
+                                                <span><i class="fa fa-arrow-circle-left"></i></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
                                         </div>
                                         <div class="col-10 carousel-inner">
                                             {% for feature in productFeatures %} {% if forloop.counter0 == 0 %}
@@ -179,9 +175,9 @@
 
                                         </div>
                                         <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="width: 100%;">
-                                                        <span></span><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <span class="sr-only">Next</span>
-                                                     </a>
+                                                                <span></span><i class="fa fa-arrow-circle-right"></i></span>
+                                                                <span class="sr-only">Next</span>
+                                                           </a>
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +190,7 @@
     </div>
 
 
-    <!--Statistics on feature developement and bug-fixing-->
+    <!--STATISTICS ON BUG FIXING AND FEATURE DEVELOPMENT-->
     <section id="stats">
         <div class="container-fluid">
             <div class="row">
@@ -232,11 +228,11 @@
             </div>
         </div>
     </section>
-{% endblock home %}
-
-{% block scripts %} 
+    {% endblock home %} 
+    
+    <!--STATISTICS GRAPHS-->
+    {% block scripts %}
     <script>
-        
         var chart = c3.generate({
             bindto: '#chart',
             point: {
@@ -258,11 +254,11 @@
                     type: 'timeseries',
                     min: '2017-01-01 00:00:00',
                     max: new Date().getFullYear() + '-12-31 23:59:59',
-                    padding: {top: 0, bottom: 0},
+                    padding: { top: 0, bottom: 0 },
                     tick: {
                         format: '%Y-%m'
                     },
-        
+
                 },
                 y: {
                     tick: {
@@ -290,7 +286,7 @@
                     tick: {
 
                     }
-                    
+
                 },
                 y: {
                     tick: {
@@ -312,15 +308,12 @@
 
         });
 
-
-
         var labels = {{ featureVarData | safe }};
         var series = chart.internal.main.selectAll('.' + c3.chart.internal.fn.CLASS.circles);
 
-
         // get the parent of the the <circles> to add <text as siblings>
         var g = d3.selectAll('.c3-circles-Number-of-Features-over-Time');
-        
+
         //Get all circle tags
         var circles = d3.selectAll('circle')._groups[0];; //first had [0]
 
@@ -333,12 +326,11 @@
 
             //create and append the text tag
             g.append('text')
-                .attr('y', y.baseVal.value) 
+                .attr('y', y.baseVal.value)
                 .attr('x', x.baseVal.value)
                 .attr('text-anchor', 'middle')
                 .attr('class', 'c3-text c3-text-' + i)
-                .text(labels[i]) 
+                .text(labels[i])
         };
     </script>
     {% endblock scripts %}
-    

@@ -28,7 +28,6 @@ class Feature(models.Model):
     devComments = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS, default=1)
     
-
     def __str__(self):
         return self.featureName
         

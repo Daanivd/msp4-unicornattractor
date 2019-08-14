@@ -13,13 +13,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import dj_database_url
 
-if "TRAVIS" in os.environ:
-    if "DATABASE_URL" in os.environ:
-        print("TRAVIS/Database URL found --> Not importing env.py")
+if 'TRAVIS' in os.environ:
+    if 'DATABASE_URL' in os.environ:
+        print('TRAVIS/Database URL found --> Not importing env.py')
 else: 
-    print("TRAVIS/Database URL not found --> Importing env.py")
+    print('TRAVIS/Database URL not found --> Importing env.py')
     import env
-
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -33,11 +32,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if "DATABASE_URL" in os.environ:
-    print("Database URL not found. DEBUG = False")
+if 'DATABASE_URL' in os.environ:
+    print('Database URL not found. DEBUG = False')
     DEBUG = False
 else:
-    print("Database URL not found. DEBUG = True")
+    print('Database URL not found. DEBUG = True')
     DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOST'),
@@ -100,10 +99,10 @@ WSGI_APPLICATION = 'unicornAttractor.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-if "DATABASE_URL" in os.environ:
+if 'DATABASE_URL' in os.environ:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
-    print("Database URL not found. Using SQLite instead")
+    print('Database URL not found. Using SQLite instead')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -153,7 +152,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-if "DATABASE_URL" in os.environ:
+if 'DATABASE_URL' in os.environ:
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000'
@@ -161,8 +160,8 @@ if "DATABASE_URL" in os.environ:
     
     AWS_STORAGE_BUCKET_NAME = 'unicornattractor'
     AWS_S3_REGION_NAME = 'eu-central-1'
-    AWS_ACCESS_KEY_ID = os.environ.get("AWS_SECRET_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_SECRET_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     
@@ -177,7 +176,7 @@ if "DATABASE_URL" in os.environ:
     
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'media'), )
+    
 else:
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
@@ -186,9 +185,8 @@ else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     
 
-MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_ADDRESS')

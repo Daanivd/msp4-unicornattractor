@@ -38,7 +38,7 @@ def request_feature(request, pk):
                     feature = form.save(commit=False)
                     feature.author = request.user
                     feature.save()
-        messages.error(request, "Thank you, your suggested feature has been passed on to our developer team!")            
+        messages.error(request, 'Thank you, your suggested feature has been passed on to our developer team!')            
        
 
     
