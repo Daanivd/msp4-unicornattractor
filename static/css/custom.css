@@ -1,65 +1,12 @@
 /*GENERAL*/
+html,body
+{
+    overflow-x: hidden; 
+}
+
 body {
     color: #fafafa;
-}
-
-.container-fluid {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-/*NAVIGATION*/
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255,255,255,1);
-}
-
-li.nav-item a.dropdown-item {
-    color: #555;
-}
-
-li.nav-item a {
-   color: #fafafa; 
-}
-
-.shoppingcart {
-    padding-left: 10px;
-    padding-top: 8px;
-
-}
-
-/*FOOTER*/
-footer {
-        background-image: url('/static/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
-        background-position: center;
-        background-size: cover;
-        width: 100vw;
-        height: auto; 
-        }    
-
-#contactform {
-    margin-top: 40px;
-    height: 80%;
-    color: #fafafa;
-    
-}  
-.address {
-    margin-top: 40px;
-    height: 30%;
-    width: auto;
-}      
-     
-
-.social {
-    text-align: center;
-    font-size: 60px;
-    color: #fafafa;
-    margin-top: 50px;
-    margin-bottom: 20px
-}
-
-a.social:hover {
-    color: #fafafa;
-    opacity: 0.5;
+    font-family: 'Roboto', sans-serif;
 }
 
 /*BACKGROUND IMAGES*/
@@ -122,6 +69,75 @@ a.social:hover {
     opacity: 0.8;
 }     
 
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/*NAVIGATION*/
+
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+}
+
+li.nav-item a.dropdown-item {
+    color: #555;
+}
+
+li.nav-item a {
+   color: #fafafa; 
+}
+
+.shoppingcart {
+    padding-left: 10px;
+    padding-top: 8px;
+}
+
+@media only screen and (max-width: 420px) {
+    .navbar-brand {
+        white-space: normal;
+    }    
+}
+
+
+/*FOOTER*/
+footer {
+        background-image: url('/static/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
+        background-position: center;
+        background-size: cover;
+        width: 100vw;
+        height: auto; 
+        }    
+
+#contactform {
+    margin-top: 40px;
+    height: 80%;
+    color: #fafafa;
+    
+}  
+.address {
+    margin-top: 40px;
+    height: 30%;
+    width: auto;
+}      
+     
+
+.social {
+    text-align: center;
+    font-size: 60px;
+    color: #fafafa;
+    margin-top: 50px;
+    margin-bottom: 20px
+}
+
+a.social:hover {
+    color: #fafafa;
+    opacity: 0.5;
+}
+
+
  
 
 .card-body {
@@ -166,7 +182,6 @@ a.social:hover {
 }
 
 .carousel-control-next, .carousel-control-prev {
-    top: 18%;
     color: #000;
     font-size: 20px
 }

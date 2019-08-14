@@ -55,9 +55,9 @@
                                                             <div class="card-body">
                                                                 <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                                                                 <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
-                                                                <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
+                                                                <p class="card-text">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
                                                                     <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
-                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+                                                                <p class="card-text">Requested by: {{ feature.author }}</p>
 
                                                                 <form method="post" action="{% url 'add_to_cart' feature.id %}">
                                                                     {% csrf_token %}
@@ -84,8 +84,8 @@
                                                             <div class="card-body">
                                                                 <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                                                                 <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
-                                                                <p class="feature-description">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
-                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+                                                                <p class="card-text">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
+                                                                <p class="card-text">Requested by: {{ feature.author }}</p>
                                                                 <form method="post" action="{% url 'add_to_cart' feature.id %}">
                                                                     {% csrf_token %}
                                                                     <div class="input-group">
@@ -102,8 +102,8 @@
                                             </div>
                                             {%endif%} {%endif%} {% endfor %}
                                         </div>
-                                        <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="width: 100%;">
+                                                        <span><i class="fa fa-arrow-circle-right"></i></span>
                                                         <span class="sr-only">Next</span>
                                                      </a>
                                         </div>
@@ -117,13 +117,13 @@
                             <div class="row no-gutters">
                                 <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel" data-interval="false">
                                     <div class="row no-gutters">
-                                        <div class="col-1 offset-1">
+                                        <div class="col-1">
                                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 100%;">
                                                             <span><i class="fa fa-arrow-circle-left"></i></span>
                                                             <span class="sr-only">Previous</span>
                                                         </a>
                                         </div>
-                                        <div class="col-8 carousel-inner">
+                                        <div class="col-10 carousel-inner">
                                             {% for feature in productFeatures %} {% if forloop.counter0 == 0 %}
                                             <div class="carousel-item active">
                                                 <div class="row">
@@ -132,9 +132,9 @@
                                                             <div class="card-body">
                                                                 <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                                                                 <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
-                                                                <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
+                                                                <p class="card-text">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
                                                                     <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
-                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+                                                                <p class="card-text">Requested by: {{ feature.author }}</p>
 
                                                                 <form method="post" action="{% url 'add_to_cart' feature.id %}">
                                                                     {% csrf_token %}
@@ -159,8 +159,8 @@
                                                             <div class="card-body">
                                                                 <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
                                                                 <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
-                                                                <p class="feature-description">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
-                                                                <p class="feature-description">Requested by: {{ feature.author }}</p>
+                                                                <p class="card-text">Raised: {{ feature.totalContributions }} of {{ feature.price }} needed</p>
+                                                                <p class="card-text">Requested by: {{ feature.author }}</p>
 
                                                                 <form method="post" action="{% url 'add_to_cart' feature.id %}">
                                                                     {% csrf_token %}
@@ -178,8 +178,8 @@
                                             {%endif%} {% endfor %}
 
                                         </div>
-                                        <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                                        <span<i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="col-1"><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="width: 100%;">
+                                                        <span></span><i class="fa fa-arrow-circle-right"></i></span>
                                                         <span class="sr-only">Next</span>
                                                      </a>
                                         </div>
