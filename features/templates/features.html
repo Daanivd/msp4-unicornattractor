@@ -6,8 +6,12 @@
             <div class="ftcard card ticketcard">
                 <div class="card-body">
                     <h5>Support a feature!</h5>
+                    {% if user.is_authenticated %}
                     <p class="card-text">Here you can see all the features for which we are raising funds to develop. Once the goal has been hit, we will start developing it! If you have a suggestion for a feature, please fill out <a data-toggle="modal" data-target="#modal"
                             href="/features/new/">this form</a></p>
+                    {%else%}
+                    <p class="card-text">Here you can see all the features for which we are raising funds to develop. Once the goal has been hit, we will start developing it!</p>
+                    {%endif%}
                 </div>
             </div>
             
