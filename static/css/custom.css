@@ -76,8 +76,6 @@ body {
 }
 
 /*NAVIGATION*/
-
-
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,1);
 }
@@ -102,44 +100,9 @@ li.nav-item a {
 }
 
 
-/*FOOTER*/
-footer {
-        background-image: url('/static/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
-        background-position: center;
-        background-size: cover;
-        width: 100vw;
-        height: auto; 
-        }    
-
-#contactform {
-    margin-top: 40px;
-    height: 80%;
-    color: #fafafa;
-    
-}  
-.address {
-    margin-top: 40px;
-    height: 30%;
-    width: auto;
-}      
-     
-
-.social {
-    text-align: center;
-    font-size: 60px;
-    color: #fafafa;
-    margin-top: 50px;
-    margin-bottom: 20px
-}
-
-a.social:hover {
-    color: #fafafa;
-    opacity: 0.5;
-}
 
 
- 
-
+/*TICKETS/FEATURES/text-cards*/
 .card-body {
     height: auto;
     width: auto;
@@ -279,3 +242,42 @@ a.social:hover {
     padding-left: 50px; 
 }
 
+/*CHARTS*/
+.c3-circle {
+opacity: 1 !important;
+}
+
+/*FOOTER*/
+footer {
+        background-image: url('/static/img/1_akxEm0R7YDzmGjW54i8Kcw.png');
+        background-position: center;
+        background-size: cover;
+        width: 100vw;
+        height: auto; 
+        }    
+
+#contactform {
+    margin-top: 40px;
+    height: 80%;
+    color: #fafafa;
+    
+}  
+.address {
+    margin-top: 40px;
+    height: 30%;
+    width: auto;
+}      
+     
+
+.social {
+    text-align: center;
+    font-size: 60px;
+    color: #fafafa;
+    margin-top: 50px;
+    margin-bottom: 20px
+}
+
+a.social:hover {
+    color: #fafafa;
+    opacity: 0.5;
+}

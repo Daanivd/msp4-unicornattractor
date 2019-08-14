@@ -54,7 +54,7 @@
                                                         <div class="ftcard card featurecard">
                                                             <div class="card-body">
                                                                 <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
-                                                                <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
+                                                                <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
                                                                 <p class="card-text">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
                                                                     <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
                                                                 <p class="card-text">Requested by: {{ feature.author }}</p>
@@ -131,7 +131,7 @@
                                                         <div class="ftcard card featurecard">
                                                             <div class="card-body">
                                                                 <h5 class="card-title"><a href="/features/{{ feature.id }}">{{ feature.featureName }}</a></h5>
-                                                                <p class="card-text">{{ feature.description|truncatewords:20 }}</p>
+                                                                <p class="card-text">{{ feature.description|truncatewords:7 }}</p>
                                                                 <p class="card-text">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
                                                                     <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
                                                                 <p class="card-text">Requested by: {{ feature.author }}</p>
@@ -307,7 +307,7 @@
             },
 
             color: {
-                pattern: ['pink']
+                pattern: ['blue']
             }
 
         });
