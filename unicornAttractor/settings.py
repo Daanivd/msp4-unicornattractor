@@ -36,7 +36,7 @@ if 'DATABASE_URL' in os.environ:
     DEBUG = False
 else:
     print('Database URL not found. DEBUG = True')
-DEBUG = True
+    DEBUG = True
 
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOST'),
