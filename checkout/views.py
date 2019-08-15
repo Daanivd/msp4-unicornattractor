@@ -48,11 +48,15 @@ def checkout(request):
             
                 if customer.paid:
                     messages.error(request, 'Thank you for your contribution')
-                    request.session['cart'] = {}
-                    
                     for id, contribution in cart.items():
+                        """Add paid amount per item in cart to corresponding feature.totalContributions"""
                         feature = get_object_or_404(Feature, pk=id)
-                        feature.totalContributions = int(feature.totalContributions) + int(contribution)
+                        # print(feature.totalContributions)
+                        feature.totalContributions += int(contribution)
+                        feature.save
+                        # print(feature.totalContributions)
+                        
+                    request.session['cart'] = {}    
                         
                     return redirect(reverse('all_features'))
                 else:
