@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <p class="text-right"><a href="{% url 'all_tickets' %}" class="btn btn-default font-italic">Back to tickets</a></p>
                     <h5 class="card-title"><strong>{{ ticket.ticketName }}</strong></h5>
-                    <p class="text-justify">Published on: {{ ticket.published_date }}</p>
+                    <p class="text-justify"><strong>Published on</strong>: {{ ticket.published_date }}</p>
                     <p class="text-justify"><strong>Author</strong>: {{ ticket.author }}</p>
                     <p class="card-text text-justify"><strong>status</strong>: {{ ticket.get_status_display }} </p>
                     {% if ticket.fix_version %}
