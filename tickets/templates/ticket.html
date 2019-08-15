@@ -3,24 +3,24 @@
 <!--HEADER-->
 <header id="trees"> {% endblock headerTag %} {% block content %}
     <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-12 col-md-6">
             <div class="ftcard card ticketcard">
                 <div class="card-body">
                     <p class="text-right"><a href="{% url 'all_tickets' %}" class="btn btn-default font-italic">Back to tickets</a></p>
                     <h5 class="card-title"><strong>{{ ticket.ticketName }}</strong></h5>
-                    <p>Published on: {{ ticket.published_date }}</p>
-                    <p><strong>Author</strong>: {{ ticket.author }}</p>
-                    <p class="card-text"><strong>status</strong>: {{ ticket.get_status_display }}</p>
+                    <p class="text-justify">Published on: {{ ticket.published_date }}</p>
+                    <p class="text-justify"><strong>Author</strong>: {{ ticket.author }}</p>
+                    <p class="card-text text-justify"><strong>status</strong>: {{ ticket.get_status_display }} </p>
                     {% if ticket.fix_version %}
-                    <p class="card-text">Bug fixed since: {{ ticket.fixed_date }} | version: {{ ticket.fix_version }}</p>
+                    <p class="card-text text-justify"><strong>Bug fixed since</strong>: {{ ticket.fixed_date }} | version: {{ ticket.fix_version }}</p>
                     {% endif %}
-                    <p class="card-text font-weight-bold description">Description</p>
-                    <p class="card-text">{{ ticket.description }}</p>
+                    <p class="card-text font-weight-bold description text-justify">Description</p>
+                    <p class="card-text text-justify">{{ ticket.description }}</p>
                     {% if ticket.image %}
                     <img class="img" src="/media/{{ ticket.image }}"> {% endif %}
                      {% if ticket.devComments %}
-                    <p class="card-text font-weight-bold description">Developers' comments:</p>
-                    <p class="devComments">{{ ticket.devComments }}</p>
+                    <p class="card-text font-weight-bold description text-justify">Developers' comments:</p>
+                    <p class="text-justify">{{ ticket.devComments }}</p>
                     {% endif %}
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>
                     <a href="{% url 'ticket_upvote' ticket.id %}" class="btn btn-default"><i class="far fa-hand-paper"></i></a>

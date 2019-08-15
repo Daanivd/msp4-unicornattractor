@@ -2,17 +2,17 @@
 <!--HEADER-->
 <header id="trees"> {% endblock headerTag %}{% block content %}
     <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-12 col-md-6">
             <div class="ftcard card featurecard">
                 <div class="card-body">
                     <p class="text-right"><a href="{% url 'all_features' %}" class="btn btn-default font-italic">Back to Features</a></p>
-                    <h5 class="card-title">{{ feature.featureName }}</h5>
-                    <p><span class="boldtext">Published on:</span> {{ feature.published_date }}
-                        <p><strong>Author</strong>: {{ feature.author }}</p>
-                        <p class="feature-description"><strong>Raised</strong>: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
+                    <h5 class="card-title"><strong>{{ feature.featureName }}</strong></h5>
+                    <p class="text-justify"><span><strong>Published on</strong>: </span> {{ feature.published_date }}
+                        <p class="text-justify"><strong>Author</strong>: {{ feature.author }}</p>
+                        <p class="text-justify"><strong>Raised</strong>: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
                             <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
-                        <p class="card-text font-weight-bold description"><strong>Description</strong></p>
-                        <p class="card-text">{{ feature.description }}</p>
+                        <p class="card-text font-weight-bold text-justify description"><strong>Description</strong></p>
+                        <p class="card-text text-justify">{{ feature.description }}</p>
 
                         <form method="post" action="{% url 'add_to_cart' feature.id %}">
                             {% csrf_token %}
