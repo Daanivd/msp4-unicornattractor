@@ -3,12 +3,12 @@
 <header id="trees"> {% endblock headerTag %} {% block content %}
     <div class="row">
         <div class="col-12">
-            <div class="infocard card ticketcard">
+            <div class="infocard card profilecard">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
                             {% if user.profile.photo %}
-                            <img alt="Profile Photo" src="/media/{{ user.profile.photo }}" style="max-width:100%"> 
+                            <img alt="Profile Photo" src="/media/{{user.profile.photo}}" style="max-width:100%"> 
                             {%else%}
                             <img alt="Profile Photo" src="{% static 'img/profilePic.png' %}" style="max-width:100%"> {%endif%}
                         </div>

@@ -17,7 +17,7 @@
                     <p class="card-text font-weight-bold description text-justify">Description</p>
                     <p class="card-text text-justify">{{ ticket.description }}</p>
                     {% if ticket.image %}
-                    <img class="img" src="/media/{{ ticket.image }}"> {% endif %}
+                    <img class="img" src="/media/{{ticket.image}}"> {% endif %}
                      {% if ticket.devComments %}
                     <p class="card-text font-weight-bold description text-justify">Developers' comments:</p>
                     <p class="text-justify">{{ ticket.devComments }}</p>

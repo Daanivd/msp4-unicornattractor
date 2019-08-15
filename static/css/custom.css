@@ -245,6 +245,10 @@ li.nav-item a {
     padding-left: 50px; 
 }
 
+.profilecard {
+    margin-bottom: 25px;
+}
+
 /*CHARTS*/
 .c3-circle {
 opacity: 1 !important;
