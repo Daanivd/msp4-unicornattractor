@@ -89,7 +89,7 @@ Testing was done manually, by the developer himself and through use of the web a
 
 ### Automatic Testing
 The plugin **Coverage** was used to 
-assess how much of the code was covered. In the end, 98% of the code was covered (964 of 982 statements). Each app folder has its own test files, starting 
+assess how much of the code was covered. In the end, 96% of the code was covered with [1118 statements, 43 missing](https://github.com/Daanivd/msp4-unicornattractor/blob/master/Coverage%20Report). Each app folder has its own test files, starting 
 with 'test_xxxxx.py' (eg. test_views.py). The continuous integration service provided by Travis also shows all tests were passed.
 
 **Location of test files**
@@ -127,7 +127,7 @@ were added when running the automatic testing, which they were.
 Test files can be performed through the CLI, using the following command:
 `coverage run --source='app-name' manage.py test`
 A report can be found using:
-`coverage report`, and more indepth details of the report can be seen by viewing the index file created by `coverage html`
+`coverage report`, and more indepth details of the report can be seen by viewing the index file created by `coverage html`. 
 
 
 ### Manual Testing
