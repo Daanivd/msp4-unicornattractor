@@ -188,8 +188,20 @@ Testing of display on various device was done using the model options given by t
 3. Set environmental variables, but instead of 'DATABASE_URL' variable create TRAVIS variable (empty variable).
 
 ##DEVELOPER INSTRUCTIONS 
-Unicorn Preservation Society developers working with this system need to regularly check for new features by logging in as an admin. If new features have been suggested, 
-developers need to decide on a price. During each status change the 
+Unicorn Preservation Society developers working with this system need to regularly check for new feature suggestions by logging in as an admin. If a new feature has been suggest, these are the steps:
+1. Assess feature, if feasible assess costs for development. 
+2. Set price once price is decided, change status to 'price set' and set the date on 'set price date'. It will now appear automatically on the website so people can start contributing towards it
+3. Keep an eye on the totalContributions, once totalContributions hits its goal (the set price), change the status to 'in development' and add date to 'in development date'. This will remove it from the website so people cannot contribute towards it anymore
+4. Get developing!
+5. Once the feature has been developed and added to the app, change status to 'feature added' and set the date in 'feature added date'
+
+For tickets, the user also needs to check regularly for new tickets or edited tickets. The steps for new tickets are:
+1. Assess the ticket. The bug can be user error or an actual bug with the app.
+    - User error: Make a suggestion on how the user can resolve it themselve using field 'devComments'. Change status to closed.
+    - Actual bug: Change status to 'working on it' and get working on it! Add information the the 'devComments as you progress to keep users informed.
+2. Once the bug has been resolved, change the status to 'bug resolved', add the date to 'fixed date' and add the version of the app containing the fix to 'fix version'. Add this also to the 'devComments'.
+
+Be sure to also check the Unicorn Preservation Society app email regularly for potential emails from users. 
 
 
 ## Credits
