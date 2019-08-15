@@ -65,10 +65,3 @@ def get_featureData():
     return featureDevData, featureVarData
     
     
-    
-
-# def fdata(request):
-#     fdata = Feature.objects.all()
-#     fdata = serializers.serialize('json', fdata)
-#     d = json.loads(fdata)
-#     return JsonResponse(d, safe=False)
