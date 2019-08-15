@@ -125,13 +125,7 @@ li.nav-item a {
 
 
 /*CAROUSELS (HOME AND TICKETS TEMPLATES)*/
-@media screen and (max-width: 1024px) {
-    .large {
-        display: none !important;
-    }
-}
-
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 768px) {
     .small {
         display: none !important;
     }
@@ -259,8 +253,12 @@ footer {
     margin-top: 40px;
     height: 80%;
     color: #fafafa;
-    
 }  
+
+button.send {
+    color: #fafafa;
+}
+
 .address {
     margin-top: 40px;
     height: 30%;
