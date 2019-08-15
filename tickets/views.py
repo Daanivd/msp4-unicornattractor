@@ -75,7 +75,6 @@ def ticket_upvote(request, pk):
     If they do try they get a message explaining why they can't"""
     ticket = get_object_or_404(Ticket, pk=pk)
     if ticket.upvotes.filter(id=request.user.id).exists():
-        # ticket.upvotes.remove(request.user)
         is_upvoted = False
         messages.error(request, 'You already upvoted this!')
     else:
