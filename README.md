@@ -197,18 +197,14 @@ developers need to decide on a price. During each status change the
 Text was all written by the developer, Daniel van Duinkerken. 
 
 ### Media
-The GIF's used as backgrounds on the home page were made by the developer, Daniel van Duinkerken, using two of the images below. 
-- [Unicorn Header](http://www.jewishworldreview.com/cols/pruden030119.php3)
-- [Unicorn Header2](https://www.sealpress.com/titles/mia-michaels/a-unicorn-in-a-world-of-donkeys/9781580057721/)
-- [unicorn header3](https://medium.com/@UnicornAgency/majestic-mondays-feb-5th-2018-e8553b8aba84)
+The GIF's used as backgrounds on the home page were made by the developer, Daniel van Duinkerken, using two of the images below (trees and unicornPNG). 
+- [unicorn footer](https://medium.com/@UnicornAgency/majestic-mondays-feb-5th-2018-e8553b8aba84)
 - [forest](https://www.wallpapermaiden.com/wallpaper/25451/forest-trees-mist-sunlight/download/1920x1080)
 - [clouds](https://www.psephizo.com/revelation/when-is-god-coming-on-the-clouds/)
-- [ocean](http://www.chefsforoceans.com/)
 - [unicorn wallpaper](https://www.amazon.co.uk/Rainbow-Unicorn-Wallpaper-Multicoloured-Feature/dp/B076JG8BDL)
-- [trees](https://ecobnb.com/blog/trees/)
 - [blue mountains mist](https://wallpaperclicker.com/image/Blue-Mountains-Mist-HD-Wallpaper/15347665/)
 - [unicornPNG](https://www.pinclipart.com/downpngs/ThJbJ_image-royalty-free-baby-unicorn-clipart-baby-unicorn/)
-- [Unicorn logo](https://pngtree.com/so/unicorn)
+
 
 ### Acknowledgements
 Various code was inspired by the following links:
