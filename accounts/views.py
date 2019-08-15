@@ -97,8 +97,8 @@ def edit_profile(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         userForm = UserForm(request.POST)
-        profileForm = ProfileForm(request.POST)
-        # profileForm = ProfileForm(data=request.POST, files=request.FILES)
+        profileForm = ProfileForm(request.POST, request.FILES, instance=profile)
+        
 
         # check whether it's valid:
         if userForm.is_valid() and profileForm.is_valid():
@@ -109,10 +109,8 @@ def edit_profile(request):
             user.email = request.POST['email']
             user.save()
 
-            # Save profile model fields
-            profile.info = request.POST['info']
-            profile.photo = request.FILES.get('photo', False)
-            profile.save() 
+            profile = profileForm.save(commit=False)
+            profile.save()
             
     # if a GET (or any other method): create a blank form
     else:
