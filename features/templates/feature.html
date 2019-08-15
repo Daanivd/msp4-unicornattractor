@@ -8,12 +8,10 @@
                     <p class="text-right"><a href="{% url 'all_features' %}" class="btn btn-default font-italic">Back to Features</a></p>
                     <h5 class="card-title">{{ feature.featureName }}</h5>
                     <p><span class="boldtext">Published on:</span> {{ feature.published_date }}
-                        <p><span class="boldtext">Author:</span> {{ feature.author }}</p>
-                        {% if feature.image %}
-                        <img class="img-feature" src="/media/{{ feature.image }}"> {% endif %}
-                        <p class="feature-description">Raised: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
+                        <p><strong>Author</strong>: {{ feature.author }}</p>
+                        <p class="feature-description"><strong>Raised</strong>: <i class="fas fa-euro-sign"></i> {% if feature.totalContributions %} {{feature.totalContributions}} {%else %}
                             <span>0.00 </span> {% endif %} of <i class="fas fa-euro-sign"></i>{{ feature.price }} needed</p>
-                        <p class="card-text font-weight-bold">Description</p>
+                        <p class="card-text font-weight-bold description"><strong>Description</strong></p>
                         <p class="card-text">{{ feature.description }}</p>
 
                         <form method="post" action="{% url 'add_to_cart' feature.id %}">

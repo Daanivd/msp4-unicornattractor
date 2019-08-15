@@ -8,9 +8,9 @@
                     <div class="row">
                         <div class="col-3">
                             {% if user.profile.photo %}
-                            <img class="profile-photo" alt="Profile Photo" src="/media/{{ user.profile.photo }}" style="max-width:100%"> 
+                            <img alt="Profile Photo" src="/media/{{ user.profile.photo }}" style="max-width:100%"> 
                             {%else%}
-                            <img class="profile-photo" alt="Profile Photo" src="{% static 'img/profilePic.png' %}" style="max-width:100%"> {%endif%}
+                            <img alt="Profile Photo" src="{% static 'img/profilePic.png' %}" style="max-width:100%"> {%endif%}
                         </div>
                         <div class="col-9 profile">
                             <h5 class="text-capitalize">{{ user.username }}'s Profile</h5>

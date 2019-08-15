@@ -7,19 +7,19 @@
             <div class="ftcard card ticketcard">
                 <div class="card-body">
                     <p class="text-right"><a href="{% url 'all_tickets' %}" class="btn btn-default font-italic">Back to tickets</a></p>
-                    <h5 class="card-title">{{ ticket.ticketName }}</h5>
-                    <p class=>Published on: {{ ticket.published_date }}</p>
-                    <p><span class="boldtext">Author:</span> {{ ticket.author }}</p>
-                    {% if ticket.image %}
-                    <img class="img-blogpost" src="/media/{{ post.image }}"> {% endif %}
-                    <p class="card-text">status: {{ ticket.get_status_display }}</p>
+                    <h5 class="card-title"><strong>{{ ticket.ticketName }}</strong></h5>
+                    <p>Published on: {{ ticket.published_date }}</p>
+                    <p><strong>Author</strong>: {{ ticket.author }}</p>
+                    <p class="card-text"><strong>status</strong>: {{ ticket.get_status_display }}</p>
                     {% if ticket.fix_version %}
                     <p class="card-text">Bug fixed since: {{ ticket.fixed_date }} | version: {{ ticket.fix_version }}</p>
                     {% endif %}
-                    <p class="card-text font-weight-bold">Description</p>
+                    <p class="card-text font-weight-bold description">Description</p>
                     <p class="card-text">{{ ticket.description }}</p>
+                    {% if ticket.image %}
+                    <img class="img" src="/media/{{ ticket.image }}"> {% endif %}
                      {% if ticket.devComments %}
-                    <p class="card-text font-weight-bold">Developers' comments:</p>
+                    <p class="card-text font-weight-bold description">Developers' comments:</p>
                     <p class="devComments">{{ ticket.devComments }}</p>
                     {% endif %}
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Edit ticket</button>

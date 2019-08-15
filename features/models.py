@@ -16,7 +16,6 @@ class Feature(models.Model):
     contribution = models.IntegerField(blank=True, null=True)
     totalContributions = models.IntegerField(blank=True, default= 0)
     price = models.IntegerField(blank=True, null=True)
-    image = models.ImageField(upload_to='images', blank=True, null=True)
     author = models.ForeignKey(User)
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
