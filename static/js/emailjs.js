@@ -13,6 +13,7 @@ contactform.submit(function(event){
   	.then(function(){ 
     	alert('Sent!');
        contactform.find('button').text('Send');
+       document.getElementById('contactform').reset();
     }, function(err) {
        alert('Send email failed!\r\n Response:\n ' + JSON.stringify(err));
        contactform.find('button').text('Send');
