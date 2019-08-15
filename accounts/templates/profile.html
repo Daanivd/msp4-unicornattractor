@@ -8,7 +8,8 @@
                     <div class="row">
                         <div class="col-3">
                             {% if user.profile.photo %}
-                            <img class="profile-photo" alt="Profile Photo" src="/media/{{ user.profile.photo }}" style="max-width:100%"> {%else%}
+                            <img class="profile-photo" alt="Profile Photo" src="/media/{{ user.profile.photo }}" style="max-width:100%"> 
+                            {%else%}
                             <img class="profile-photo" alt="Profile Photo" src="{% static 'img/profilePic.png' %}" style="max-width:100%"> {%endif%}
                         </div>
                         <div class="col-9 profile">
@@ -33,7 +34,7 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="height=95%;">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
