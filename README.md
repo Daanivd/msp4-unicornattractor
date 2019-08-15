@@ -86,8 +86,7 @@ In this section, you should go over the different parts of your project, and des
 
 
 ## Testing
-Testing was done manually, by the developer himself and by a third party (person with no developer background), and also using the automatic Django Test Suite.
-
+Testing was done manually, by the developer himself and through use of the web app by a third party (person with no developer background), and also using the automatic Django Test Suite.
 
 
 ### Automatic Testing
@@ -111,21 +110,27 @@ would see if the correct template, or message was returned. Defensive design was
 or filling in a form in a faulty manner, to see if any user-errors would give the correct responses. 
 
 Especially important were the payment tests, using the Stripe-functionality. Using the credit card details and tokens provided by Stripe for testing, as many user scenarios
-as possible were tested (as recommended by Stripe). 
-
-
-
-
+as possible were tested (as recommended by Stripe). Here is are the steps regarding testing payments as an example:
+    1. Create user, log user in and create and save new feature
+    2. Add new feature to cart with contribution of eg. 10 euro.
+    3. Test the checkout page is loaded properly
+    4. Post, to the checkout page, all details necessary (address/payment details, using the Stripe credit card details and Stripe_id according to their documentation on testing,
+        and verify payment went through, correct message is shown and the correct page is rendered. 
+    5. Post, to the checkout page, all details necessary (address/payment details, using the Stripe credit card detail for a incorrect card, and verify the payment did not go through,
+       correct message is shown and the correct page is rendered. 
+    6. Post, to the checkout page, with incomplete form (part of address details missing), and check that the page did not go through, correct message is shown and the correct page is rendered. 
+        
 
 Test files can be performed through the CLI, using the following command:
 `coverage run --source='app-name' manage.py test`
 A report can be found using:
-`coverage report`, and more indepth details of the report can be used by viewing the index file created by `coverage html`
+`coverage report`, and more indepth details of the report can be seen by viewing the index file created by `coverage html`
 
 ### Manual Testing
-I tried to test as many functions as possible myself, as well as through non-developer, or your ordinary user, people. Basic functionality such as logging in, resetting the password,
-creating a ticket, editing a ticket, upvoting tickets, suggesting a new feature, adding features to the cart and proceeding to checkout. Performing payments through the live site was not
-tested as this is not allowed by Stripe. 
+I tried to test as many functions as possible myself, as well as through non-developer, or your ordinary user, people. While browsing the website, functions such as filling out all forms (registration, login, password reset, submit ticket, edit ticket, submit feature, contact-form) correctly and incorrectly 
+(to check for proper handling of errors). All other functions such as upvoting a ticket, modal pop-ups and message alerts were tested to ensure proper functioning. Additionally, to test the
+login_required decorator,the web app was browed as a logged in user, and a user that hasn't been logged in, to ensure certain functions are not accesible without logging in. 
+
 
 ### Testing different browsers
 Correct display of the website was checked in the following browsers:
